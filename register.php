@@ -8,7 +8,7 @@ if (!empty($_POST)){
         $user->setUsernaam($_POST['usernaam']);
         $user->setVoornaam($_POST['voornaam']);
         $user->setAchternaam($_POST['achternaam']);
-        //$user->setRol($_POST['rol']);
+        $user->setRol($_POST['roltherapeut']);
        // $user->setEmail($_POST['email']);
         if($user->register()){
             session_start();
@@ -33,10 +33,15 @@ if (!empty($_POST)){
   <title>SB Admin - Start Bootstrap Template</title>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
 </head>
 
 <body>
   <div class="container">
+
+<div class="logo"></div>
+
   <form action="#" method="post">
   <label for="username">Usernaam</label>
     <br>
@@ -60,9 +65,9 @@ if (!empty($_POST)){
     <br>
     <label for="rol">Rol</label>
     <br>
-    <input type="checkbox" name="roltherapeut" id="roltherapeut">Ik ben een therapeut / psycholoog
+    <input type="checkbox" name="roltherapeut" id="roltherapeut" checked> Ik ben een therapeut / psycholoog
     <br>
-    <input type="checkbox" name="rolpatient" id="rolpatient">Ik ben een patiënt
+    <input type="checkbox" name="rolpatient" id="rolpatient"> Ik ben een patiënt
     <br>
     <input type="submit" name="button" id="button">
     <p>Or</p>
