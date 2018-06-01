@@ -44,35 +44,23 @@ if (!empty($_POST)){
 <div class="logo"></div>
 
   <form action="#" method="post">
-  <label for="username">Usernaam</label>
+    <input type="text" name="usernaam" id="usernaam" placeholder="Usernaam">
     <br>
-    <input type="text" name="usernaam" id="usernaam">
+    <input type="text" name="voornaam" id="voornaam" placeholder="Voornaam">
     <br>
-    <label for="firstname">Voornaam</label>
+    <input type="text" name="achternaam" id="achternaam" placeholder="Achternaam">
     <br>
-    <input type="text" name="voornaam" id="voornaam">
+    <input type="text" name="email" id="email" placeholder="Email">
     <br>
-    <label for="lastname">Achternaam</label>
-    <br>
-    <input type="text" name="achternaam" id="achternaam">
-    <br>
-    <label for="email">Email</label>
-    <br>
-    <input type="text" name="email" id="email">
-    <br>
-    <label for="password">Wachtwoord</label>
-    <br>
-    <input type="password" name="wachtwoord" id="wachtwoord">
-    <br>
-    <label for="rol">Rol</label>
+    <input type="password" name="wachtwoord" id="wachtwoord" placeholder="Wachtwoord">
     <br>
     <input type="checkbox" name="roltherapeut" id="roltherapeut" checked> Ik ben een therapeut / psycholoog
     <br>
     <input type="checkbox" name="rolpatient" id="rolpatient"> Ik ben een patiënt
     <br>
-    <input type="submit" name="button" id="button">
-    <p>Or</p>
-    <a id="login" href="login.php">login</a>
+    <input type="submit" name="button" id="button" placeholder="Registreren">
+    <p>Of</p>
+    <a id="login" href="login.php">Inloggen</a>
 </form>
 
 

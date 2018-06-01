@@ -47,14 +47,10 @@ else{
   <div class="container">
   <div class="logo"></div>
 
-   <form action="#" method="post">
-  <label for="email">Email</label>
+   <form action="#" method="post" >
+    <input type="text" name="email" id="email" placeholder="Email">
     <br>
-    <input type="text" name="email" id="email">
-    <br>
-    <label for="password">Wachtwoord</label>
-    <br>
-    <input type="password" name="wachtwoord" id="wachtwoord">
+    <input type="password" name="wachtwoord" id="wachtwoord" placeholder="Wachtworod">
     <br>
     <input type="submit" name="button" id="button">
    </form>

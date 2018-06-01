@@ -35,7 +35,7 @@
     
     input {
         background-color: #F2F2F2;
-        border-radius: 5px;
+        border-radius: 3px;
         width: 200px;
         height: 35px;
         margin-bottom: 10px;
@@ -50,6 +50,9 @@
     #button {
         background-color: #2D9CDB;
         color: white;
+        text-transform: uppercase;
+        border: none;
+        margin-top: 15px;
     }
     
     @media screen and (min-width: 500px) {
