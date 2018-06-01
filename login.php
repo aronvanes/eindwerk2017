@@ -52,7 +52,7 @@ else{
     <br>
     <input type="password" name="wachtwoord" id="wachtwoord" placeholder="Wachtworod">
     <br>
-    <input type="submit" name="button" id="button">
+    <input type="submit" name="button" id="button" placeholder="Inloggen">
    </form>
 
 
