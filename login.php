@@ -37,18 +37,27 @@ else{
   <meta name="description" content="">
   <meta name="author" content="">
   <title>SB Admin - Start Bootstrap Template</title>
-  <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom fonts for this template-->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 
 <body>
   <div class="container">
-   
+  <div class="logo"></div>
 
+   <form action="#" method="post">
+  <label for="email">Email</label>
+    <br>
+    <input type="text" name="email" id="email">
+    <br>
+    <label for="password">Wachtwoord</label>
+    <br>
+    <input type="password" name="wachtwoord" id="wachtwoord">
+    <br>
+    <input type="submit" name="button" id="button">
+   </form>
 
 
   </div>
