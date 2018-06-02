@@ -64,3 +64,55 @@ li a:hover {
     background-color: #FFC400;
     color: white;
 }
+
+.content {
+    margin-left: 30%;
+    top: 0px;
+    margin-top: -730px;
+    width: 70%;
+    height: 600px;
+}
+
+#button {
+    background-color: #FFC400;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    margin-top: 15px;
+    width: 200px;
+    height: 50px;
+}
+
+#search {
+    width: 80%;
+    height: 35px;
+}
+
+.col-md-4 {
+    width: 18%;
+    height: 500px;
+    float: left;
+    margin-right: 5%;
+    border: 1px solid #FFF5D4;
+    padding: 30px;
+}
+
+#emoji {
+    display: inline;
+    width: 100%;
+    height: auto;
+    margin-top: 40px;
+    margin-bottom: 120px;
+}
+
+#btnmodule {
+    display: block;
+    align-content: center;
+    background-color: #656D78;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    margin-top: 15px;
+    width: 180px;
+    height: 50px;
+}

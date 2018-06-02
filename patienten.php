@@ -23,9 +23,11 @@
     </ul>
 </nav>
 </div>
-
-
-<div class="container">
+<div class="content">
+<input type="text" placeholder="Search.." id="search">
+<ul>
+    <li></li>
+</ul>
 </div>
 
 </body>
