@@ -8,7 +8,7 @@ class User {
     private $email;
     private $wachtwoord;
     private $rol;
-    private $userid;
+    //private $userid;
     
     /**
      * Get the value of usernaam
@@ -137,7 +137,7 @@ class User {
     /**
      * Get the value of userid
      */ 
-    public function getUserid()
+   /* public function getUserid()
     {
         return $this->userid;
     }
@@ -147,13 +147,13 @@ class User {
      *
      * @return  self
      */ 
-    public function setUserid($userid)
+    /*public function setUserid($userid)
     {
         $this->userid = $userid;
 
         return $this;
     }
-
+*/
     public function register(){
         $conn = Db::getInstance();
         $statement = $conn->prepare("INSERT INTO tbl_users (usernaam, voornaam, achternaam, wachtwoord, rol) 

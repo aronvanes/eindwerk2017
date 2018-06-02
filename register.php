@@ -1,6 +1,8 @@
-<?php 
-include_once("classes/User.class.php");
-include_once("classes/Db.class.php");
+<?php
+spl_autoload_register(function($class){
+    include_once("classes/" .  $class . ".class.php");
+});
+
 
 if (!empty($_POST)){
         try {
@@ -8,16 +10,19 @@ if (!empty($_POST)){
         $user->setUsernaam($_POST['usernaam']);
         $user->setVoornaam($_POST['voornaam']);
         $user->setAchternaam($_POST['achternaam']);
-        $user->setRol($_POST['roltherapeut']);
-       // $user->setEmail($_POST['email']);
+        $user->setRol($_POST['rol']);
+        $user->setEmail($_POST['email']);
+        $user->setWachtwoord($_POST['wachtwoord']);
         if($user->register()){
             session_start();
             $_SESSION['usernaam'] = $user->getUsernaam();
             header('location: index.php');
+            var_dump($user);
         }
         }
         catch (Exception $e) {
             $message = $e->getMessage();
+            var_dump($user);
         }
     }
 
@@ -54,9 +59,9 @@ if (!empty($_POST)){
     <br>
     <input type="password" name="wachtwoord" id="wachtwoord" placeholder="Wachtwoord">
     <br>
-    <input type="checkbox" name="roltherapeut" id="roltherapeut" checked> Ik ben een therapeut / psycholoog
+    <input type="radio" name="rol" id="roltherapeut" value="2" checked> Ik ben een therapeut / psycholoog
     <br>
-    <input type="checkbox" name="rolpatient" id="rolpatient"> Ik ben een patiënt
+    <input type="radio" name="rol" id="rolpatient" value="3"> Ik ben een patiënt
     <br>
     <input type="submit" name="button" id="button" placeholder="Registreren">
     <p>Of</p>
