@@ -10,20 +10,15 @@ else{
         $user->setEmail($_POST["email"]);
         $user->setPassword_login($_POST["password"]);
         
-        //controleren of een gebruiker kan inloggen (functie)
         if ($user->login()){
             session_start();
-            // Als login slaagt moet er een session aangemaakt worden van de ingelogde gebruiker
             $_SESSION["user_id"] = $user->getUser_id();
             $_SESSION["loggedin"] = true; 
             header("Location: index.php");
         }
         else{
-            //$error = "Foutieve gegevens";
             $error = true;
         }
-        // if no -> moet er een $error getoont worden
-        // if yes -> naar pagina gebruiker (ingelogd)
 
     }
 }
