@@ -1,7 +1,14 @@
-<?php 
-include_once("classes/User.class.php");
+<?php
+spl_autoload_register(function($class){
+    include_once("classes/" .  $class . ".class.php");
+});
 
-if(!empty($_SESSION["loggedin"])){
+session_start();
+
+$login = new User();
+$login->Login();
+$error->Login($error);
+/*if(!empty($_SESSION["loggedin"])){
     header("Location: index.php");
 }
 else{
@@ -21,7 +28,7 @@ else{
         }
 
     }
-}
+}*/
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -41,11 +48,10 @@ else{
 <body>
   <div class="container">
   <div class="logo"></div>
-
    <form action="#" method="post" >
-    <input type="text" name="email" id="email" placeholder="Email">
+    <input type="text" name="usernaam" id="usernaam" placeholder="usernaam">
     <br>
-    <input type="password" name="wachtwoord" id="wachtwoord" placeholder="Wachtworod">
+    <input type="password" name="wachtwoord" id="wachtwoord" placeholder="Wachtwoord">
     <br>
     <input type="submit" name="button" id="button" placeholder="Inloggen">
    </form>

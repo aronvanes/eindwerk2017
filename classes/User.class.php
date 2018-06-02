@@ -9,6 +9,8 @@ class User {
     private $wachtwoord;
     private $rol;
     //private $userid;
+
+
     
     /**
      * Get the value of usernaam
@@ -166,23 +168,61 @@ class User {
         $result = $statement->execute();
         return $result;
 }
-public function login(){
-    
-    $conn = Db::getInstance();
-    $statement = $conn->prepare("select * from tbl_users where usernaam = :usernaam");
-    $statement->bindParam(":usernaam", $this->usernaam);
-    $statement->execute();
-    $result = $statement->fetch();
+public function login()
+{
+    if (!empty($_POST)) {
 
-    $this->setUserid($result["id"]);
-    
-    if( password_verify($this->password_login, $result['wachtwoord'])){
-        return true;
-    }
-    else {
-        return false;
-    }
+        try {
 
+            //Retrieve the field values from our login form.
+            $usernaam = $_POST['usernaam'];
+            $passwordAttempt = $_POST['wachtwoord'];
+
+            //Retrieve the user account information for the given username.
+            $conn = Db::getInstance();
+            $statement = $conn->prepare("SELECT id, usernaam, wachtwoord FROM tbl_users WHERE usernaam = :usernaam");
+
+            //Bind value.
+            $statement->bindValue(':usernaam', $usernaam);
+
+            //Execute.
+            $statement->execute();
+
+            //Fetch row.
+            $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+
+            //If $row is FALSE.
+            if ($user === false) {
+                //Could not find a user with that username!
+
+                $error = "Incorrect username ";
+            } else {
+                //User account found. Check to see if the given password matches the
+                //password hash that we stored in our users table.
+
+                //Compare the passwords.
+                $validPassword = password_verify($passwordAttempt, $user['wachtwoord']);
+
+                //If $validPassword is TRUE, the login has been successful.
+                if ($validPassword) {
+                    //Provide the user with a login session.
+                    $_SESSION['id'] = $user['id'];
+                    $_SESSION['logged_in'] = time();
+                    $_SESSION['usernaam'] = $_POST["usernaam"];
+
+
+                    header("Location: index.php");
+
+                } else {
+                    //$validPassword was FALSE. Passwords do not match.
+                    $error = "Incorrect email and/or password";
+
+                }
+            }
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+        }
+    }
 }
-
 }
