@@ -8,6 +8,7 @@ session_start();
 $login = new User();
 $login->Login();
 $error->Login($error);
+
 /*if(!empty($_SESSION["loggedin"])){
     header("Location: index.php");
 }

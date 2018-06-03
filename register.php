@@ -16,7 +16,7 @@ if (!empty($_POST)){
         if($user->register()){
             session_start();
             $_SESSION['usernaam'] = $user->getUsernaam();
-            header('location: index.php');
+            header('location: dashboard.php');
             var_dump($user);
         }
         }
