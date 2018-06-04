@@ -1,4 +1,14 @@
-<!DOCTYPE html>
+<?php
+spl_autoload_register(function($class){
+    include_once("classes/" .  $class . ".class.php");
+});
+
+$user = new User();
+$user->patient();
+$user->level();
+$user->categorie();
+
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,10 +35,12 @@
 </div>
 <div class="content">
 <input type="text" placeholder="Search.." id="search">
+<div class="row">
+
 <ul>
-    <li></li>
+    <li><?php echo $user; ?></li>
 </ul>
 </div>
-
+</div>
 </body>
 </html>

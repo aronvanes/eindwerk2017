@@ -225,4 +225,22 @@ public function login()
         }
     }
 }
+public function patient(){
+    $conn = Db::getInstance();
+    $statement = $conn->prepare("select voornaam, achternaam from tbl_users");
+    $result = $statement->execute();
+    return $result;
+}
+public function level(){
+    $conn = Db::getInstance();
+    $statement = $conn->prepare("select view_level from tbl_module");
+    $result = $statement->execute();
+    return $result;
+}
+public function categorie(){
+    $conn = Db::getInstance();
+    $statement = $conn->prepare("select categorie from tbl_module");
+    $result = $statement->execute();
+    return $result;
+}
 }
