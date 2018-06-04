@@ -36,10 +36,13 @@ $user->categorie();
 <div class="content">
 <input type="text" placeholder="Search.." id="search">
 <div class="row">
-
 <ul>
-    <li><?php echo $user; ?></li>
-</ul>
+        <!-- start lus voorbeeld -->
+        <?php foreach($user as $u): ?>
+        <li><?php echo $u; ?></li>
+        <!-- einde lus voorbeeld -->
+        <?php endforeach; ?>
+    </ul>
 </div>
 </div>
 </body>
