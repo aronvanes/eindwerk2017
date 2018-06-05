@@ -11,27 +11,27 @@ class AppUser extends User {
   protected $rol;
 
   public function __construct($email, $password){
-    this.$usernaam = $email;
-    this.$voornaam = 'John';
-    this.$achternaam = 'Doe';
-    this.$email = $email;
-    this.$wachtwoord = $password;
-    this.$rol = 0;
+    $this->usernaam = $email;
+    $this->voornaam = 'John';
+    $this->achternaam = 'Doe';
+    $this->email = $email;
+    $this->wachtwoord = $password;
+    $this->rol = 0;
   }
 
   private function isConstructed(){
-    if (!empty(this.$usernaam)){
+    if (!empty($this->usernaam)){
       return true;
     } else {
       return false;
     }
   }
 
-  if (isConstructed){
-    public function getEmail(){
-      return this.$email;
+  public function getEmail(){
+    if ($this->isConstructed()){
+      return $this->email;
+    } else {
+      throw new Exception("user has not been instatiated", 1);
     }
   }
 }
-
- ?>

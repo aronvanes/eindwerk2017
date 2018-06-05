@@ -1,13 +1,16 @@
 <?php
 spl_autoload_register(function($class){
-    include_once("../classes/" .  $class . "app.class.php");
+    include_once(dirname(__DIR__)."\classes/" .  $class . ".class.php");
 });
 
-$credentials = (object) [
-  'email' => $_REQUEST['email']
-  'wachtwoord' => $_REQUEST['password']
-]
+$json = $_POST['email'];
 
-$user = new AppUser ($credentials->email, $credentials->wachtwoord);
+// $credentials = (object) [
+//   'email' => $_REQUEST['email'],
+//   'wachtwoord' => $_REQUEST['password']
+// ];
+//
+// $user = new AppUser ($credentials->email, $credentials->wachtwoord);
 
-echo $use->getEmail();
+echo json_encode($json);
+// $user->getEmail()
