@@ -10,13 +10,27 @@ class AppUser extends User {
   protected $wachtwoord;
   protected $rol;
 
-  public function __construct($username, $firstname, $lastname, $email, $password, $role){
-    this.$usernaam = $username;
-    this.$voornaam = $firstname;
-    this.$achternaam = $lastname;
+  public function __construct($email, $password){
+    this.$usernaam = $email;
+    this.$voornaam = 'John';
+    this.$achternaam = 'Doe';
     this.$email = $email;
     this.$wachtwoord = $password;
-    this.$rol = $role;
+    this.$rol = 0;
+  }
+
+  private function isConstructed(){
+    if (!empty(this.$usernaam)){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  if (isConstructed){
+    public function getEmail(){
+      return this.$email;
+    }
   }
 }
 
