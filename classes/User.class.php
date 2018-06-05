@@ -227,7 +227,7 @@ public function login()
 }
 public function patient(){
     $conn = Db::getInstance();
-    $statement = $conn->prepare("select voornaam, achternaam from tbl_users");
+    $statement = $conn->prepare("select voornaam, achternaam from tbl_users where rol = 3");
     $result = $statement->execute();
     return $result;
 }
