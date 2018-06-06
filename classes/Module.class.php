@@ -82,12 +82,11 @@ public function getId()
 
     public function GetAllInteractieModules(){
 
-        $conn = Db::getInstance();
-        $statement = $conn->prepare("SELECT * FROM tbl_module WHERE categorie = :categorie");
-        $statement->bindParam(':categorie', 1);
-        $result = $statement->execute();
-        return $result;
-    }
+      $conn = Db::getInstance();
+      $statement = $conn->prepare("SELECT * FROM tbl_module WHERE categorie = 1");
+      $result = $statement->execute();
+      return $result;
+  }
 
     public function CreateModule(){
 
