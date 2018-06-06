@@ -3,10 +3,17 @@ include_once("Db.class.php");
 
 class Module {
 
+    private $id
     private $naam;
     private $beschrijving;
     private $categorie;
-    private $view_level;
+    private $view_level;/**
+ * @return mixed
+ */
+public function getId()
+{
+    return $this->id;
+}
 
     /**
      * @return mixed
@@ -82,7 +89,7 @@ class Module {
         return $result;
     }
 
-    public function CreateInteractieModule(){
+    public function CreateModule(){
 
         $conn = Db::getInstance();
         $statement = $conn->prepare("INSERT INTO tbl_module(naam, beschrijving, categorie, view_level) 
@@ -91,6 +98,14 @@ class Module {
         $statement->bindParam(':beschrijving', $this->beschrijving);
         $statement->bindParam(':categorie', $this->categorie);
         $statement->bindParam(':view_level', $this->view_level);
+        $result = $statement->execute();
+        return $result;
+    }
+    public function DeleteModule(){
+
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("DELETE FROM `tbl_module` WHERE id = :id");
+        $statement->bindParam(':id', $this->id);
         $result = $statement->execute();
         return $result;
     }
