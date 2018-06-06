@@ -6,32 +6,39 @@ class AppUser extends User {
   protected $usernaam;
   protected $voornaam;
   protected $achternaam;
-  protected $email;
   protected $wachtwoord;
   protected $rol;
 
-  public function __construct($email, $password){
-    $this->usernaam = $email;
+  public function __construct($username, $password){
+    $this->usernaam = $username;
+    $this->wachtwoord = $password;
     $this->voornaam = 'John';
     $this->achternaam = 'Doe';
-    $this->email = $email;
-    $this->wachtwoord = $password;
     $this->rol = 0;
   }
 
-  private function isConstructed(){
-    if (!empty($this->usernaam)){
-      return true;
-    } else {
-      return false;
-    }
-  }
+  // public function login(){
+  //   $conn = Db::getInstance();
+  //
+  //   $statement = $conn->prepare("SELECT id, usernaam, wachtwoord FROM tbl_users WHERE usernaam = :usernaam");
+  //   $statement->bindValue(':usernaam', $this->usernaam);
+  //
+  //   if($statement->execute()){
+  //     $foundUser = $statement->fetch(PDO::FETCH_OBJ);
+  //
+  //     if($foundUser->wachtwoord === $this->wachtwoord){
+  //       return true
+  //     } else {
+  //       throw new Exception("Wachtwoord komt niet overeen", 1);
+  //     }
+  //     // if(password_verify($passwordAttempt, $user['wachtwoord'])){}
+  //
+  //   } else {
+  //     throw new Exception("Deze gebruiker bestaat niet.", 1);
+  //   };
+  // }
 
-  public function getEmail(){
-    if ($this->isConstructed()){
-      return $this->email;
-    } else {
-      throw new Exception("user has not been instatiated", 1);
-    }
+  public function login(){
+    return 'kakahoofd';
   }
 }
