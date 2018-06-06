@@ -4,6 +4,13 @@ spl_autoload_register(function($class){
 });
 
 session_start();
+if (!empty($_SESSION['usernaam'])) {
+} else {
+    header('Location: login.php');
+}
+$mod = new module;
+$module = $mod->GetAllInteractieModules();
+var_dump($module);
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +36,33 @@ session_start();
     </nav>
 </div>
 
+<ul class="flex-container">
+    <?php foreach ($module as $row) :?>
+        <div class="col-md-1 col-features text-center">
+            <div class="flex-container ">
+                    <div class='lists'>
 
 
+                        <li class="flex-item"><p class='listname'><?php echo $row['naam'] ?></p><br>
+                            <p><?php echo $row['descriptie'] ?></p></li>
+
+                    </div>
+                </a>
+            </div>
+        </div>
+    <?php endforeach; ?>
+
+</ul>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <img src="images/156-family.png" alt="" id="emoji"> <br>
+            </div>
+        </div>
+    </div>
+
+</div>
 </body>
 </html>

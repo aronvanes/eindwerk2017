@@ -84,7 +84,7 @@ public function getId()
 
       $conn = Db::getInstance();
       $statement = $conn->prepare("SELECT * FROM tbl_module WHERE categorie = 1");
-      $result = $statement->execute();
+      $result = $statement->fetch(PDO::FETCH_ASSOC);
       return $result;
   }
 

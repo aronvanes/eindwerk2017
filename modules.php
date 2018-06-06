@@ -4,6 +4,10 @@ spl_autoload_register(function($class){
 });
 
 session_start();
+if (!empty($_SESSION['usernaam'])) {
+} else {
+    header('Location: login.php');
+}
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +37,7 @@ session_start();
 <div class="row">
     <div class="col-md-4">
         <img src="images/156-family.png" alt="" id="emoji"> <br>
-        <a href="interactie.php">Interactie</a>
+        <a href="interactie.php" class="btn btn-primary">Interactie</a>
     </div>
     <div class="col-md-4">
         <img src="images/160-run.png" alt="" id="emoji"> <br>

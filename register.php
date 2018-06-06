@@ -16,12 +16,10 @@ if (!empty($_POST)){
             session_start();
             $_SESSION['usernaam'] = $user->getUsernaam();
             header('location: dashboard.php');
-            var_dump($user);
         }
         }
         catch (Exception $e) {
             $message = $e->getMessage();
-            var_dump($user);
         }
     }
 

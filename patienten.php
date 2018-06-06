@@ -3,6 +3,12 @@ spl_autoload_register(function($class){
     include_once("classes/" .  $class . ".class.php");
 });
 
+session_start();
+if (!empty($_SESSION['usernaam'])) {
+} else {
+    header('Location: login.php');
+}
+
 $user = new User();
 $user->patient();
 $user->level();
