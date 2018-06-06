@@ -8,9 +8,8 @@ if (!empty($_SESSION['usernaam'])) {
 } else {
     header('Location: login.php');
 }
-$mod = new module;
+$mod = new Module;
 $module = $mod->GetAllInteractieModules();
-var_dump($module);
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +43,7 @@ var_dump($module);
 
 
                         <li class="flex-item"><p class='listname'><?php echo $row['naam'] ?></p><br>
-                            <p><?php echo $row['descriptie'] ?></p></li>
+                            <p><?php echo $row['beschrijving'] ?></p></li>
 
                     </div>
                 </a>
