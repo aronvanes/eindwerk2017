@@ -39,6 +39,6 @@ class AppUser extends User {
   // }
 
   public function login(){
-    return 'kakahoofd';
+    return $this->usernaam;
   }
 }

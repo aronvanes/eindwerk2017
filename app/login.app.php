@@ -8,6 +8,6 @@ $credentials = (object) [
   'wachtwoord' => $_REQUEST['password']
 ];
 
-$user = new AppUser ($credentials->username, $credentials->wachtwoord);
+$user = new AppUser ($credentials->usernaam, $credentials->wachtwoord);
 
-echo json_encode($user->login());
+echo json_encode(var_dump($_REQUEST));

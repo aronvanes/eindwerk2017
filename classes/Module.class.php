@@ -85,13 +85,13 @@ public function getId()
       $conn = Db::getInstance();
       $statement = $conn->prepare("SELECT * FROM tbl_module WHERE categorie = 1");
         $statement->execute();
-        return $statement->fetch(PDO::FETCH_ASSOC);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
   }
 
     public function CreateModule(){
 
         $conn = Db::getInstance();
-        $statement = $conn->prepare("INSERT INTO tbl_module(naam, beschrijving, categorie, view_level) 
+        $statement = $conn->prepare("INSERT INTO tbl_module(naam, beschrijving, categorie, view_level)
         VALUES (:naam, :beschrijving, :categorie, :view_level)");
         $statement->bindParam(':naam', $this->naam);
         $statement->bindParam(':beschrijving', $this->beschrijving);
