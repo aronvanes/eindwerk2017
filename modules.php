@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+<?php
+spl_autoload_register(function($class){
+    include_once("classes/" .  $class . ".class.php");
+});
+
+session_start();
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -27,7 +33,7 @@
 <div class="row">
     <div class="col-md-4">
         <img src="images/156-family.png" alt="" id="emoji"> <br>
-        <input type="button" value="Interactie" id="btnmodule">
+        <a href="interactie.php">Interactie</a>
     </div>
     <div class="col-md-4">
         <img src="images/160-run.png" alt="" id="emoji"> <br>

@@ -11,7 +11,6 @@ if (!empty($_POST)){
         $user->setVoornaam($_POST['voornaam']);
         $user->setAchternaam($_POST['achternaam']);
         $user->setRol($_POST['rol']);
-        $user->setEmail($_POST['email']);
         $user->setWachtwoord($_POST['wachtwoord']);
         if($user->register()){
             session_start();
