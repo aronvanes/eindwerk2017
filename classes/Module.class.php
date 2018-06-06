@@ -3,7 +3,7 @@ include_once("Db.class.php");
 
 class Module {
 
-    private $id
+    private $id;
     private $naam;
     private $beschrijving;
     private $categorie;
