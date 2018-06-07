@@ -9,10 +9,10 @@ if (!empty($_SESSION['usernaam'])) {
     header('Location: login.php');
 }
 
-$user = new User();
-$user->patient();
-$user->level();
-$user->categorie();
+$patient = new User();
+$patient->Patient();
+//$user->level();
+//$user->categorie();
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -42,13 +42,23 @@ $user->categorie();
 <div class="content">
 <input type="text" placeholder="Search.." id="search">
 <div class="row">
-<ul>
-        <!-- start lus voorbeeld -->
-        <?php foreach($user as $u): ?>
-        <li><?php echo $u; ?></li>
-        <!-- einde lus voorbeeld -->
-        <?php endforeach; ?>
-    </ul>
+<ul class="flex-container">
+    <?php foreach ($patient as $row): ?>
+        <div class="col-md-1 col-features text-center">
+            <div class="flex-container ">
+                    <div class='lists'>
+                        <li class="flex-item">
+                            <p class='listname'><?php echo $row['voornaam']; ?></p>
+                            <br>
+                            <p><?php echo $patient['voornaam']; ?></p>
+                            </li>
+                    </div>
+                </a>
+            </div>
+        </div>
+    <?php endforeach; ?>
+
+</ul>
 </div>
 </div>
 </body>

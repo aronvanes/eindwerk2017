@@ -207,22 +207,22 @@ public function login()
         }
     }
 }
-public function patient(){
+public function Patient(){
     $conn = Db::getInstance();
-    $statement = $conn->prepare("select voornaam, achternaam from tbl_users where rol = 3");
-    $result = $statement->execute();
-    return $result;
+    $statement = $conn->prepare("select * from tbl_users where rol = 1");
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
-public function level(){
+public function Level(){
     $conn = Db::getInstance();
-    $statement = $conn->prepare("select view_level from tbl_module");
-    $result = $statement->execute();
-    return $result;
+    $statement = $conn->prepare("select * from tbl_module");
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
-public function categorie(){
+public function Categorie(){
     $conn = Db::getInstance();
-    $statement = $conn->prepare("select categorie from tbl_module");
-    $result = $statement->execute();
-    return $result;
+    $statement = $conn->prepare("select * from tbl_module");
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 }
