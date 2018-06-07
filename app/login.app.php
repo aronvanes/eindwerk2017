@@ -3,11 +3,24 @@ spl_autoload_register(function($class){
     include_once(dirname(__DIR__)."\classes/" .  $class . ".class.php");
 });
 
-$credentials = (object) [
-  'usernaam' => $_REQUEST['username'],
-  'wachtwoord' => $_REQUEST['password']
-];
+//Receive the RAW post data.
+$content = trim(file_get_contents("php://input"));
 
-$user = new AppUser ($credentials->usernaam, $credentials->wachtwoord);
+$decoded = json_decode($content, true);
 
-echo json_encode(var_dump($_REQUEST));
+//If json_decode failed, the JSON is invalid.
+if(is_array($decoded)) {
+
+  $credentials = (object) [
+    'usernaam' => $decoded['username'],
+    'wachtwoord' => $decoded['password']
+  ];
+
+  $user = new AppUser ($credentials->usernaam, $credentials->wachtwoord);
+
+  echo ($user->login());
+
+} else {
+  // Send error back to user.
+  echo ('json_format');
+}

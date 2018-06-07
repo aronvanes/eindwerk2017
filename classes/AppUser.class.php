@@ -17,28 +17,28 @@ class AppUser extends User {
     $this->rol = 0;
   }
 
-  // public function login(){
-  //   $conn = Db::getInstance();
-  //
-  //   $statement = $conn->prepare("SELECT id, usernaam, wachtwoord FROM tbl_users WHERE usernaam = :usernaam");
-  //   $statement->bindValue(':usernaam', $this->usernaam);
-  //
-  //   if($statement->execute()){
-  //     $foundUser = $statement->fetch(PDO::FETCH_OBJ);
-  //
-  //     if($foundUser->wachtwoord === $this->wachtwoord){
-  //       return true
-  //     } else {
-  //       throw new Exception("Wachtwoord komt niet overeen", 1);
-  //     }
-  //     // if(password_verify($passwordAttempt, $user['wachtwoord'])){}
-  //
-  //   } else {
-  //     throw new Exception("Deze gebruiker bestaat niet.", 1);
-  //   };
-  // }
-
   public function login(){
-    return $this->usernaam;
+    $conn = Db::getInstance();
+
+    $statement = $conn->prepare("SELECT id, usernaam, wachtwoord FROM tbl_users WHERE usernaam = :usernaam");
+    $statement->bindValue(':usernaam', $this->usernaam);
+
+    if($statement->execute()){
+      $foundUser = $statement->fetch(PDO::FETCH_OBJ);
+
+      if($foundUser->wachtwoord === $this->wachtwoord){
+        return true;
+      } else {
+        throw new Exception("Wachtwoord komt niet overeen", 1);
+      }
+      // if(password_verify($passwordAttempt, $user['wachtwoord'])){}
+
+    } else {
+      throw new Exception("Deze gebruiker bestaat niet.", 1);
+    };
   }
+
+  // public function login(){
+  //   return $this->usernaam;
+  // }
 }
