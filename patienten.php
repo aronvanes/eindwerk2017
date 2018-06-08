@@ -48,9 +48,9 @@ $patient->Patient();
             <div class="flex-container ">
                     <div class='lists'>
                         <li class="flex-item">
-                            <p class='listname'><?php echo $row['voornaam']; ?></p>
+                            <p class='listname'><?php  ?></p>
                             <br>
-                            <p><?php echo $patient['voornaam']; echo $patient['achternaam'];?></p>
+                            <p><?php echo $row['voornaam']; echo $row['achternaam'];?></p>
                             </li>
                     </div>
                 </a>
