@@ -50,7 +50,7 @@ $patient->Patient();
                         <li class="flex-item">
                             <p class='listname'><?php echo $row['voornaam']; ?></p>
                             <br>
-                            <p><?php echo $patient['voornaam']; ?></p>
+                            <p><?php echo $patient['voornaam']; echo $patient['achternaam'];?></p>
                             </li>
                     </div>
                 </a>
