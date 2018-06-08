@@ -194,7 +194,7 @@ public function login()
                     $_SESSION['usernaam'] = $_POST["usernaam"];
 
 
-                    header("Location: index.php");
+                    header("Location: dashboard.php");
 
                 } else {
                     //$validPassword was FALSE. Passwords do not match.
