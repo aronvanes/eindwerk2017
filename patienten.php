@@ -9,8 +9,8 @@ if (!empty($_SESSION['usernaam'])) {
     header('Location: login.php');
 }
 
-$patient = new User();
-$patient->Patient();
+$user = new User();
+$patient = $user->Patient();
 //$user->level();
 //$user->categorie();
 
@@ -50,7 +50,7 @@ $patient->Patient();
                         <li class="flex-item">
                             <p class='listname'><?php  ?></p>
                             <br>
-                            <p><?php echo $row['voornaam']; echo $row['achternaam'];?></p>
+                            <p><?php echo $row['voornaam']; echo " "; echo $row['achternaam'];?></p>
                             </li>
                     </div>
                 </a>
