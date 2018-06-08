@@ -35,30 +35,27 @@ $module = $mod->GetAllInteractieModules();
     </nav>
 </div>
 
-<ul class="flex-container">
-    <?php foreach ($module as $row) :?>
-        <div class="col-md-1 col-features text-center">
-            <div class="flex-container ">
-                    <div class='lists'>
-
-
-                        <li class="flex-item"><p class='listname'><?php echo $row['naam'] ?></p><br>
-                            <p><?php echo $row['beschrijving'] ?></p></li>
-
-                    </div>
-                </a>
-            </div>
-        </div>
-    <?php endforeach; ?>
-
-</ul>
-
 <div class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-2">
                 <img src="images/156-family.png" alt="" id="emoji"> <br>
             </div>
+            <ul>
+                <?php foreach ($module as $row) :?>
+                    <div class="col-md-3 col-features text-left">
+
+                        <div class='lists'>
+
+
+                            <li class="flex-item"><p class='listname'><?php echo $row['naam'] ?></p></li>
+                                <li><p><?php echo $row['beschrijving'] ?></p></li>
+
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+
+            </ul>
         </div>
     </div>
 
