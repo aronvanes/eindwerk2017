@@ -10,6 +10,12 @@ spl_autoload_register(function($class){
 // }
 $mod = new Module;
 $module = $mod->GetAllInteractieModules();
+$user = new User();
+$patient = $user->Patient();
+$connect = new Module();
+$connecting = $connect->SetModuleToPatient();
+$connect2 = new User();
+$connecting2 = $connect2->SetModuleToPatient2();
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +27,7 @@ $module = $mod->GetAllInteractieModules();
     <link href="css/sb-admin.css" rel="stylesheet">
     <link href="css/styletwee.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -35,33 +42,42 @@ $module = $mod->GetAllInteractieModules();
     </nav>
 </div>
 
-<ul class="flex-container">
-    <?php foreach ($module as $row) :?>
-        <div class="col-md-1 col-features text-center">
-            <div class="flex-container ">
-                    <div class='lists'>
-
-
-                        <li class="flex-item"><p class='listname'><?php echo $row['naam'] ?></p><br>
-                            <p><?php echo $row['beschrijving'] ?></p></li>
-
-                    </div>
-                </a>
-            </div>
-        </div>
-    <?php endforeach; ?>
-
-</ul>
-
 <div class="content">
     <div class="container-fluid">
+        </div>
         <div class="row">
-            <div class="col-md-2">
-                <img src="images/156-family.png" alt="" id="emoji"> <br>
-            </div>
+        <ul>
+            <?php foreach ($module as $row) :?>
+                <div class="col-md-8">
+                    <div class="toggleHolder">
+                        <span class="toggler"><span>▾</span>Show More</span>
+                        <span class="toggler" style="display:none;"><span>▴</span> Show Less</span>
+                    </div>
+                    <li><p><?php echo $row['naam'] ?></p></li>
+
+                    <div class="showpanel" style="display: none;">
+                        <li><p><?php echo $row['beschrijving'] ?></p></li>
+
+                                    <?php foreach ($patient as $row2): ?>
+                                    <div class="col-md-10">
+                                            <div class='lists'>
+                                                <li class="flex-item">
+                                                    <p class="text-left border-bottom"><?php echo $row2['voornaam'].' '.$row2['achternaam'];?></p>
+                                                </li>
+
+                                        </div>
+                                    </div>
+                                    <?php endforeach; ?>
+                    </div>
+
+                </div>
+            <?php endforeach; ?>
+
+        </ul>
         </div>
     </div>
 
 </div>
+<script src="showtoggle.js"></script>
 </body>
 </html>

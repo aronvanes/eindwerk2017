@@ -2,11 +2,28 @@
 include_once("Db.class.php");
 
 class User {
+    private $id;
     private $usernaam;
     private $voornaam;
     private $achternaam;
     private $wachtwoord;
     private $rol;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
     //private $userid;
 
 
@@ -209,20 +226,34 @@ public function login()
 }
 public function Patient(){
     $conn = Db::getInstance();
-    $statement = $conn->prepare("select * from tbl_users where rol = 1");
+    $statement = $conn->prepare("select * from tbl_users where rol = 3");
     $statement->execute();
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 public function Level(){
     $conn = Db::getInstance();
-    $statement = $conn->prepare("select * from tbl_module");
+    $statement = $conn->prepare("select *
+    FROM (((tbl_users where rol = 3 
+    INNER JOIN tbl_taken_users ON tbl_users.id = tbl_taken_users.user_id)
+    INNER JOIN tbl_taken ON tbl_taken_user.id = tbl_taken.id)
+    INNER JOIN tbl_module ON tbl_taken.module_id = tbl_module.id)
+    ");
     $statement->execute();
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
-public function Categorie(){
-    $conn = Db::getInstance();
-    $statement = $conn->prepare("select * from tbl_module");
-    $statement->execute();
-    return $statement->fetchAll(PDO::FETCH_ASSOC);
+
+
+    public function SetModuleToPatient2(){
+
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("INSERT INTO tbl_users_module(user_id) select u.id as id from tbl_users u 
+        inner join tbl_users_module um on u.id = um.user_id where um.user_id = :users");
+        $statement->bindParam(':users', $this->id);
+        $result = $statement->execute();
+        return $result;
+    }
 }
-}
+/*SELECT Orders.OrderID, Customers.CustomerName, Shippers.ShipperName
+FROM ((Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID)
+INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID);*/

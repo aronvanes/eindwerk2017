@@ -116,3 +116,26 @@ li a:hover {
     width: 180px;
     height: 50px;
 }
+
+.toggler {
+    cursor: pointer;
+}
+span{
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.rgthdng {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 0px;
+    padding: 20px 20px;
+}
+.showpanel{
+    display: none;
+    height: 130px;
+}
+.header{
+    display: block;
+    height: 5%;
+}
