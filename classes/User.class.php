@@ -2,11 +2,28 @@
 include_once("Db.class.php");
 
 class User {
+    private $id;
     private $usernaam;
     private $voornaam;
     private $achternaam;
     private $wachtwoord;
     private $rol;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
     //private $userid;
 
 
@@ -224,6 +241,17 @@ public function Level(){
     $statement->execute();
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
+
+
+    public function SetModuleToPatient2(){
+
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("INSERT INTO tbl_users_module(user_id) select u.id as id from tbl_users u 
+        inner join tbl_users_module um on u.id = um.user_id where um.user_id = :users");
+        $statement->bindParam(':users', $this->id);
+        $result = $statement->execute();
+        return $result;
+    }
 }
 /*SELECT Orders.OrderID, Customers.CustomerName, Shippers.ShipperName
 FROM ((Orders

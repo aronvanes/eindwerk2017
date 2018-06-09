@@ -10,6 +10,12 @@ spl_autoload_register(function($class){
 // }
 $mod = new Module;
 $module = $mod->GetAllInteractieModules();
+$user = new User();
+$patient = $user->Patient();
+$connect = new Module();
+$connecting = $connect->SetModuleToPatient();
+$connect2 = new User();
+$connecting2 = $connect2->SetModuleToPatient2();
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,16 +49,27 @@ $module = $mod->GetAllInteractieModules();
         <ul>
             <?php foreach ($module as $row) :?>
                 <div class="col-md-8">
-                    <li><p><?php echo $row['naam'] ?></p></li>
-
-                    <div class="showpanel" style="display: none;">
-                        <li><p><?php echo $row['beschrijving'] ?></p></li>
-                    </div>
-
                     <div class="toggleHolder">
                         <span class="toggler"><span>▾</span>Show More</span>
                         <span class="toggler" style="display:none;"><span>▴</span> Show Less</span>
                     </div>
+                    <li><p><?php echo $row['naam'] ?></p></li>
+
+                    <div class="showpanel" style="display: none;">
+                        <li><p><?php echo $row['beschrijving'] ?></p></li>
+
+                                    <?php foreach ($patient as $row2): ?>
+                                    <div class="col-md-10">
+                                            <div class='lists'>
+                                                <li class="flex-item">
+                                                    <p class="text-left border-bottom"><?php echo $row2['voornaam'].' '.$row2['achternaam'];?></p>
+                                                </li>
+
+                                        </div>
+                                    </div>
+                                    <?php endforeach; ?>
+                    </div>
+
                 </div>
             <?php endforeach; ?>
 
