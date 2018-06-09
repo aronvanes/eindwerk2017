@@ -29,16 +29,12 @@ class AppUser extends User {
       if($foundUser->wachtwoord === $this->wachtwoord){
         return true;
       } else {
-        throw new Exception("Wachtwoord komt niet overeen", 1);
+        return 'Wachtwoord niet herkent.';
       }
       // if(password_verify($passwordAttempt, $user['wachtwoord'])){}
 
     } else {
-      throw new Exception("Deze gebruiker bestaat niet.", 1);
+      return 'Deze gebruiker bestaat niet.';
     };
   }
-
-  // public function login(){
-  //   return $this->usernaam;
-  // }
 }
