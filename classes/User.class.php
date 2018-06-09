@@ -215,11 +215,11 @@ public function Patient(){
 }
 public function Level(){
     $conn = Db::getInstance();
-    $statement = $conn->prepare("select tbl_users.voornaam, tbl_users.achternaam, 
-    tbl_taken_users.taak_id, tbl_taken.naam, tbl_taken.module_ID, tbl_module.naam  
-    FROM (((tbl_users where rol = 1 INNER JOIN tbl_users ON tbl_users.id = tbl_taken_users.user_id )
+    $statement = $conn->prepare("select *
+    FROM (((tbl_users where rol = 3 
+    INNER JOIN tbl_taken_users ON tbl_users.id = tbl_taken_users.user_id )
     INNER JOIN tbl_module ON tbl_taken_user.id = tbl_taken.id)
-    INNER JOIN tbl_taken ON tbl_taken.module_id =  tbl_module.id)
+    INNER JOIN tbl_taken ON tbl_taken.module_id = tbl_module.id)
     ");
     $statement->execute();
     return $statement->fetchAll(PDO::FETCH_ASSOC);
