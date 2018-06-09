@@ -209,7 +209,7 @@ public function login()
 }
 public function Patient(){
     $conn = Db::getInstance();
-    $statement = $conn->prepare("select * from tbl_users where rol = 1");
+    $statement = $conn->prepare("select * from tbl_users where rol = 3");
     $statement->execute();
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -217,9 +217,9 @@ public function Level(){
     $conn = Db::getInstance();
     $statement = $conn->prepare("select *
     FROM (((tbl_users where rol = 3 
-    INNER JOIN tbl_taken_users ON tbl_users.id = tbl_taken_users.user_id )
-    INNER JOIN tbl_module ON tbl_taken_user.id = tbl_taken.id)
-    INNER JOIN tbl_taken ON tbl_taken.module_id = tbl_module.id)
+    INNER JOIN tbl_taken_users ON tbl_users.id = tbl_taken_users.user_id)
+    INNER JOIN tbl_taken ON tbl_taken_user.id = tbl_taken.id)
+    INNER JOIN tbl_module ON tbl_taken.module_id = tbl_module.id)
     ");
     $statement->execute();
     return $statement->fetchAll(PDO::FETCH_ASSOC);

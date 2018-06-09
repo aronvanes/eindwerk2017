@@ -59,14 +59,14 @@ $test = $user->Level();
         </div>
         -----------------------------------------------------------------------------------------------
     <?php endforeach; ?>
-    <?php foreach ($test as $t): ?>
+    <?php foreach ($test as $row): ?>
         <div class="col-md-1 col-features text-center">
             <div class="flex-container ">
                     <div class='lists'>
                         <li class="flex-item">
                             <p class='listname'><?php  ?></p>
                             <br>
-                            <p><?php echo $t['voornaam']; echo " "; echo $t['achternaam']; echo " "; echo $t['taak_id'];?></p>
+                            <p><?php echo $row['voornaam']; echo " "; echo $row['achternaam']; echo " "; echo $row['naam'];?></p>
                             </li>
                     </div>
                 </a>
