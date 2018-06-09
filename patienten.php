@@ -13,7 +13,8 @@ $user = new User();
 $patient = $user->Patient();
 //$user->level();
 //$user->categorie();
-
+$test = new User();
+$test = $user->Level();
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,6 +52,21 @@ $patient = $user->Patient();
                             <p class='listname'><?php  ?></p>
                             <br>
                             <p><?php echo $row['voornaam']; echo " "; echo $row['achternaam'];?></p>
+                            </li>
+                    </div>
+                </a>
+            </div>
+        </div>
+        --------------------------------------------
+    <?php endforeach; ?>
+    <?php foreach ($test as $t): ?>
+        <div class="col-md-1 col-features text-center">
+            <div class="flex-container ">
+                    <div class='lists'>
+                        <li class="flex-item">
+                            <p class='listname'><?php  ?></p>
+                            <br>
+                            <p><?php echo $t['voornaam']; echo " "; echo $t['achternaam']; echo " "; echo $t['taak_id'];?></p>
                             </li>
                     </div>
                 </a>
