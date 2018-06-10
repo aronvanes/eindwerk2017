@@ -20,8 +20,8 @@ if (!empty($_POST['post'])) {
         $usermodule->Save();
         $feedback = [
             "code" => 200,
-            "id" => $moduleId,
-            "id2" => $userid,
+            "module_id" => $moduleId,
+            "user_id" => $userid,
         ];
     } catch (Exception $e) {
         $error = $e->getMessage();

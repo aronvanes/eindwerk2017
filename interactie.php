@@ -86,13 +86,13 @@ $connecting2 = $connect2->SetModuleToPatient2();
             console.log("clicked");
 
             // tekst vak uitlezen
-            var postID = document.getElementById("post").getAttribute("data-id");
-            var postID2 = document.getElementById("post2").getAttribute("data-id");
+            var module_id = document.getElementById("post").getAttribute("data-id");
+            var user_id = document.getElementById("post2").getAttribute("data-id");
             // via AJAX update naar databank sturen
             $.ajax({
                 method: "POST",
                 url: "AJAX/clientmodule.php",
-                data: {postID2: postID2,postID: postID} //update: is de naam en update is de waarde (value)
+                data: {user_id: user_id,module_id: module_id} //update: is de naam en update is de waarde (value)
 
             })
 

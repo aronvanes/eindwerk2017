@@ -65,8 +65,8 @@ class UserModule
         $conn = Db::getInstance();
 
         $statement = $conn->prepare("INSERT INTO tbl_users_module (module_id, user_id) VALUES (:iduser, :idmodule)");
-        $statement->bindValue(":iduser", $_POST['postID2']);
-        $statement->bindValue(":idmodule", $_POST["postID"]);
+        $statement->bindValue(":iduser", $_POST['user_id']);
+        $statement->bindValue(":idmodule", $_POST["module_id"]);
         return $statement->execute();
     }
 }
