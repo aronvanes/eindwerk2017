@@ -3,15 +3,14 @@ session_start();
 header('Content-Type: application/json');
 
 spl_autoload_register(function($class){
-    include_once("classes/" .  $class . ".class.php");
+    include_once("../classes/" .  $class . ".class.php");
 });
 
 $connect = new Module();
 $connect2 = new User();
 $usermodule = new UserModule();
 
-
-if (!empty($_POST['post'])) {
+if (!empty($_POST)) {
     $connect->Text = $_POST['post'];
     $connect2->Text = $_POST['post'];
     $moduleId = $connect->GetAllInteractieModules()['id'];
