@@ -27,10 +27,10 @@ class User {
     //private $userid;
 
 
-    
+
     /**
      * Get the value of usernaam
-     */ 
+     */
     public function getUsernaam()
     {
         return $this->usernaam;
@@ -40,7 +40,7 @@ class User {
      * Set the value of usernaam
      *
      * @return  self
-     */ 
+     */
     public function setUsernaam($usernaam)
     {
         $this->usernaam = $usernaam;
@@ -50,7 +50,7 @@ class User {
 
     /**
      * Get the value of voornaam
-     */ 
+     */
     public function getVoornaam()
     {
         return $this->voornaam;
@@ -60,7 +60,7 @@ class User {
      * Set the value of voornaam
      *
      * @return  self
-     */ 
+     */
     public function setVoornaam($voornaam)
     {
         $this->voornaam = $voornaam;
@@ -70,7 +70,7 @@ class User {
 
     /**
      * Get the value of achternaam
-     */ 
+     */
     public function getAchternaam()
     {
         return $this->achternaam;
@@ -80,7 +80,7 @@ class User {
      * Set the value of achternaam
      *
      * @return  self
-     */ 
+     */
     public function setAchternaam($achternaam)
     {
         $this->achternaam = $achternaam;
@@ -93,7 +93,7 @@ class User {
      */
     /**
      * Get the value of wachtwoord
-     */ 
+     */
     public function getWachtwoord()
     {
         return $this->wachtwoord;
@@ -103,11 +103,11 @@ class User {
      * Set the value of wachtwoord
      *
      * @return  self
-     */ 
+     */
     public function setWachtwoord($wachtwoord)
     {
-        if (strlen($wachtwoord) < 8){
-            throw new Exception("Password must be at least 8 charachters long");
+        if (strlen($wachtwoord) < 8 || preg_match('/\d+/', $wachtwoord, PREG_UNMATCHED_AS_NUL) != null){
+            throw new Exception("Password must be at least 8 charachters long and consist of one number");
         }
         $hash = password_hash($wachtwoord, PASSWORD_DEFAULT);
         $this->wachtwoord = $hash;
@@ -116,7 +116,7 @@ class User {
 
     /**
      * Get the value of rol
-     */ 
+     */
     public function getRol()
     {
         return $this->rol;
@@ -126,7 +126,7 @@ class User {
      * Set the value of rol
      *
      * @return  self
-     */ 
+     */
     public function setRol($rol)
     {
         $this->rol = $rol;
@@ -137,7 +137,7 @@ class User {
 
     /**
      * Get the value of userid
-     */ 
+     */
    /* public function getUserid()
     {
         return $this->userid;
@@ -147,7 +147,7 @@ class User {
      * Set the value of userid
      *
      * @return  self
-     */ 
+     */
     /*public function setUserid($userid)
     {
         $this->userid = $userid;
@@ -157,7 +157,7 @@ class User {
 */
     public function register(){
         $conn = Db::getInstance();
-        $statement = $conn->prepare("INSERT INTO tbl_users (usernaam, voornaam, achternaam, wachtwoord, rol) 
+        $statement = $conn->prepare("INSERT INTO tbl_users (usernaam, voornaam, achternaam, wachtwoord, rol)
         VALUES (:usernaam, :voornaam, :achternaam, :wachtwoord, :rol)");
         $statement->bindParam(':usernaam', $this->usernaam);
         $statement->bindParam(':voornaam', $this->voornaam);
@@ -233,7 +233,7 @@ public function Patient(){
 public function Level(){
     $conn = Db::getInstance();
     $statement = $conn->prepare("select *
-    FROM (((tbl_users where rol = 3 
+    FROM (((tbl_users where rol = 3
     INNER JOIN tbl_taken_users ON tbl_users.id = tbl_taken_users.user_id)
     INNER JOIN tbl_taken ON tbl_taken_user.id = tbl_taken.id)
     INNER JOIN tbl_module ON tbl_taken.module_id = tbl_module.id)
