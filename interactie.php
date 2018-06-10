@@ -53,7 +53,7 @@ $connecting2 = $connect2->SetModuleToPatient2();
                         <span class="toggler"><span>▾</span>Show More</span>
                         <span class="toggler" style="display:none;"><span>▴</span> Show Less</span>
                     </div>
-                    <li><p><?php echo $row['naam'] ?></p></li>
+                    <li><p id="post" data-id="<?php echo $row['id'] ?>"><?php echo $row['naam'] ?></p></li>
 
                     <div class="showpanel" style="display: none;">
                         <li><p><?php echo $row['beschrijving'] ?></p></li>
@@ -62,7 +62,8 @@ $connecting2 = $connect2->SetModuleToPatient2();
                                     <div class="col-md-10">
                                             <div class='lists'>
                                                 <li class="flex-item">
-                                                    <p class="text-left border-bottom"><?php echo $row2['voornaam'].' '.$row2['achternaam'];?></p>
+                                                    <p class="text-left border-bottom" id="post2" data-id="<?php echo $row2['id'] ?>"><?php echo $row2['voornaam'].' '.$row2['achternaam'];?></p>
+                                                    <input id="btnSubmit" type="submit" value="Share"/>
                                                 </li>
 
                                         </div>
@@ -79,5 +80,33 @@ $connecting2 = $connect2->SetModuleToPatient2();
 
 </div>
 <script src="showtoggle.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#btnSubmit").on("click", function (e) {
+            console.log("clicked");
+
+            // tekst vak uitlezen
+            var postID = document.getElementById("post").getAttribute("data-id");
+            var postID2 = document.getElementById("post2").getAttribute("data-id");
+            // via AJAX update naar databank sturen
+            $.ajax({
+                method: "POST",
+                url: "AJAX/clientmodule.php",
+                data: {postID2: postID2,postID: postID} //update: is de naam en update is de waarde (value)
+
+            })
+
+                .done(function (response) {
+
+                    // code + message
+                    if (response.code == 200) {
+                        console.log("werkt dit?")
+                    }
+                });
+
+            e.preventDefault();
+        });
+    });
+</script>
 </body>
 </html>

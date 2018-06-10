@@ -112,9 +112,8 @@ public function getId()
     public function SetModuleToPatient(){
 
         $conn = Db::getInstance();
-        $statement = $conn->prepare("INSERT INTO tbl_users_module(module_id) select m.id as id from tbl_module m 
-        inner join tbl_users_module um on m.id = um.module_id where um.module_id = :modules");
-        $statement->bindParam(':modules', $this->id);
+        $statement = $conn->prepare("INSERT INTO tbl_users_module(module_id) VALUES (id = :id)");
+        $statement->bindParam(':id', $_POST["postID"]);
         $result = $statement->execute();
         return $result;
     }

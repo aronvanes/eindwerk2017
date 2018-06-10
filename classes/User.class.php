@@ -246,9 +246,8 @@ public function Level(){
     public function SetModuleToPatient2(){
 
         $conn = Db::getInstance();
-        $statement = $conn->prepare("INSERT INTO tbl_users_module(user_id) select u.id as id from tbl_users u 
-        inner join tbl_users_module um on u.id = um.user_id where um.user_id = :users");
-        $statement->bindParam(':users', $this->id);
+        $statement = $conn->prepare("INSERT INTO tbl_users_module(user_id) values (id = :id)");
+        $statement->bindParam(':id', $_POST['postID2']);
         $result = $statement->execute();
         return $result;
     }
