@@ -57,23 +57,8 @@ $test = $user->Level();
                 </a>
             </div>
         </div>
-        -----------------------------------------------------------------------------------------------
-    <?php endforeach; ?>
-    <?php foreach ($test as $row): ?>
-        <div class="col-md-1 col-features text-center">
-            <div class="flex-container ">
-                    <div class='lists'>
-                        <li class="flex-item">
-                            <p class='listname'><?php  ?></p>
-                            <br>
-                            <p><?php echo $row['voornaam']; echo " "; echo $row['achternaam']; echo " "; echo $row['naam'];?></p>
-                            </li>
-                    </div>
-                </a>
-            </div>
-        </div>
-    <?php endforeach; ?>
 
+    <?php endforeach; ?>
 </ul>
 </div>
 </div>

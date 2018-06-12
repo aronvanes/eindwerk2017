@@ -11,8 +11,8 @@ $connect2 = new User();
 $usermodule = new UserModule();
 
 if (!empty($_POST)) {
-    $connect->Text = $_POST['post'];
-    $connect2->Text = $_POST['post'];
+    $connect->Text = $_POST['module_id'];
+    $connect2->Text = $_POST['user_id'];
     $moduleId = $connect->GetAllInteractieModules()['id'];
     $userid = $connect2->patient()['id'];
     try {
