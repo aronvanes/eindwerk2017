@@ -63,7 +63,7 @@ $connecting2 = $connect2->SetModuleToPatient2();
                                             <div class='lists'>
                                                 <li class="flex-item">
                                                     <p class="text-left border-bottom" id="post2" data-id="<?php echo $row2['id'] ?>"><?php echo $row2['voornaam'].' '.$row2['achternaam'];?></p>
-                                                    <input id="btnSubmit" type="submit" value="Share"/>
+                                                    <input id="btnSubmit" type="submit" value="Module toewijzen"/>
                                                 </li>
 
                                         </div>

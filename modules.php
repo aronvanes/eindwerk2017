@@ -35,15 +35,15 @@ if (!empty($_SESSION['usernaam'])) {
 <div class="content">
 <div class="container-fluid">
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
         <img src="images/156-family.png" alt="" id="emoji"> <br>
         <a href="interactie.php" class="btn btn-primary">Interactie</a>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <img src="images/160-run.png" alt="" id="emoji"> <br>
         <input type="button" value="Sport" id="btnmodule">
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <img src="images/063-sleep-1.png" alt="" id="emoji"> <br>
         <input type="button" value="Slaap" id="btnmodule">
     </div>
