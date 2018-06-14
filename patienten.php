@@ -37,6 +37,7 @@ $test = $user->Level();
     <li><a href="dashboard.php">Dashboard</a></li>
     <li><a href="patienten.php">Patiënten</a></li>
     <li><a href="modules.php">Modules</a></li>
+    <a href="logout.php" id="logout">Uitloggen</a>
     </ul>
 </nav>
 </div>

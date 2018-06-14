@@ -38,14 +38,15 @@ $connecting2 = $connect2->SetModuleToPatient2();
             <li><a href="dashboard.php">Dashboard</a></li>
             <li><a href="patienten.php">Patiënten</a></li>
             <li><a href="modules.php">Modules</a></li>
+            <a href="logout.php" id="logout">Uitloggen</a>
         </ul>
     </nav>
 </div>
 
 <div class="content">
     <div class="container-fluid">
-        </div>
-        <div class="row">
+    </div>
+    <div class="row">
         <ul>
             <?php foreach ($module as $row) :?>
                 <div class="col-md-8">
@@ -53,35 +54,39 @@ $connecting2 = $connect2->SetModuleToPatient2();
                         <span class="toggler"><span>▾</span>Show More</span>
                         <span class="toggler" style="display:none;"><span>▴</span> Show Less</span>
                     </div>
-                    <li><p id="post" data-id="<?php echo $row['id'] ?>"><?php echo $row['naam'] ?></p></li>
-
+                    <li>
+                        <p class="post" data-id="<?php echo $row['id'] ?>">
+                            <?php echo $row['naam'] ?>
+                        </p>
+                    </li>
                     <div class="showpanel" style="display: none;">
-                        <li><p><?php echo $row['beschrijving'] ?></p></li>
-
-                                    <?php foreach ($patient as $row2): ?>
-                                    <div class="col-md-10">
-                                            <div class='lists'>
-                                                <li class="flex-item">
-                                                    <p class="text-left border-bottom" id="post2" data-id="<?php echo $row2['id'] ?>"><?php echo $row2['voornaam'].' '.$row2['achternaam'];?></p>
-                                                    <input id="btnSubmit" type="submit" value="Module toewijzen"/>
-                                                </li>
-
-                                        </div>
-                                    </div>
-                                    <?php endforeach; ?>
+                        <li>
+                            <p>
+                                <?php echo $row['beschrijving'] ?>
+                            </p>
+                        </li>
+                        <?php foreach ($patient as $row2): ?>
+                            <div class="col-md-10">
+                                <div class='lists'>
+                                    <li class="flex-item">
+                                        <p class="text-left border-bottom post2" data-id="<?php echo $row2['id'] ?>">
+                                            <?php echo $row2['voornaam'].' '.$row2['achternaam'];?>
+                                        </p>
+                                        <input class="btnSubmit" type="submit" value="Module toewijzen" />
+                                    </li>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
-
                 </div>
             <?php endforeach; ?>
-
         </ul>
-        </div>
     </div>
 
 </div>
 <script src="showtoggle.js"></script>
 <script>
-    $(document).ready(function () {
+   /* $(document).ready(function () {
         $("#btnSubmit").on("click", function (e) {
             console.log("clicked");
 
@@ -89,6 +94,32 @@ $connecting2 = $connect2->SetModuleToPatient2();
             var module_id = document.getElementById("post").getAttribute("data-id");
             var user_id = document.getElementById("post2").getAttribute("data-id");
             // via AJAX update naar databank sturen
+            $.ajax({
+                method: "POST",
+                url: "AJAX/clientmodule.php",
+                data: {user_id: user_id,module_id: module_id} //update: is de naam en update is de waarde (value)
+
+            })
+
+                .done(function (response) {
+
+                    // code + message
+                    if (response.code == 200) {
+                        console.log("werkt dit?")
+                    }
+                });
+
+            e.preventDefault();
+        });
+    });*/
+    $(function() {
+        $(".btnSubmit").on("click", function(e) {
+            e.preventDefault();
+            console.log("clicked");
+            var $container = $(this).closest('.col-md-8');
+            var module_id = $container.find(".post").data('id');
+            var user_id = $container.find(".post2").data('id');
+
             $.ajax({
                 method: "POST",
                 url: "AJAX/clientmodule.php",
