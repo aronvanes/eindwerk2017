@@ -30,7 +30,10 @@ $connecting2 = $connect2->SetModuleToPatient2();
 </head>
 <body>
 <div class="container-fluid">
+    <div class="row">
+        <div class="bar"></div>
 
+    </div>
     <div class="row">
 <div class=navigation>
     <a href=""><div class="logo"></div></a>
@@ -44,19 +47,19 @@ $connecting2 = $connect2->SetModuleToPatient2();
     </nav>
 </div>
 
-<div class="offset-1">
+<div class="offset-1 horizontalOffset">
 
         <ul>
             <!--hier word via een foreachlus alle rijen opgehaald uit de modules met categorie interactie -->
             <?php foreach ($module as $row) :?>
-                <div class="col-md-8">
+                <div class="list border-bottom">
                     <div class="toggleHolder">
                         <span class="toggler"><span>▾</span>Show More</span>
                         <span class="toggler" style="display:none;"><span>▴</span> Show Less</span>
                     </div>
                     <li>
                         <!--hier word in de data-id ingevuld met de id van de desbetreffende rij die hier in de lus getoond wordt-->
-                        <p class="post" data-id="<?php echo $row['id'] ?>">
+                        <p  class="post" data-id="<?php echo $row['id'] ?>">
                             <?php echo $row['naam'] ?>
                         </p>
                     </li>
@@ -68,15 +71,15 @@ $connecting2 = $connect2->SetModuleToPatient2();
                         </li>
                         <!--in de eerste foreachlus word er nog een tweede gezet die per module alle users toont-->
                         <?php foreach ($patient as $row2): ?>
-                            <div class="col-md-10">
-                                <div class='lists'>
-                                    <li class="flex-item">
+                            <div>
+                                <div>
+                                    <li>
                                         <!--elke rij voor users heeft ook een button die er voor zorgt dat de id van d desbetreffende user samenkomt met bijbehorende
                                         interactie module-->
                                         <p class="text-left border-bottom post2" data-id="<?php echo $row2['id'] ?>">
                                             <?php echo $row2['voornaam'].' '.$row2['achternaam'];?>
+                                            <input class="btnSubmit" type="submit" value="Module toewijzen" />
                                         </p>
-                                        <input class="btnSubmit" type="submit" value="Module toewijzen" />
                                     </li>
                                 </div>
                             </div>
