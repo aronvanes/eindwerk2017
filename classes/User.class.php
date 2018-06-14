@@ -106,12 +106,12 @@ class User {
      */
     public function setWachtwoord($wachtwoord)
     {
-        if (strlen($wachtwoord) < 8 || preg_match('/\d+/', $wachtwoord, PREG_UNMATCHED_AS_NUL) != null){
-            throw new Exception("Password must be at least 8 charachters long and consist of one number");
-        }
-        $hash = password_hash($wachtwoord, PASSWORD_DEFAULT);
-        $this->wachtwoord = $hash;
-        return $this;
+        // if (strlen($wachtwoord) < 8 || preg_match('/\d+/', $wachtwoord, PREG_UNMATCHED_AS_NUL) != null){
+        //     throw new Exception("Password must be at least 8 charachters long and consist of one number");
+        // }
+        // $hash = password_hash($wachtwoord, PASSWORD_DEFAULT);
+        // $this->wachtwoord = $hash;
+        // return $this;
     }
 
     /**
