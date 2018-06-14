@@ -6,21 +6,21 @@ spl_autoload_register(function($class){
     include_once("../classes/" .  $class . ".class.php");
 });
 
-$connect = new Module();
-$connect2 = new User();
-$usermodule = new UserModule();
+$module = new Module();
+$user = new User();
+$userModule = new UserModule();
 
 if (!empty($_POST)) {
-    $connect->Text = $_POST['module_id'];
-    $connect2->Text = $_POST['user_id'];
-    $moduleId = $connect->GetAllInteractieModules()['id'];
-    $userid = $connect2->patient()['id'];
+    $module->Text = $_POST['module_id'];
+    $user->Text = $_POST['user_id'];
+    $moduleId = $module->GetAllInteractieModules()['id'];
+    $userId = $user->patient()['id'];
     try {
         $usermodule->Save();
         $feedback = [
             "code" => 200,
             "module_id" => $moduleId,
-            "user_id" => $userid,
+            "user_id" => $userId,
         ];
     } catch (Exception $e) {
         $error = $e->getMessage();
