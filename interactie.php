@@ -48,6 +48,7 @@ $connecting2 = $connect2->SetModuleToPatient2();
     </div>
     <div class="row">
         <ul>
+            <!--hier word via een foreachlus alle rijen opgehaald uit de modules met categorie interactie -->
             <?php foreach ($module as $row) :?>
                 <div class="col-md-8">
                     <div class="toggleHolder">
@@ -55,6 +56,7 @@ $connecting2 = $connect2->SetModuleToPatient2();
                         <span class="toggler" style="display:none;"><span>▴</span> Show Less</span>
                     </div>
                     <li>
+                        <!--hier word in de data-id ingevuld met de id van de desbetreffende rij die hier in de lus getoond wordt-->
                         <p class="post" data-id="<?php echo $row['id'] ?>">
                             <?php echo $row['naam'] ?>
                         </p>
@@ -65,10 +67,13 @@ $connecting2 = $connect2->SetModuleToPatient2();
                                 <?php echo $row['beschrijving'] ?>
                             </p>
                         </li>
+                        <!--in de eerste foreachlus word er nog een tweede gezet die per module alle users toont-->
                         <?php foreach ($patient as $row2): ?>
                             <div class="col-md-10">
                                 <div class='lists'>
                                     <li class="flex-item">
+                                        <!--elke rij voor users heeft ook een button die er voor zorgt dat de id van d desbetreffende user samenkomt met bijbehorende
+                                        interactie module-->
                                         <p class="text-left border-bottom post2" data-id="<?php echo $row2['id'] ?>">
                                             <?php echo $row2['voornaam'].' '.$row2['achternaam'];?>
                                         </p>
@@ -116,6 +121,7 @@ $connecting2 = $connect2->SetModuleToPatient2();
         $(".btnSubmit").on("click", function(e) {
             e.preventDefault();
             console.log("clicked");
+            //volgends de persoon waar mee ik gpraat heb op stackoverflow moest ik werken met claases en deze selecteren met DOM traversal
             var $container = $(this).closest('.col-md-8');
             var module_id = $container.find(".post").data('id');
             var user_id = $container.find(".post2").data('id');

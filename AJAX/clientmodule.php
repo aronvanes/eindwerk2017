@@ -11,16 +11,15 @@ $user = new User();
 $userModule = new UserModule();
 
 if (!empty($_POST)) {
+    //hier worden de 2 ids opgeslagen in met de functie Save in tbl_users_module
     $module->Text = $_POST['module_id'];
     $user->Text = $_POST['user_id'];
-    $moduleId = $module->GetAllInteractieModules()['id'];
-    $userId = $user->patient()['id'];
     try {
-        $usermodule->Save();
+        $userModule->Save();
         $feedback = [
             "code" => 200,
-            "module_id" => $moduleId,
-            "user_id" => $userId,
+            "module_id" => $module,
+            "user_id" => $user,
         ];
     } catch (Exception $e) {
         $error = $e->getMessage();
