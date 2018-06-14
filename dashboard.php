@@ -21,7 +21,7 @@ if (!empty($_SESSION['usernaam'])) {
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
-
+<div class="row">
 <div class=navigation>
 <a href=""><div class="logo"></div></a>
 <nav class="navbar-fixed-left">
@@ -35,12 +35,10 @@ if (!empty($_SESSION['usernaam'])) {
 </div>
 
 
-<div class="content">
+<div class="offset-1 col-md-7">
     <h2>Is uw patiënten lijst nog up to date?</h2>
     <input type="submit" id="button" value="voeg nieuwe patienten toe">
-<div class="row">
-  <div class="col-sm-4"></div>
-  <div class="col-sm-4"></div>
+
 </div>
 </div>
 

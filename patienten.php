@@ -29,7 +29,7 @@ $test = $user->Level();
 </head>
 <body>
 
-
+<div class="row">
 <div class=navigation>
 <a href=""><div class="logo"></div></a>
 <nav class="navbar-fixed-left">
@@ -41,12 +41,12 @@ $test = $user->Level();
     </ul>
 </nav>
 </div>
-<div class="content">
+<div class="content offset-1 col-md-7">
 <input type="text" placeholder="Search.." id="search">
-<div class="row">
+
 <ul class="flex-container">
     <?php foreach ($patient as $row): ?>
-        <div class="col-md-1 col-features text-center">
+        <div class="col-md-5 col-features text-left border-bottom">
             <div class="flex-container ">
                     <div class='lists'>
                         <li class="flex-item">

@@ -24,9 +24,7 @@ body {
 .navigation {
     background-color: #FFF5D4;
     width: 20%;
-    height: 750px;
-    left: 0px;
-    top: 0px;
+    height: 100vh;
 }
 
 ul {
@@ -83,13 +81,7 @@ li a:hover {
     margin-top: 300px;
 }
 
-.content {
-    margin-left: 30%;
-    top: 0px;
-    margin-top: -730px;
-    width: 70%;
-    height: 600px;
-}
+
 
 #button {
     background-color: #FFC400;

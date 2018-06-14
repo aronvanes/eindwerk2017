@@ -24,13 +24,14 @@ $connecting2 = $connect2->SetModuleToPatient2();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mål</title>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/sb-admin.css" rel="stylesheet">
     <link href="css/styletwee.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
+<div class="container-fluid">
 
+    <div class="row">
 <div class=navigation>
     <a href=""><div class="logo"></div></a>
     <nav class="navbar-fixed-left">
@@ -43,10 +44,8 @@ $connecting2 = $connect2->SetModuleToPatient2();
     </nav>
 </div>
 
-<div class="content">
-    <div class="container-fluid">
-    </div>
-    <div class="row">
+<div class="offset-1">
+
         <ul>
             <!--hier word via een foreachlus alle rijen opgehaald uit de modules met categorie interactie -->
             <?php foreach ($module as $row) :?>
@@ -87,7 +86,7 @@ $connecting2 = $connect2->SetModuleToPatient2();
             <?php endforeach; ?>
         </ul>
     </div>
-
+    </div>
 </div>
 <script src="showtoggle.js"></script>
 <script>
@@ -129,8 +128,8 @@ $connecting2 = $connect2->SetModuleToPatient2();
             var module_id = $container.closest('.col-md-8').find(".post").data('id');
             var user_id = $container.find(".post2").data('id');
 
-            console.log("module : "+module_id)
-            console.log("user : "+user_id)
+            console.log("module : "+module_id);
+            console.log("user : "+user_id);
 
             $.ajax({
                 method: "POST",

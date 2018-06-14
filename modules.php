@@ -21,6 +21,7 @@ if (!empty($_SESSION['usernaam'])) {
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
+<div class="row">
 <div class=navigation>
 <a href=""><div class="logo"></div></a>
 <nav class="navbar-fixed-left">
@@ -32,26 +33,21 @@ if (!empty($_SESSION['usernaam'])) {
     </ul>
 </nav>
 </div>
-
-<div class="content">
-<div class="container-fluid">
-<div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2 offset-1">
         <img src="images/156-family.png" alt="" id="emoji"> <br>
         <a href="interactie.php" class="btn btn-primary">Interactie</a>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
         <img src="images/160-run.png" alt="" id="emoji"> <br>
         <input type="button" value="Sport" id="btnmodule">
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
         <img src="images/063-sleep-1.png" alt="" id="emoji"> <br>
         <input type="button" value="Slaap" id="btnmodule">
     </div>
-</div>
-</div>
 
-</div>
+
+
 
 
 </body>
