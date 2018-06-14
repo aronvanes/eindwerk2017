@@ -122,9 +122,15 @@ $connecting2 = $connect2->SetModuleToPatient2();
             e.preventDefault();
             console.log("clicked");
             //volgends de persoon waar mee ik gpraat heb op stackoverflow moest ik werken met claases en deze selecteren met DOM traversal
-            var $container = $(this).closest('.col-md-8');
-            var module_id = $container.find(".post").data('id');
+
+            // Je kon niet de juiste module id vinden omdat die niet in col-md-10 zit maar in 8
+            // op deze manier krijg je de juiste id's
+            var $container = $(this).closest('.col-md-10');
+            var module_id = $container.closest('.col-md-8').find(".post").data('id');
             var user_id = $container.find(".post2").data('id');
+
+            console.log("module : "+module_id)
+            console.log("user : "+user_id)
 
             $.ajax({
                 method: "POST",
