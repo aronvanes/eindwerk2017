@@ -22,7 +22,7 @@ if (!empty($_SESSION['usernaam'])) {
 </head>
 <body>
 <div class="row">
-<div class=navigation>
+<div class="navigation col-md-3">
 <a href=""><div class="logo"></div></a>
 <nav class="navbar-fixed-left">
     <ul class="nav navbar-nav">
