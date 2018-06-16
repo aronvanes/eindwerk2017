@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5cb66ae5-5ff7-4633-9fde-0160e3e03dc4" name="Default" comment="">
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/Db.class.php" afterPath="$PROJECT_DIR$/classes/Db.class.php" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/styletwee.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/styletwee.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interactie.php" beforeDir="false" afterPath="$PROJECT_DIR$/interactie.php" afterDir="false" />
+>>>>>>> efeb8c9f7ae2b642aaf3da5cbc32a973011dfd8a
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,9 +24,14 @@
       <file leaf-file-name="login.app.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/login.app.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
+=======
+            <state relative-caret-position="153">
+              <caret line="31" column="29" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
+>>>>>>> efeb8c9f7ae2b642aaf3da5cbc32a973011dfd8a
             </state>
           </provider>
         </entry>
@@ -38,9 +49,32 @@
       <file leaf-file-name="db_mal_05062018.sql" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SQL DUMPS/db_mal_05062018.sql">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="441">
               <caret line="21" column="20" lean-forward="false" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="20" />
               <folding />
+=======
+            <state relative-caret-position="302">
+              <caret line="26" column="31" lean-forward="true" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="showtoggle.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/showtoggle.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="46" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styletwee.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/css/styletwee.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="87" column="12" selection-start-line="87" selection-start-column="12" selection-end-line="87" selection-end-column="12" />
+>>>>>>> efeb8c9f7ae2b642aaf3da5cbc32a973011dfd8a
             </state>
           </provider>
         </entry>
@@ -48,9 +82,46 @@
       <file leaf-file-name="Db.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/Db.class.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="105">
               <caret line="5" column="80" lean-forward="false" selection-start-line="5" selection-start-column="80" selection-end-line="5" selection-end-column="80" />
               <folding />
+=======
+            <state relative-caret-position="85">
+              <caret line="5" column="80" selection-start-line="5" selection-start-column="80" selection-end-line="5" selection-end-column="80" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="17" lean-forward="true" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/register.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1088">
+              <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sb-admin.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/sb-admin.css">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="modules.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="35" column="33" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
+>>>>>>> efeb8c9f7ae2b642aaf3da5cbc32a973011dfd8a
             </state>
           </provider>
         </entry>
@@ -80,9 +151,14 @@
         <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/patienten.php" />
         <option value="$PROJECT_DIR$/modules.php" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/interactie.php" />
+=======
+>>>>>>> efeb8c9f7ae2b642aaf3da5cbc32a973011dfd8a
         <option value="$PROJECT_DIR$/register.php" />
         <option value="$PROJECT_DIR$/dashboard.php" />
+        <option value="$PROJECT_DIR$/classes/Db.class.php" />
+        <option value="$PROJECT_DIR$/interactie.php" />
         <option value="$PROJECT_DIR$/css/styletwee.css" />
         <option value="$PROJECT_DIR$/classes/Db.class.php" />
       </list>
@@ -98,11 +174,6 @@
   </component>
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
-    <gulpfiles>
-      <GulpfileState>
-        <gulpfile-path>$PROJECT_DIR$/gulpfile.js</gulpfile-path>
-      </GulpfileState>
-    </gulpfiles>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="NodePackageJsonFileManager">
@@ -195,7 +266,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="55445000" />
+=======
+    <option name="totallyTimeSpent" value="53992000" />
+>>>>>>> efeb8c9f7ae2b642aaf3da5cbc32a973011dfd8a
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -426,6 +501,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/dashboard.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -435,6 +511,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SQL DUMPS/db_mal_05062018.sql">
+=======
+    <entry file="file://$PROJECT_DIR$/css/sb-admin.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/bootstrap/css/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-663" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/bootstrap/css/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules.php">
+>>>>>>> efeb8c9f7ae2b642aaf3da5cbc32a973011dfd8a
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
           <caret line="21" column="20" lean-forward="false" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="20" />
@@ -450,6 +540,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/classes/Db.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -459,6 +550,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/style.css">
+=======
+    <entry file="file://$PROJECT_DIR$/patienten.php">
+>>>>>>> efeb8c9f7ae2b642aaf3da5cbc32a973011dfd8a
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="20" column="24" lean-forward="true" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
@@ -468,9 +562,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/styletwee.css">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="903">
           <caret line="43" column="35" lean-forward="false" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
           <folding />
+=======
+        <state relative-caret-position="85">
+          <caret line="5" column="80" selection-start-line="5" selection-start-column="80" selection-end-line="5" selection-end-column="80" />
+>>>>>>> efeb8c9f7ae2b642aaf3da5cbc32a973011dfd8a
         </state>
       </provider>
     </entry>
@@ -484,17 +583,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scss/_cards.scss">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+=======
+        <state relative-caret-position="302">
+          <caret line="26" column="31" lean-forward="true" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="17" lean-forward="true" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/interactie.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="31" column="29" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
+>>>>>>> efeb8c9f7ae2b642aaf3da5cbc32a973011dfd8a
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/login.app.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+=======
+        <state relative-caret-position="540">
+          <caret line="87" column="12" selection-start-line="87" selection-start-column="12" selection-end-line="87" selection-end-column="12" />
+>>>>>>> efeb8c9f7ae2b642aaf3da5cbc32a973011dfd8a
         </state>
       </provider>
     </entry>
