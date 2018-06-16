@@ -11,10 +11,10 @@ if (!empty($_SESSION['usernaam'])) {
 
 $user = new User();
 $patient = $user->Patient();
-//$user->level();
-//$user->categorie();
-$test = new User();
-$test = $user->Level();
+
+$user = new User();
+$schema = $user->Schema();
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,20 +45,20 @@ $test = $user->Level();
 <input type="text" placeholder="Search.." id="search">
 
 <ul class="flex-container">
-    <?php foreach ($patient as $row): ?>
+    <?php foreach ($schema as $row): ?>
         <div class="col-md-5 col-features text-left border-bottom">
             <div class="flex-container ">
                     <div class='lists'>
                         <li class="flex-item">
-                            <p class='listname'><?php  ?></p>
+                            <p class='listname'>Patiënten</p>
                             <br>
-                            <p><?php echo $row['voornaam']; echo " "; echo $row['achternaam'];?></p>
+                            <p><?php echo $row['voornaam']; echo " "; echo $row['achternaam']; 
+                            echo $row['user_id']; echo $row['module_id'];?></p>
                             </li>
                     </div>
                 </a>
             </div>
         </div>
-
     <?php endforeach; ?>
 </ul>
 </div>
