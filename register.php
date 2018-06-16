@@ -46,13 +46,11 @@ if (!empty($_POST)){
 <div class="logo"></div>
 
   <form action="#" method="post">
-    <input type="text" name="usernaam" id="usernaam" placeholder="Usernaam">
+    <input type="text" name="usernaam" id="usernaam" placeholder="Email">
     <br>
     <input type="text" name="voornaam" id="voornaam" placeholder="Voornaam">
     <br>
     <input type="text" name="achternaam" id="achternaam" placeholder="Achternaam">
-    <br>
-    <input type="text" name="email" id="email" placeholder="Email">
     <br>
     <input type="password" name="wachtwoord" id="wachtwoord" placeholder="Wachtwoord">
     <br>
