@@ -80,8 +80,6 @@ li a:hover {
     margin-top: 300px;
 }
 
-
-
 #button {
     background-color: #FFC400;
     color: white;
@@ -150,22 +148,23 @@ span {
     display: block;
     height: 5%;
 }
-.list{
-    padding-bottom: 2em;
 
+.list {
+    padding-bottom: 2em;
 }
 
-.bar{
+.bar {
     background-color: #FFF5D4;
     height: 40px;
     width: 100%;
     position: absolute;
     z-index: -100;
 }
-.horizontalOffset{
+
+.horizontalOffset {
     margin-top: 3.5em;
 }
 
-.btnSubmit{
+.btnSubmit {
     display: flex;
 }
