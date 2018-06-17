@@ -4,10 +4,10 @@ spl_autoload_register(function($class){
 });
 
 session_start();
-if (!empty($_SESSION['usernaam'])) {
-} else {
-    header('Location: login.php');
-}
+// if (!empty($_SESSION['usernaam'])) {
+// } else {
+//     header('Location: login.php');
+// }
 ?><!DOCTYPE html>
 <html lang="en">
 <head>

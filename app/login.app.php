@@ -11,14 +11,14 @@ $decoded = json_decode($content, true);
 //If json_decode failed, the JSON is invalid.
 if(is_array($decoded)) {
 
-  $credentials = (object) [
-    'usernaam' => $decoded['username'],
-    'wachtwoord' => $decoded['password']
-  ];
+  $user = new AppUser();
 
-  $user = new AppUser ($credentials->usernaam, $credentials->wachtwoord);
+  $user->setUsernaam($decoded['username']);
+  $user->setWachtwoord($decoded['password']);
 
   echo ($user->login());
+
+  // echo ($user->login());
 
 } else {
   // Send error back to user.
