@@ -43,23 +43,45 @@ class AppUser extends User {
   }
 
   public function setGeboorteDatum($value){
-    $this->geboorteDatum = $value;
+    if(!is_null($value)){
+      $date = DateTime::createFromFormat('d-m-Y', $value);
+      if(!$date){
+        $this->geboorteDatum = date('Y-m-d');
+      } else {
+        $this->geboorteDatum = date('Y-m-d', $date->getTimeStamp());
+      }
+      // date('Y-m-d', $date->getTimeStamp());
+    }
+  }
+
+  public function getGeboorteDatum(){
+    return $this->geboorteDatum;
   }
 
   public function setWoonplaats($value){
-    $this->woonplaats = $value;
+    if(!is_null($value)){
+      $this->woonplaats = $value;
+    }
   }
 
   public function setTewerkgesteld($value){
-    $this->tewerkgesteld = $value;
+    if ($value === 'false' || is_null($value)){
+      $this->tewerkgesteld = false;
+    } else {
+      $this->tewerkgesteld = true;
+    }
   }
 
   public function setSector($value){
-    $this->sector = $value;
+    if(!is_null($value)){
+      $this->sector = $value;
+    }
   }
 
   public function setJobTitel($value){
-    $this->jobTitel = $value;
+    if(!is_null($value)){
+      $this->jobTitel = $value;
+    }
   }
 
   public function login(){
@@ -70,10 +92,6 @@ class AppUser extends User {
 
     if ($statement->execute()){
       $foundUser = $statement->fetch(PDO::FETCH_OBJ);
-
-      // echo (password_verify($this->wachtwoord, $foundUser->wachtwoord));
-      // echo ($this->wachtwoord);
-      // echo ($foundUser->wachtwoord);
 
       if (password_verify($this->wachtwoord, $foundUser->wachtwoord)){
         return true;
@@ -96,6 +114,33 @@ class AppUser extends User {
     $statement->bindValue(':wachtwoord', password_hash($this->wachtwoord, PASSWORD_DEFAULT));
     $statement->bindValue(':rol', $this->rol);
 
-    return $statement->execute();
+    if($statement->execute()){
+      if (
+        !empty($this->geboorteDatum) ||
+        !empty($this->woonplaats) ||
+        !empty($this->tewerkgesteld) ||
+        !empty($this->sector) ||
+        !empty($this->jobTitel)){
+          $affected_user = $conn->lastInsertId();
+
+          $extraInfoStatement = $conn->prepare('INSERT INTO tbl_users_extra (users_id, geboortedatum, woonplaats, tewerkgesteld, jobtitel, sector) VALUES (:users_id, :geboortedatum, :woonplaats, :tewerkgesteld, :jobtitel, :sector)');
+          $extraInfoStatement->bindValue(':users_id', $affected_user);
+          $extraInfoStatement->bindValue(':geboortedatum', $this->geboorteDatum);
+          $extraInfoStatement->bindValue(':woonplaats', $this->woonplaats);
+          $extraInfoStatement->bindValue(':tewerkgesteld', $this->tewerkgesteld);
+          $extraInfoStatement->bindValue(':jobtitel', $this->jobTitel);
+          $extraInfoStatement->bindValue(':sector', $this->sector);
+
+          if ($extraInfoStatement->execute()){
+            return true;
+          } else {
+            return 'Er was een probleem met het invoegen van extra informatie: '.print_r($conn->errorInfo());
+          }
+        } else {
+          return true;
+        }
+    } else {
+      return false;
+    }
   }
 }

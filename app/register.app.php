@@ -18,8 +18,6 @@ if(is_array($decoded)) {
     $parsed_content[$row[0]] = $row[1];
   };
 
-  echo (var_dump($parsed_content));
-
   $user = new AppUser();
 
   $user->setUsernaam($parsed_content['@UserStorage:username']);
