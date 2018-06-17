@@ -48,7 +48,7 @@ $connecting2 = $connect2->SetModuleToPatient2();
         <ul>
             <!--hier word via een foreachlus alle rijen opgehaald uit de modules met categorie interactie -->
             <?php foreach ($module as $row) :?>
-                <div class="list border-bottom">
+                <div class="list border-bottom col-md-8">
                     <div class="toggleHolder">
                         <span class="toggler"><span>▾</span>Show More</span>
                         <span class="toggler" style="display:none;"><span>▴</span> Show Less</span>
@@ -67,8 +67,8 @@ $connecting2 = $connect2->SetModuleToPatient2();
                         </li>
                         <!--in de eerste foreachlus word er nog een tweede gezet die per module alle users toont-->
                         <?php foreach ($patient as $row2): ?>
-                            <div>
-                                <div>
+                            <div class="col-md-10">
+
                                     <li>
                                         <!--elke rij voor users heeft ook een button die er voor zorgt dat de id van d desbetreffende user samenkomt met bijbehorende
                                         interactie module-->
@@ -77,7 +77,6 @@ $connecting2 = $connect2->SetModuleToPatient2();
                                             <input class="btnSubmit" type="submit" value="Module toewijzen" />
                                         </p>
                                     </li>
-                                </div>
                             </div>
                         <?php endforeach; ?>
                     </div>
