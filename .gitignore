@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 
-classes/Db.class.php
-=======
 .idea/workspace.xml
->>>>>>> 51b6bf6d7ec5fa49ac6b93cdf59cf4aedc3604f8
 classes/Db.class.php
 *.xml

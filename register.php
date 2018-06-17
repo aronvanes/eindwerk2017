@@ -15,7 +15,7 @@ if (!empty($_POST)){
         if($user->register()){
             session_start();
             $_SESSION['usernaam'] = $user->getUsernaam();
-            header('location: dashboard.php');
+            header('location: profiel.php');
         }
         }
         catch (Exception $e) {
@@ -44,6 +44,11 @@ if (!empty($_POST)){
   <div class="container">
 
 <div class="logo"></div>
+<?php if ( isset($message)): ?>
+        <div class="error">
+            <label for="error"> <?php echo $message; ?>  </label>
+        </div>
+ <?php endif;?>
 
   <form action="#" method="post">
     <input type="text" name="usernaam" id="usernaam" placeholder="Email">

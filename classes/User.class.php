@@ -43,9 +43,14 @@ class User {
      */
     public function setUsernaam($usernaam)
     {
+        if (empty($usernaam)){
+            throw new Exception("Gelieve alle velden in te vullen");
+       }
+       else {
         $this->usernaam = $usernaam;
 
         return $this;
+        }
     }
 
     /**
@@ -63,9 +68,14 @@ class User {
      */
     public function setVoornaam($voornaam)
     {
+        if (empty($voornaam)){
+            throw new Exception("Gelieve alle velden in te vullen");
+       }
+       else {
         $this->voornaam = $voornaam;
 
         return $this;
+        }
     }
 
     /**
@@ -83,9 +93,14 @@ class User {
      */
     public function setAchternaam($achternaam)
     {
+        if (empty($achternaam)){
+                 throw new Exception("Gelieve alle velden in te vullen");
+            }
+        else {
         $this->achternaam = $achternaam;
-
+    
         return $this;
+    }
     }
 
     /**

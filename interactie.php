@@ -31,10 +31,6 @@ $connecting2 = $connect2->SetModuleToPatient2();
 <body>
 <div class="container-fluid">
     <div class="row">
-        <div class="bar"></div>
-
-    </div>
-    <div class="row">
 <div class=navigation>
     <a href=""><div class="logo"></div></a>
     <nav class="navbar-fixed-left">

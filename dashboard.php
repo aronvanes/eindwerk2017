@@ -22,7 +22,7 @@ session_start();
 </head>
 <body>
 <div class="row">
-<div class="navigation col-md-3">
+<div class=navigation>
 <a href=""><div class="logo"></div></a>
 <nav class="navbar-fixed-left">
     <ul class="nav navbar-nav">
