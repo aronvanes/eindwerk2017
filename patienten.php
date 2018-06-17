@@ -14,7 +14,7 @@ $patient = $user->Patient();
 
 $user = new User();
 $schema = $user->Schema();
-var_dump($user);
+var_dump($schema);
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
