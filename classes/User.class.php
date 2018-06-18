@@ -283,7 +283,7 @@ public function Module()
 public function Schema()
 {
     $conn = Db::getInstance();
-    $statement = $conn->prepare("SELECT *
+    $statement = $conn->prepare("SELECT 'voornaam', 'achternaam', 'module_id'
     FROM tbl_users
     INNER JOIN tbl_users_module ON tbl_users.id = tbl_users_module.user_id
     INNER JOIN tbl_taken_users ON tbl_users.id = tbl_taken_users.user_id 
@@ -291,12 +291,6 @@ public function Schema()
     $statement->execute();
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
-
-/*
-SELECT Orders.OrderID, Customers.CustomerName, Shippers.ShipperName
-FROM ((Orders
-INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID)
-INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID);*/
 
     public function SetModuleToPatient2(){
 
@@ -307,7 +301,4 @@ INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID);*/
         return $result;
     }
 }
-/*SELECT Orders.OrderID, Customers.CustomerName, Shippers.ShipperName
-FROM ((Orders
-INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID)
-INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID);*/
+

@@ -13,10 +13,8 @@ if (!empty($_SESSION['usernaam'])) {
 $user = new User();
 $schema = $user->Schema();
 if (!empty($_GET["search"])) {
-        $search = new Search();
+        $search = new Search($var1);
     } 
-
-
 var_dump($schema);
 ?><!DOCTYPE html>
 <html lang="en">
@@ -45,7 +43,7 @@ var_dump($schema);
 </nav>
 </div>
 <div class="content offset-1 col-md-7">
-<form action="search.php" method="POST">
+<form action="search.php" method="GET">
     <input name="var1" type="text" id="var1">
       <input type="submit" value="Search"></th>
     </form>
