@@ -1,13 +1,13 @@
 <?php
 include_once("Db.class.php");
 
-class Profiel {
+class Info {
     private $users_id;
     private $geboortedatum;
     private $woonplaats;
     private $tewerkgesteld;
     private $jobtitel;
-    private $functie;
+    private $sector;
 
     /**
      * Get the value of users_id
@@ -112,9 +112,9 @@ class Profiel {
     /**
      * Get the value of functie
      */ 
-    public function getFunctie()
+    public function getSector()
     {
-        return $this->functie;
+        return $this->sector;
     }
 
     /**
@@ -122,22 +122,22 @@ class Profiel {
      *
      * @return  self
      */ 
-    public function setFunctie($functie)
+    public function setSector($sector)
     {
-        $this->functie = $functie;
+        $this->functie = $sector;
 
         return $this;
     }
     public function Profiel(){
         $conn = Db::getInstance();
-        $statement = $conn->prepare("INSERT INTO tbl_users_extra (users_id, geboortedatum, woonplaats, tewerkgesteld, jobtitel, functie)
-        VALUES (:users_id, :geboortedatum, :woonplaats, :tewerkgesteld, :jobtitel, :functie)");
-        $statement->bindParam(':users_id', $this->users_id);
+        $statement = $conn->prepare("INSERT INTO tbl_users_extra (geboortedatum, woonplaats, tewerkgesteld, jobtitel, sector)
+        VALUES (:geboortedatum, :woonplaats, :tewerkgesteld, :jobtitel, :sector)");
+        //$statement->bindParam(':users_id', $this->users_id);
         $statement->bindParam(':geboortedatum', $this->geboortedatum);
         $statement->bindParam(':woonplaats', $this->woonplaats);
         $statement->bindParam(':tewerkgesteld', $this->tewerkgesteld);
         $statement->bindParam(':jobtitel', $this->jobtitel);
-        $statement->bindParam(':functie', $this->functie);
+        $statement->bindParam(':sector', $this->sector);
         $result = $statement->execute();
         return $result;
 }

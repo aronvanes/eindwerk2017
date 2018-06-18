@@ -15,7 +15,7 @@ if (!empty($_POST)){
         if($user->register()){
             session_start();
             $_SESSION['usernaam'] = $user->getUsernaam();
-            header('location: profiel.php');
+            header('location: info.php');
         }
         }
         catch (Exception $e) {

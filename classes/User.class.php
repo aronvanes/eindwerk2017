@@ -263,11 +263,11 @@ public function Schema()
 {
     $conn = Db::getInstance();
     $statement = $conn->prepare("SELECT *
-    FROM ((tbl_users
+    FROM (((tbl_users
     INNER JOIN tbl_users_module ON tbl_users.id = tbl_usrs_module.user_id)
-    INNER JOIN tbl_taken_users ON tbl_users.id = tbl_taken_users.user_id
-    INNER JOIN tbl_taken_users on tbl_taken.id = tbl_taken_users.taak_id
-    inner join tbl_users_module on tbl_module.id = tbl_users_module.module_id) where rol = 3;");
+    INNER JOIN tbl_taken_users ON tbl_users.id = tbl_taken_users.user_id)
+    INNER JOIN tbl_taken_users ON tbl_taken.id = tbl_taken_users.taak_id)
+    INNER JOIN tbl_users_module ON tbl_module.id = tbl_users_module.module_id) where rol = 3;");
     $statement->execute();
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
