@@ -55,7 +55,7 @@ if (!empty($_POST)){
   <form action="#" method="post">
     <input type="text" name="geboortedatum" id="geboortedatum" placeholder="geboortedatum yyyy-mm-dd">
     <br>
-    <input type="text" name="diploma" id="diploma" placeholder="Diploma">
+    <input type="text" name="specialisatie" id="specialisatie" placeholder="Specialisatie">
     <br>
     <input type="text" name="aantaljaar" id="aantaljaar" placeholder="Aantal jaar ervaring">
     <br>

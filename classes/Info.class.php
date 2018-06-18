@@ -2,32 +2,11 @@
 include_once("Db.class.php");
 
 class Info {
-    private $users_id;
     private $geboortedatum;
-    private $woonplaats;
-    private $tewerkgesteld;
-    private $jobtitel;
-    private $sector;
-
-    /**
-     * Get the value of users_id
-     */ 
-    public function getUsers_id()
-    {
-        return $this->users_id;
-    }
-
-    /**
-     * Set the value of users_id
-     *
-     * @return  self
-     */ 
-    public function setUsers_id($users_id)
-    {
-        $this->users_id = $users_id;
-
-        return $this;
-    }
+    private $specialisatie;
+    private $aantaljaar;
+    private $praktijk;
+    private $registratienummer;
 
     /**
      * Get the value of geboortedatum
@@ -50,95 +29,95 @@ class Info {
     }
 
     /**
-     * Get the value of woonplaats
+     * Get the value of specialisatie
      */ 
-    public function getWoonplaats()
+    public function getSpecialisatie()
     {
-        return $this->woonplaats;
+        return $this->specialisatie;
     }
 
     /**
-     * Set the value of woonplaats
+     * Set the value of specialisatie
      *
      * @return  self
      */ 
-    public function setWoonplaats($woonplaats)
+    public function setSpecialisatie($specialisatie)
     {
-        $this->woonplaats = $woonplaats;
+        $this->specialisatie = $specialisatie;
 
         return $this;
     }
 
     /**
-     * Get the value of tewerkgesteld
+     * Get the value of aantaljaar
      */ 
-    public function getTewerkgesteld()
+    public function getAantaljaar()
     {
-        return $this->tewerkgesteld;
+        return $this->aantaljaar;
     }
 
     /**
-     * Set the value of tewerkgesteld
+     * Set the value of aantaljaar
      *
      * @return  self
      */ 
-    public function setTewerkgesteld($tewerkgesteld)
+    public function setAantaljaar($aantaljaar)
     {
-        $this->tewerkgesteld = $tewerkgesteld;
+        $this->aantaljaar = $aantaljaar;
 
         return $this;
     }
 
     /**
-     * Get the value of jobtitel
+     * Get the value of praktijk
      */ 
-    public function getJobtitel()
+    public function getPraktijk()
     {
-        return $this->jobtitel;
+        return $this->praktijk;
     }
 
     /**
-     * Set the value of jobtitel
+     * Set the value of praktijk
      *
      * @return  self
      */ 
-    public function setJobtitel($jobtitel)
+    public function setPraktijk($praktijk)
     {
-        $this->jobtitel = $jobtitel;
+        $this->praktijk = $praktijk;
 
         return $this;
     }
 
     /**
-     * Get the value of functie
+     * Get the value of registratienummer
      */ 
-    public function getSector()
+    public function getRegistratienummer()
     {
-        return $this->sector;
+        return $this->registratienummer;
     }
 
     /**
-     * Set the value of functie
+     * Set the value of registratienummer
      *
      * @return  self
      */ 
-    public function setSector($sector)
+    public function setRegistratienummer($registratienummer)
     {
-        $this->functie = $sector;
+        $this->registratienummer = $registratienummer;
 
         return $this;
     }
     public function Profiel(){
-        $conn = Db::getInstance();
-        $statement = $conn->prepare("INSERT INTO tbl_users_extra (geboortedatum, woonplaats, tewerkgesteld, jobtitel, sector)
-        VALUES (:geboortedatum, :woonplaats, :tewerkgesteld, :jobtitel, :sector)");
-        //$statement->bindParam(':users_id', $this->users_id);
-        $statement->bindParam(':geboortedatum', $this->geboortedatum);
-        $statement->bindParam(':woonplaats', $this->woonplaats);
-        $statement->bindParam(':tewerkgesteld', $this->tewerkgesteld);
-        $statement->bindParam(':jobtitel', $this->jobtitel);
-        $statement->bindParam(':sector', $this->sector);
-        $result = $statement->execute();
-        return $result;
+    $conn = Db::getInstance();
+    $statement = $conn->prepare("INSERT INTO tbl_users_extra (geboortedatum, specialisatie, aantaljaar, praktijk, registratienummer)
+    VALUES (:geboortedatum, :specialisatie, :aantaljaar, :praktijk, :registratienummer)");
+    //$statement->bindParam(':users_id', $this->users_id);
+    $statement->bindParam(':geboortedatum', $this->geboortedatum);
+    $statement->bindParam(':specialisatie', $this->specialisatie);
+    $statement->bindParam(':aantaljaar', $this->aantaljaar);
+    $statement->bindParam(':praktijk', $this->praktijk);
+    $statement->bindParam(':registratienummer', $this->registratienummer);
+    $result = $statement->execute();
+    return $result;
 }
 }
