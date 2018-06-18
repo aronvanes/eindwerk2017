@@ -53,7 +53,7 @@ if (!empty($_POST)){
  <?php endif;?>
 <h3>Extra informatie</h3>
   <form action="#" method="post">
-    <input type="text" name="geboortedatum" id="geboortedatum" placeholder="geboortedatum">
+    <input type="text" name="geboortedatum" id="geboortedatum" placeholder="geboortedatum yyyy-mm-dd">
     <br>
     <input type="text" name="woonplaats" id="woonplaats" placeholder="woonplaats">
     <br>
