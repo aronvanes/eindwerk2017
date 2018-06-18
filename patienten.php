@@ -58,8 +58,10 @@ var_dump($schema);
                         <li class="flex-item">
                             <p class='listname'>Patiënten</p>
                             <br>
-                            <p><?php echo $row['voornaam']; echo " "; echo $row['achternaam']; 
-                            echo $row['user_id']; echo $row['module_id'];?></p>
+                            <p><?php echo $row['voornaam']; echo " "; 
+                            echo $row['achternaam']; 
+                            echo $row['user_id']; 
+                            echo $row['module_id'];?></p>
                             </li>
                     </div>
                 </a>
