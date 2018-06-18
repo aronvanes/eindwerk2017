@@ -12,6 +12,9 @@ $mod = new Module;
 $module = $mod->GetAllInteractieModules();
 $user = new User();
 $patient = $user->Patient();
+$taak = new Taak();
+$taken = $taak->SelectAllTakenPerModule();
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +64,28 @@ $patient = $user->Patient();
                                 <?php echo $row['beschrijving'] ?>
                             </p>
                         </li>
+
+
                         <!--in de eerste foreachlus word er nog een tweede gezet die per module alle users toont-->
+                        <div class="taak-container">
+                            <?php foreach ($taken as $row3): ?>
+                                <div class="taak">
+
+                                    <li>
+                                        <!--elke rij voor users heeft ook een button die er voor zorgt dat de id van d desbetreffende user samenkomt met bijbehorende
+                                        interactie module-->
+                                        <p class="text-left border-bottom" data-id="<?php echo $row3['id'] ?>">
+                                            <?php echo $row3['naam'];?>
+                                        </p>
+                                        <p>
+                                            <?php echo $row3['beschrijving'];?>
+                                        </p>
+                                    </li>
+                                </div>
+                            <?php endforeach; ?>
+                            <input class="btnNext" type="submit" value="doorgaan">
+                        </div>
+                    </div>
                         <div class="client-container">
                         <?php foreach ($patient as $row2): ?>
                             <div class="client">
@@ -77,7 +101,8 @@ $patient = $user->Patient();
                             </div>
                         <?php endforeach; ?>
                     </div>
-                    </div>
+
+
                 </div>
             <?php endforeach; ?>
         </ul>
@@ -86,32 +111,6 @@ $patient = $user->Patient();
 </div>
 <script src="showtoggle.js"></script>
 <script>
-   /* $(document).ready(function () {
-        $("#btnSubmit").on("click", function (e) {
-            console.log("clicked");
-
-            // tekst vak uitlezen
-            var module_id = document.getElementById("post").getAttribute("data-id");
-            var user_id = document.getElementById("post2").getAttribute("data-id");
-            // via AJAX update naar databank sturen
-            $.ajax({
-                method: "POST",
-                url: "AJAX/clientmodule.php",
-                data: {user_id: user_id,module_id: module_id} //update: is de naam en update is de waarde (value)
-
-            })
-
-                .done(function (response) {
-
-                    // code + message
-                    if (response.code == 200) {
-                        console.log("werkt dit?")
-                    }
-                });
-
-            e.preventDefault();
-        });
-    });*/
     $(function() {
         $(".btnSubmit").on("click", function(e) {
             e.preventDefault();
@@ -145,6 +144,41 @@ $patient = $user->Patient();
             e.preventDefault();
         });
     });
+
+
+    $(function() {
+        $(".toggler").on("click", function(e) {
+            e.preventDefault();
+            console.log("clicked");
+            //volgends de persoon waar mee ik gpraat heb op stackoverflow moest ik werken met claases en deze selecteren met DOM traversal
+
+            // Je kon niet de juiste module id vinden omdat die niet in col-md-10 zit maar in 8
+            // op deze manier krijg je de juiste id's
+            var $container = $(this).closest('.client');
+            var module_id = $container.closest('.module').find(".post").data('id');
+            //var user_id = $container.find(".post2").data('id');
+
+            console.log("module : "+module_id);
+
+            $.ajax({
+                method: "POST",
+                url: "AJAX/taken.php",
+                data: {module_id: module_id} //update: is de naam en update is de waarde (value)
+
+            })
+
+                .done(function (response) {
+
+                    // code + message
+                    if (response.code == 200) {
+                        console.log("werkt dit?")
+                    }
+                });
+
+            e.preventDefault();
+        });
+    });
+
 </script>
 </body>
 </html>
