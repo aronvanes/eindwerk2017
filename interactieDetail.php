@@ -12,10 +12,6 @@ $mod = new Module;
 $module = $mod->GetAllInteractieModules();
 $user = new User();
 $patient = $user->Patient();
-$connect = new Module();
-$connecting = $connect->SetModuleToPatient();
-$connect2 = new User();
-$connecting2 = $connect2->SetModuleToPatient2();
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,6 +75,7 @@ $connecting2 = $connect2->SetModuleToPatient2();
                                     </li>
                             </div>
                         <?php endforeach; ?>
+                    </div>
                     </div>
                 </div>
             <?php endforeach; ?>
