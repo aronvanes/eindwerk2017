@@ -8,6 +8,7 @@ class User {
     private $achternaam;
     private $wachtwoord;
     private $rol;
+    private $searchText;
 
     /**
      * @return mixed
@@ -245,11 +246,27 @@ public function login()
         }
     }
 }
-public function Search(){
+public function getSearchText()
+{
+    return $this->searchText;
+}
+
+/**
+ * Set the value of searchText
+ *
+ * @return  self
+ */ 
+public function setSearchText($searchText)
+{
+    $this->searchText = $searchText;
+
+    return $this;
+}
+public function Search($var1){
             $conn = Db::getInstance();
             $statement = $conn->prepare("SELECT * FROM tbl_users WHERE 'voornaam' 
              LIKE :search OR 'voornaam' LIKE :search");
-             $statement->bindValue(':search', '%' . $var1 . '%', PDO::PARAM_INT);
+             $statement->bindValue(':search', '%' . $this->searchText. '%', PDO::PARAM_INT);
              $statement->execute();
              return $statement->fetchAll(PDO::FETCH_ASSOC);
 }

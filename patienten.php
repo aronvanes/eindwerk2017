@@ -12,7 +12,11 @@ if (!empty($_SESSION['usernaam'])) {
 
 $user = new User();
 $schema = $user->Schema();
-$zoek = $user->Search();
+if (!empty($_GET["search"])) {
+        $search = new Search();
+    } 
+
+
 var_dump($schema);
 ?><!DOCTYPE html>
 <html lang="en">
@@ -41,23 +45,9 @@ var_dump($schema);
 </nav>
 </div>
 <div class="content offset-1 col-md-7">
-<form action="search.php" method="GET">
+<form action="search.php" method="POST">
     <input name="var1" type="text" id="var1">
       <input type="submit" value="Search"></th>
-      <?php foreach ($zoek as $row): ?>
-      <div class="col-md-5 col-features text-left border-bottom">
-            <div class="flex-container ">
-                    <div class='lists'>
-                        <li class="flex-item">
-                            <p class='listname'>Patiënten</p>
-                            <br>
-                            <p><?php echo $row['voornaam']; echo " "; echo $row['achternaam'];?></p>
-                            </li>
-                    </div>
-                </a>
-            </div>
-        </div>
-    <?php endforeach; ?>
     </form>
 
 <ul class="flex-container">
