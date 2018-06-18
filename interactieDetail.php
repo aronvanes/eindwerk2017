@@ -49,8 +49,8 @@ $taken = $taak->SelectAllTakenPerModule();
             <?php foreach ($module as $row) :?>
                 <div class="list border-bottom module">
                     <div class="toggleHolder">
-                        <span class="toggler"><span>▾</span>Show More</span>
-                        <span class="toggler" style="display:none;"><span>▴</span> Show Less</span>
+                        <input type="button" class="toggler" value="▾Show More">
+                        <input type="button" class="toggler" style="display:none;" value="▴ Show Less">
                     </div>
                     <li>
                         <!--hier word in de data-id ingevuld met de id van de desbetreffende rij die hier in de lus getoond wordt-->
@@ -154,7 +154,7 @@ $taken = $taak->SelectAllTakenPerModule();
 
             // Je kon niet de juiste module id vinden omdat die niet in col-md-10 zit maar in 8
             // op deze manier krijg je de juiste id's
-            var $container = $(this).closest('.client');
+            var $container = $(this).closest('.module');
             var module_id = $container.closest('.module').find(".post").data('id');
             //var user_id = $container.find(".post2").data('id');
 
