@@ -36,6 +36,7 @@ session_start();
 
 
 <div class="offset-1 col-md-7">
+    <br>
     <h2>Is uw patiënten lijst nog up to date?</h2>
     <input type="submit" id="button" value="voeg nieuwe patienten toe">
 

@@ -67,4 +67,24 @@ public function getPatientTaak(){
     $result = $statement->fetch();
     return $result;
 }
+public function getAantalCategorie(){
+    $conn = Db::getInstance();
+
+    //QUERY WHERE USER = $_SESSION
+    $statement = $conn->prepare("SELECT * FROM tbl_psychologisch_profiel");
+    $statement->bindParam(":id", $this->id);
+    $statement->execute();
+    $result = $statement->fetch();
+    return $result;
+}
+public function getCategorie(){
+    $conn = Db::getInstance();
+
+    //QUERY WHERE USER = $_SESSION
+    $statement = $conn->prepare("SELECT * FROM tbl_module WHERE tbl_users_module.module_id = tbl_module.id");
+    $statement->bindParam(":id", $this->id);
+    $statement->execute();
+    $result = $statement->fetch();
+    return $result;
+}
     }

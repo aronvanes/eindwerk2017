@@ -41,25 +41,24 @@ if (!empty($_GET["search"])) {
     </ul>
 </nav>
 </div>
+
 <div class="content offset-1 col-md-7">
+<br>
 <form action="search.php" method="GET">
     <input name="var1" type="text" id="var1">
       <input type="submit" value="Search"></th>
     </form>
-
+<br>
 <ul class="flex-container">
+<p class='listname'>Patiënten</p>
     <?php foreach ($schema as $row): ?>
         <div class="col-md-5 col-features text-left border-bottom">
             <div class="flex-container ">
                     <div class='lists'>
                         <li class="flex-item">
-                            <p class='listname'>Patiënten</p>
                             <br>
                             <a href="./profiel.php?id=<?php echo $row['id']; ?>"><?php echo $row['voornaam'];echo " "; 
                             echo $row['achternaam']; ?></a>
-                            <p><?php 
-                            echo $row['user_id']; 
-                            echo $row['module_id'];?></p>
                             </li>
                     </div>
                 </a>
