@@ -41,7 +41,9 @@ if (!empty($_GET["search"])) {
     </ul>
 </nav>
 </div>
+
 <div class="content offset-1 col-md-7">
+<br>
 <form action="search.php" method="GET">
     <input name="var1" type="text" id="var1">
       <input type="submit" value="Search"></th>
