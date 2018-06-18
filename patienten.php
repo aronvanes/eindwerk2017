@@ -11,11 +11,10 @@ if (!empty($_SESSION['usernaam'])) {
 
 
 $user = new User();
-$schema = $user->Schema();
+$schema = $user->Patient();
 if (!empty($_GET["search"])) {
         $search = new Search($var1);
     } 
-var_dump($schema);
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,8 +55,9 @@ var_dump($schema);
                         <li class="flex-item">
                             <p class='listname'>Patiënten</p>
                             <br>
-                            <p><?php echo $row['voornaam']; echo " "; 
-                            echo $row['achternaam']; 
+                            <a href="./profiel.php?id=<?php echo $row['id']; ?>"><?php echo $row['voornaam'];echo " "; 
+                            echo $row['achternaam']; ?></a>
+                            <p><?php 
                             echo $row['user_id']; 
                             echo $row['module_id'];?></p>
                             </li>
