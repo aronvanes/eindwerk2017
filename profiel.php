@@ -39,11 +39,27 @@ session_start();
     $huidige = $huidige->getUserInfo();
     $extra = new UserInfo();
     $extra = $extra->getPatientModuleExtra();
+    $aantal = new UserInfo();
+    $aantal = $aantal->getAantalCategorie();
+    $categorie = new UserInfo();
+    $categorie = $categorie->getCategorie();
 } ?>
+<br>
 <h2><?php echo ($huidige['voornaam']) . " " . ($huidige['achternaam']); ?></h2>
 <br>
-<h3>Is bezig met de module: <?php echo ($extra['naam']); ?></h3>
-<h4>Taak: <?php echo ($extra['beschrijving']); ?></h4>
+<h5>Reeds afgewerkte modules / categorie: </h5>
+    <p>Categorie werk: <?php echo ($aantal['categorie_werk']); ?></p>
+    <p>Categorie energie: <?php echo ($aantal['categorie_energie']); ?> </p>
+    <p>Categorie sociaal: <?php echo ($aantal['categorie_sociaal']); ?></p>
+<br>
+<h5>Is bezig in de categorie: </h5>
+<p><?php echo ($categorie['categorie']); ?></p>
+<br>
+<h5>Is bezig met de module: </h5>
+<p><?php echo ($extra['naam']); ?></p>
+<br>
+<h5>Taak: </h5>
+<p><?php echo ($extra['beschrijving']); ?></p>
 </div>
 </div>
 </body>
