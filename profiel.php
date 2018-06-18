@@ -37,9 +37,13 @@ session_start();
     $huidige = new UserInfo();
     $huidige->setId($_GET['id']);
     $huidige = $huidige->getUserInfo();
+    $extra = new UserInfo();
+    $extra = $extra->getPatientModuleExtra();
 } ?>
-<h2><?php echo ($huidige['firstname']) . " " . ($huidige['lastname']); ?></h2>
-
+<h2><?php echo ($huidige['voornaam']) . " " . ($huidige['achternaam']); ?></h2>
+<br>
+<h3>Is bezig met de module: <?php echo ($extra['naam']); ?></h3>
+<h4>Taak: <?php echo ($extra['beschrijving']); ?></h4>
 </div>
 </div>
 </body>
