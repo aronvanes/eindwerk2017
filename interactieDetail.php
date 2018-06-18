@@ -123,7 +123,7 @@ $connecting2 = $connect2->SetModuleToPatient2();
             // Je kon niet de juiste module id vinden omdat die niet in col-md-10 zit maar in 8
             // op deze manier krijg je de juiste id's
             var $container = $(this).closest('.client');
-            var module_id = $container.closest('.module).find(".post").data('id');
+            var module_id = $container.closest('.module').find(".post").data('id');
             var user_id = $container.find(".post2").data('id');
 
             console.log("module : "+module_id);
