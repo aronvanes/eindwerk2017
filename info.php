@@ -55,13 +55,13 @@ if (!empty($_POST)){
   <form action="#" method="post">
     <input type="text" name="geboortedatum" id="geboortedatum" placeholder="geboortedatum yyyy-mm-dd">
     <br>
-    <input type="text" name="woonplaats" id="woonplaats" placeholder="woonplaats">
+    <input type="text" name="diploma" id="diploma" placeholder="Diploma">
     <br>
-    <input type="text" name="tewerkgesteld" id="tewerkgesteld" placeholder="te werk gesteld">
+    <input type="text" name="aantaljaar" id="aantaljaar" placeholder="Aantal jaar ervaring">
     <br>
-    <input type="text" name="jobtitel" id="jobtitel" placeholder="jobtitel">
+    <input type="text" name="praktijk" id="praktijk" placeholder="Adres praktijk">
     <br>
-    <input type="text" name="sector" id="sector" placeholder="sector">
+    <input type="text" name="registratienummer" id="registratienummer" placeholder="registratienummer psychologencommisie">
     <br>
     <input type="submit" name="button" id="button" placeholder="Klaar!">
 </form>
