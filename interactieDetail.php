@@ -62,6 +62,7 @@ $patient = $user->Patient();
                             </p>
                         </li>
                         <!--in de eerste foreachlus word er nog een tweede gezet die per module alle users toont-->
+                        <div class="client-container">
                         <?php foreach ($patient as $row2): ?>
                             <div class="client">
 
