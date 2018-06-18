@@ -5,7 +5,7 @@ class Info {
     private $geboortedatum;
     private $specialisatie;
     private $aantaljaar;
-    private $praktijk;
+    private $woonplaats;
     private $registratienummer;
 
     /**
@@ -71,9 +71,9 @@ class Info {
     /**
      * Get the value of praktijk
      */ 
-    public function getPraktijk()
+    public function getWoonplaats()
     {
-        return $this->praktijk;
+        return $this->woonplaats;
     }
 
     /**
@@ -81,9 +81,9 @@ class Info {
      *
      * @return  self
      */ 
-    public function setPraktijk($praktijk)
+    public function setWoonplaats($woonplaats)
     {
-        $this->praktijk = $praktijk;
+        $this->woonplaats = $woonplaats;
 
         return $this;
     }
@@ -109,13 +109,13 @@ class Info {
     }
     public function Profiel(){
     $conn = Db::getInstance();
-    $statement = $conn->prepare("INSERT INTO tbl_users_extra (geboortedatum, specialisatie, aantaljaar, praktijk, registratienummer)
-    VALUES (:geboortedatum, :specialisatie, :aantaljaar, :praktijk, :registratienummer)");
+    $statement = $conn->prepare("INSERT INTO tbl_users_extra (geboortedatum, specialisatie, aantaljaar, woonplaats, registratienummer)
+    VALUES (:geboortedatum, :specialisatie, :aantaljaar, :woonplaats, :registratienummer)");
     //$statement->bindParam(':users_id', $this->users_id);
     $statement->bindParam(':geboortedatum', $this->geboortedatum);
     $statement->bindParam(':specialisatie', $this->specialisatie);
     $statement->bindParam(':aantaljaar', $this->aantaljaar);
-    $statement->bindParam(':praktijk', $this->praktijk);
+    $statement->bindParam(':woonplaats', $this->woonplaats);
     $statement->bindParam(':registratienummer', $this->registratienummer);
     $result = $statement->execute();
     return $result;

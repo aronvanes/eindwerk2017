@@ -13,9 +13,9 @@ if (!empty($_POST)){
     //$extra->setUsers_id($_SESSION['id']);
     $extra->setGeboortedatum($_POST['geboortedatum']);
     $extra->setWoonplaats($_POST['woonplaats']);
-    $extra->setTewerkgesteld($_POST['tewerkgesteld']);
-    $extra->setJobtitel($_POST['jobtitel']);
-    $extra->setSector($_POST['sector']);
+    $extra->setSpecialisatie($_POST['specialisatie']);
+    $extra->setAantaljaar($_POST['aantaljaar']);
+    $extra->setregistratienummer($_POST['registratienummer']);
     if($extra->Profiel()){
         header('location: dashboard.php');
     }
@@ -59,7 +59,7 @@ if (!empty($_POST)){
     <br>
     <input type="text" name="aantaljaar" id="aantaljaar" placeholder="Aantal jaar ervaring">
     <br>
-    <input type="text" name="praktijk" id="praktijk" placeholder="Adres praktijk">
+    <input type="text" name="woonplaats" id="praktijk" placeholder="Adres praktijk">
     <br>
     <input type="text" name="registratienummer" id="registratienummer" placeholder="registratienummer psychologencommisie">
     <br>
