@@ -9,8 +9,6 @@ if (!empty($_SESSION['usernaam'])) {
     header('Location: login.php');
 }
 
-$user = new User();
-$patient = $user->Patient();
 
 $user = new User();
 $schema = $user->Schema();
