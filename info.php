@@ -2,7 +2,11 @@
 spl_autoload_register(function($class){
     include_once("classes/" .  $class . ".class.php");
 });
-
+session_start();
+if (!empty($_SESSION['usernaam'])) {
+} else {
+    header('Location: login.php');
+}
 if (!empty($_POST)){
     try {
     $extra = new Info();
@@ -13,8 +17,6 @@ if (!empty($_POST)){
     $extra->setJobtitel($_POST['jobtitel']);
     $extra->setSector($_POST['sector']);
     if($extra->Profiel()){
-        session_start();
-        $_SESSION['usernaam'] = $user->getUsernaam();
         header('location: dashboard.php');
     }
     }
