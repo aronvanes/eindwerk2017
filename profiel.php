@@ -58,7 +58,7 @@ session_start();
 <h5>Is bezig met de module: </h5>
 <p><?php echo ($extra['naam']); ?></p>
 <br>
-<h5>Taak: </h5>
+<h5>Beschrijving: </h5>
 <p><?php echo ($extra['beschrijving']); ?></p>
 </div>
 </div>
