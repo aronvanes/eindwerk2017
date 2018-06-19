@@ -172,6 +172,10 @@ span {
     font-family: 'Roboto', sans-serif;
 }
 
+.naam h5 {
+    font-size: 30px;
+}
+
 .categorie {
     display: block;
     width: 90%;
@@ -185,7 +189,7 @@ span {
     display: block;
     width: 90%;
     height: 60px;
-    border-bottom: 1px solid #656D78;
+    border-bottom: 1px solid #FFC400;
     margin-bottom: 30px;
     font-family: 'Roboto', sans-serif;
 }
@@ -203,4 +207,5 @@ h5 {
     font-family: 'Roboto';
     font-size: 24px;
     font-weight: bold;
+    color: #656D78;
 }

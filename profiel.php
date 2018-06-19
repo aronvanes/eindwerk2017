@@ -49,7 +49,7 @@ session_start();
 } ?>
 <br>
 <div class="naam">
-<h2><?php echo ($huidige['voornaam']) . " " . ($huidige['achternaam']); ?></h2>
+<h5><?php echo ($huidige['voornaam']) . " " . ($huidige['achternaam']); ?></h5>
 </div>
 <div class="categorie">
 <h5>Reeds afgewerkte modules per categorie: </h5>
