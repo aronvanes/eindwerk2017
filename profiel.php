@@ -48,21 +48,27 @@ session_start();
     $categorie = $categorie->getCategorie();
 } ?>
 <br>
+<div class="naam">
 <h2><?php echo ($huidige['voornaam']) . " " . ($huidige['achternaam']); ?></h2>
-<br>
-<h5>Reeds afgewerkte modules / categorie: </h5>
+</div>
+<div class="categorie">
+<h5>Reeds afgewerkte modules per categorie: </h5>
     <p>Categorie werk: <?php echo ($aantal['categorie_werk']); ?></p>
     <p>Categorie energie: <?php echo ($aantal['categorie_energie']); ?> </p>
     <p>Categorie sociaal: <?php echo ($aantal['categorie_sociaal']); ?></p>
-<br>
+</div>
+<div class="huidige">
 <h5>Is bezig in de categorie: </h5>
 <p><?php echo ($categorie['categorie']); ?></p>
-<br>
+</div>
+<div class="module">
 <h5>Is bezig met de module: </h5>
 <p><?php echo ($extra['naam']); ?></p>
-<br>
+</div>
+<div class="beschrijving">
 <h5>Beschrijving: </h5>
 <p><?php echo ($extra['beschrijving']); ?></p>
+</div>
 </div>
 </div>
 </body>
