@@ -2,19 +2,15 @@
 spl_autoload_register(function($class){
     include_once("classes/" .  $class . ".class.php");
 });
-
-// session_start();
-// if (!empty($_SESSION['usernaam'])) {
-// } else {
-//     header('Location: login.php');
-// }
+session_start();
+if (!empty($_SESSION['usernaam'])) {
+} else {
+header('Location: login.php');
+}
 $mod = new Module;
 $module = $mod->GetAllInteractieModules();
 $user = new User();
 $patient = $user->Patient();
-$taak = new Taak();
-$test = $_POST['module_id'];
-$taken = $taak->SelectAllTakenPerModule($test);
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -69,9 +65,16 @@ $taken = $taak->SelectAllTakenPerModule($test);
 
                         <!--in de eerste foreachlus word er nog een tweede gezet die per module alle users toont-->
                         <div class="taak-container">
+                            <?php
+                            $taak = new Taak();
+                            $taken = $taak->SelectAllTakenPerModule();
+                            ?>
                             <?php foreach ($taken as $row3): ?>
                                 <div class="taak">
-
+                                    <?php
+                                    $taak = new Taak();
+                                    $taken = $taak->SelectAllTakenPerModule();
+                                    ?>
                                     <li>
                                         <!--elke rij voor users heeft ook een button die er voor zorgt dat de id van d desbetreffende user samenkomt met bijbehorende
                                         interactie module-->
@@ -172,7 +175,8 @@ $taken = $taak->SelectAllTakenPerModule($test);
 
                     // code + message
                     if (response.code == 200) {
-                        console.log("werkt dit?")
+                        console.log("werkt dit?");
+
                     }
                 });
 
