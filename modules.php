@@ -39,11 +39,11 @@ if (!empty($_SESSION['usernaam'])) {
     </div>
     <div class="col-md-2">
         <img src="images/160-run.png" alt="" id="emoji"> <br>
-        <input type="button" value="Sport" id="btnmodule">
+        <a href="energie.php" class="btn btn-primary">Energie</a>
     </div>
     <div class="col-md-2">
         <img src="images/063-sleep-1.png" alt="" id="emoji"> <br>
-        <input type="button" value="Slaap" id="btnmodule">
+        <a href="slaap.php" class="btn btn-primary">Slaap</a>
     </div>
 
 
