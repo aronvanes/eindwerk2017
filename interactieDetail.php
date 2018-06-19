@@ -13,7 +13,8 @@ $module = $mod->GetAllInteractieModules();
 $user = new User();
 $patient = $user->Patient();
 $taak = new Taak();
-$taken = $taak->SelectAllTakenPerModule();
+$test = $_POST['module_id'];
+$taken = $taak->SelectAllTakenPerModule($test);
 
 ?><!DOCTYPE html>
 <html lang="en">
