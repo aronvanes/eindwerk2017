@@ -41,7 +41,6 @@ li {
     left: 0px;
     border-bottom: 1px solid white;
     align-content: center;
-
 }
 
 nav li a {
@@ -152,7 +151,6 @@ span {
     padding-bottom: 2em;
 }
 
-
 .horizontalOffset {
     margin-top: 3.5em;
 }
@@ -161,3 +159,56 @@ span {
     display: flex;
 }
 
+<<<<<<< HEAD
+=======
+.client-container {
+    display: none;
+}
+
+.naam {
+    display: block;
+    width: 90%;
+    height: 60px;
+    border-bottom: 1px solid #656D78;
+    margin-bottom: 50px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.naam h5 {
+    font-size: 30px;
+}
+
+.categorie {
+    display: block;
+    width: 90%;
+    height: 160px;
+    border-bottom: 1px solid #656D78;
+    margin-bottom: 30px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.huidige {
+    display: block;
+    width: 90%;
+    height: 60px;
+    border-bottom: 1px solid #656D78;
+    margin-bottom: 30px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.module {
+    display: block;
+    width: 90%;
+    height: 160px;
+    border-bottom: 1px solid #656D78;
+    margin-bottom: 30px;
+    font-family: 'Roboto', sans-serif;
+}
+
+h5 {
+    font-family: 'Roboto';
+    font-size: 24px;
+    font-weight: bold;
+    color: #656D78;
+}
+>>>>>>> cd70dbf642d1a07ffa62f1d1601537d5158f46f1
