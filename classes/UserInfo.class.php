@@ -37,7 +37,7 @@ public function getPatientModule(){
 
     //QUERY WHERE USER = $_SESSION
     $statement = $conn->prepare("SELECT module_id FROM tbl_users_module 
-    INNER JOIN tbl_users ON tbl_users.id = tbl_users_module.user_id");
+    INNER JOIN tbl_users ON tbl_users.id = tbl_users_module.user_id WHERE id = :id");
     $statement->bindParam(":id", $this->id);
     $statement->execute();
     $result = $statement->fetch();
@@ -49,7 +49,8 @@ public function getPatientModuleExtra(){
     //QUERY WHERE USER = $_SESSION
     $statement = $conn->prepare("SELECT * FROM tbl_users_module 
     INNER JOIN tbl_users ON tbl_users.id = tbl_users_module.user_id
-    INNER JOIN tbl_module ON tbl_module.id = tbl_users_module.module_id");
+    INNER JOIN tbl_module ON tbl_module.id = tbl_users_module.module_id
+    WHERE tbl_users_module.user_id = :id");
     $statement->bindParam(":id", $this->id);
     $statement->execute();
     $result = $statement->fetch();

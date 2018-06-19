@@ -38,10 +38,13 @@ session_start();
     $huidige->setId($_GET['id']);
     $huidige = $huidige->getUserInfo();
     $extra = new UserInfo();
+    $extra->setId($_GET['id']);
     $extra = $extra->getPatientModuleExtra();
     $aantal = new UserInfo();
+    $aantal->setId($_GET['id']);
     $aantal = $aantal->getAantalCategorie();
     $categorie = new UserInfo();
+    $categorie->setId($_GET['id']);
     $categorie = $categorie->getCategorie();
 } ?>
 <br>
