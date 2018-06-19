@@ -39,21 +39,21 @@ $patient = $user->Patient();
     </nav>
 </div>
 
-<div class="offset-1 horizontalOffset">
+<div class="offset-1 horizontalOffset col-md-8">
 
         <ul>
             <!--hier word via een foreachlus alle rijen opgehaald uit de modules met categorie interactie -->
             <?php foreach ($module as $row) :?>
-                <div class="list border-bottom module">
+                <div class="list border-bottom-yellow module">
                     <div class="toggleHolder">
                         <input type="button" class="toggler" value="▾Show More">
                         <input type="button" class="toggler" style="display:none;" value="▴ Show Less">
                     </div>
                     <li>
                         <!--hier word in de data-id ingevuld met de id van de desbetreffende rij die hier in de lus getoond wordt-->
-                        <p  class="post" data-id="<?php echo $row['id'] ?>">
+                        <h4  class="post" data-id="<?php echo $row['id'] ?>">
                             <?php echo $row['naam'] ?>
-                        </p>
+                        </h4>
                     </li>
                     <div class="showpanel" style="display: none;">
                         <li>
@@ -78,9 +78,9 @@ $patient = $user->Patient();
                                     <li>
                                         <!--elke rij voor users heeft ook een button die er voor zorgt dat de id van d desbetreffende user samenkomt met bijbehorende
                                         interactie module-->
-                                        <p class="text-left border-bottom" data-id="<?php echo $row3['id'] ?>">
+                                        < class="text-left border-bottom" data-id="<?php echo $row3['id'] ?>">
                                             <?php echo $row3['naam'];?>
-                                        </p>
+                                        </>
                                         <p>
                                             <?php echo $row3['beschrijving'];?>
                                         </p>
@@ -97,7 +97,7 @@ $patient = $user->Patient();
                                     <li>
                                         <!--elke rij voor users heeft ook een button die er voor zorgt dat de id van d desbetreffende user samenkomt met bijbehorende
                                         interactie module-->
-                                        <p class="text-left border-bottom post2" data-id="<?php echo $row2['id'] ?>">
+                                        <p class="text-left border-bottom-yellow post2" data-id="<?php echo $row2['id'] ?>">
                                             <?php echo $row2['voornaam'].' '.$row2['achternaam'];?>
                                             <input class="btnSubmit" type="submit" value="Module toewijzen" />
                                         </p>
