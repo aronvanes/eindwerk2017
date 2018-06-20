@@ -63,7 +63,7 @@ public function getId()
     }
 
 
-    
+
     /**
      * @return mixed
      */
@@ -135,4 +135,15 @@ public function getId()
         $result = $statement->execute();
         return $result;
     }
+
+    public static function getModulesPerPatient($user_id){
+      $conn = Db::getInstance();
+      $statement = $conn->prepare('SELECT * from tbl_module as module INNER JOIN tbl_users_module as u_module ON module.id = u_module.user_id WHERE u_module.user_id = :id');
+      $statement->bindParam(':id', $user_id);
+
+      if ($statement->execute()){
+        return $statement->fetch(PDO::FETCH_OBJ);
+      }
+    }
+
 }
