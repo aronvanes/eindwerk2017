@@ -87,7 +87,7 @@ $patient = $user->Patient();
                                     </li>
                                 </div>
                             <?php endforeach; ?>
-                            <input class="btnNext" type="submit" value="doorgaan">
+                            <input class="btnNext btn btn-primary" type="submit" value="doorgaan">
                         </div>
 
                         <div class="client-container">
@@ -99,7 +99,7 @@ $patient = $user->Patient();
                                         interactie module-->
                                         <p class="text-left border-bottom-yellow post2" data-id="<?php echo $row2['id'] ?>">
                                             <?php echo $row2['voornaam'].' '.$row2['achternaam'];?>
-                                            <input class="btnSubmit" type="submit" value="Module toewijzen" />
+                                            <input class="btnSubmit btn btn-primary" type="submit" value="Module toewijzen" />
                                         </p>
                                     </li>
                             </div>

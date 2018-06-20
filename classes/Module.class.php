@@ -62,6 +62,8 @@ public function getId()
         $this->categorie = $categorie;
     }
 
+
+    
     /**
      * @return mixed
      */
