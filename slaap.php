@@ -142,6 +142,7 @@ $patient = $user->Patient();
                     // code + message
                     if (response.code == 200) {
                         console.log("werkt dit?")
+                        alert("Module toegewezen");
                     }
                 });
 
