@@ -62,6 +62,8 @@ public function getId()
         $this->categorie = $categorie;
     }
 
+
+    
     /**
      * @return mixed
      */
@@ -87,6 +89,22 @@ public function getId()
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
   }
+
+    public function GetAllEnergieModules(){
+
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT * FROM tbl_module WHERE categorie = 2");
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function GetAllSlaapModules(){
+
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT * FROM tbl_module WHERE categorie = 3");
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
     public function CreateModule(){
 

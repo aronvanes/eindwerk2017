@@ -219,3 +219,15 @@ h5 {
     color: #656D78;
 }
 
+<<<<<<< HEAD
+=======
+.btn{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.btn-warning{
+    background-color: #FFC400;
+    color: white;
+}
+>>>>>>> c16ff4d5f80af1f592ed26417b332dc507d20f80
