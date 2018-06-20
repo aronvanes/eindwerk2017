@@ -223,6 +223,8 @@ h5 {
     display: flex;
     justify-content: center;
     align-content: center;
-
-
+}
+.btn-warning{
+    background-color: #FFC400;
+    color: white;
 }
