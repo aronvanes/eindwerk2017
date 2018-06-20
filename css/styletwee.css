@@ -1,6 +1,7 @@
 body {
     width: 100%;
     height: auto;
+    font-family: 'Roboto', sans-serif;
 }
 
 .container {
@@ -9,6 +10,17 @@ body {
     text-align: center;
 }
 
+.border-yellow{
+    border-style: solid;
+    border-color: #F2C94C;
+    border-width: 2px;
+}
+
+.border-bottom-yellow{
+    border-bottom-style: solid;
+    border-color: #F2C94C;
+    border-width: 2px;
+}
 .logo {
     height: 80px;
     display: block;
@@ -159,9 +171,6 @@ span {
     display: flex;
 }
 
-.client-container {
-    display: none;
-}
 
 .naam {
     display: block;
@@ -194,7 +203,7 @@ span {
     font-family: 'Roboto', sans-serif;
 }
 
-.module {
+.module2 {
     display: block;
     width: 90%;
     height: 160px;
@@ -209,3 +218,4 @@ h5 {
     font-weight: bold;
     color: #656D78;
 }
+

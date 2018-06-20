@@ -61,7 +61,7 @@ session_start();
 <h5>Is bezig in de categorie: </h5>
 <p><?php echo ($categorie['categorie']); ?></p>
 </div>
-<div class="module">
+<div class="module2">
 <h5>Is bezig met de module: </h5>
 <p><?php echo ($extra['naam']); ?></p>
 </div>
