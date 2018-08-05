@@ -10,17 +10,18 @@ body {
     text-align: center;
 }
 
-.border-yellow{
+.border-yellow {
     border-style: solid;
     border-color: #F2C94C;
     border-width: 2px;
 }
 
-.border-bottom-yellow{
+.border-bottom-yellow {
     border-bottom-style: solid;
     border-color: #F2C94C;
     border-width: 2px;
 }
+
 .logo {
     height: 80px;
     display: block;
@@ -32,7 +33,7 @@ body {
 }
 
 .navigation {
-    background-color: #FFF5D4;
+    background-color: #F2C94C;
     width: 20%;
     height: 100vh;
 }
@@ -51,15 +52,15 @@ li {
     display: block;
     width: 100%;
     left: 0px;
-    border-bottom: 1px solid white;
     align-content: center;
+    text-decoration: none;
 }
 
 nav li a {
     display: flex;
     width: 100%;
     height: 65px;
-    background-color: #FFF5D4;
+    background-color: #F2C94C;
     margin-bottom: 5px;
     color: #656D78;
     text-decoration: none;
@@ -67,27 +68,27 @@ nav li a {
     align-items: center;
 }
 
-li a:hover {
-    background-color: #FFC400;
+nav li #extra {
+    background-color: #656D78;
     color: white;
 }
 
-#logout:hover {
-    background-color: #FFC400;
-    color: white;
-}
-
-#logout {
-    display: block;
-    width: 100%;
-    height: 65px;
-    background-color: #FFF5D4;
-    margin-bottom: 5px;
+nav li #extra:hover {
+    background-color: white;
     color: #656D78;
+}
+
+nav li #cuser {
+    background-color: #F2F2F2;
+    width: 100%;
+    height: 220px;
+}
+
+li a:hover {
+    background-color: white;
+    color: black;
     text-decoration: none;
-    text-align: center;
-    align-content: center;
-    margin-top: 300px;
+    padding-bottom: 5px;
 }
 
 #button {
@@ -171,7 +172,6 @@ span {
     display: flex;
 }
 
-
 .naam {
     display: block;
     width: 90%;
@@ -219,15 +219,13 @@ h5 {
     color: #656D78;
 }
 
-<<<<<<< HEAD
-=======
-.btn{
+.btn {
     display: flex;
     justify-content: center;
     align-content: center;
 }
-.btn-warning{
+
+.btn-warning {
     background-color: #FFC400;
     color: white;
 }
->>>>>>> c16ff4d5f80af1f592ed26417b332dc507d20f80
