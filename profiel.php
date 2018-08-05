@@ -21,11 +21,10 @@ session_start();
 
 <div class="row">
 <div class=navigation>
-<a href=""><div class="logo"></div></a>
 <nav class="navbar-fixed-left">
     <ul class="nav navbar-nav">
         <li>
-            <h2 id="cuser"><?php echo ($huidige['voornaam']); ?></h2>
+            <h2 id="cuser">Naam + ...</h2>
         </li>
     <li><a href="dashboard.php">Dashboard</a></li>
     <li><a href="patienten.php">Patiënten</a></li>
