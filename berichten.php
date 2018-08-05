@@ -45,17 +45,7 @@ $huidige = $huidige->getUserInfo();
 
 
 <div class="offset-1 col-md-7">
-<div id="uptodate">
-    <p>Is uw patiëntenlijst nog up to date? <a href="patienten.php">Patiëntenlijst beheren</a></p>
-    
-</div>
-<div id="pbehandeling">
-    <h2>Patiënten in behandeling</h2>
 
-</div>
-<div id="amodules">
-    <h2>Actieve modules</h2>
-</div>
 </div>
 </div>
 </div>
