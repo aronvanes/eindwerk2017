@@ -26,10 +26,16 @@ if (!empty($_SESSION['usernaam'])) {
 <a href=""><div class="logo"></div></a>
 <nav class="navbar-fixed-left">
     <ul class="nav navbar-nav">
+        <li>
+            <h2 id="cuser"><?php echo ($huidige['voornaam']); ?></h2>
+        </li>
     <li><a href="dashboard.php">Dashboard</a></li>
     <li><a href="patienten.php">Patiënten</a></li>
     <li><a href="modules.php">Modules</a></li>
-    <a href="logout.php" id="logout">Uitloggen</a>
+    <li><a href="profiel.php">Profiel</a></li>
+    <li><a href="berichten.php">Berichten</a></li>
+    <li><a href="extramodules.php" id="extra">Extra modules</a></li>
+    <li><a href="logout.php">Uitloggen</a><li>
     </ul>
 </nav>
 </div>

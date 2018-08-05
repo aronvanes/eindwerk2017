@@ -46,10 +46,17 @@ $huidige = $huidige->getUserInfo();
 
 
 <div class="offset-1 col-md-7">
-    <br>
-    <h2>Is uw patiënten lijst nog up to date?</h2>
-    <input type="submit" id="button" value="voeg nieuwe patienten toe">
+<div id="uptodate">
+    <h3>Is uw patiëntenlijst nog up to date?</h3>
+    <a href="patienten.php">Patiëntenlijst beheren</a>
+</div>
+<div id="pbehandeling">
+    <h2>Patiënten in behandeling</h2>
 
+</div>
+<div id="amodules">
+    <h2>Actieve modules</h2>
+</div>
 </div>
 </div>
 

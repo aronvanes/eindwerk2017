@@ -91,6 +91,13 @@ li a:hover {
     padding-bottom: 5px;
 }
 
+li a:active {
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    padding-bottom: 5px;
+}
+
 #button {
     background-color: #FFC400;
     color: white;
