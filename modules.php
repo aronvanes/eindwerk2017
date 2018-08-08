@@ -23,27 +23,32 @@ if (!empty($_SESSION['usernaam'])) {
 <body>
 <div class="row">
 <div class=navigation>
-<a href=""><div class="logo"></div></a>
 <nav class="navbar-fixed-left">
     <ul class="nav navbar-nav">
+        <li>
+        <h2 id="cuser">Naam + ...</h2>
+        </li>
     <li><a href="dashboard.php">Dashboard</a></li>
     <li><a href="patienten.php">Patiënten</a></li>
     <li><a href="modules.php">Modules</a></li>
-    <a href="logout.php" id="logout">Uitloggen</a>
+    <li><a href="profiel.php">Profiel</a></li>
+    <li><a href="berichten.php">Berichten</a></li>
+    <li><a href="extramodules.php" id="extra">Extra modules</a></li>
+    <li><a href="logout.php">Uitloggen</a><li>
     </ul>
 </nav>
 </div>
-    <div class="col-md-2 offset-1">
+    <div class="col-md-2 offset-1" id="topint">
         <img src="images/156-family.png" alt="" id="emoji"> <br>
-        <a href="interactie.php" class="btn btn-primary">Interactie</a>
+        <a href="interactie.php" class="btn btn-primary" id="interactie">Interactie</a>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-2" id="topen">
         <img src="images/160-run.png" alt="" id="emoji"> <br>
-        <a href="energie.php" class="btn btn-primary">Energie</a>
+        <a href="energie.php" class="btn btn-primary" id="energie">Energie</a>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-2" id="topsla">
         <img src="images/063-sleep-1.png" alt="" id="emoji"> <br>
-        <a href="slaap.php" class="btn btn-primary">Slaap</a>
+        <a href="slaap.php" class="btn btn-primary" id="slaap">Slaap</a>
     </div>
 
 

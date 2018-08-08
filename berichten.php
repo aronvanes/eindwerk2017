@@ -4,17 +4,14 @@ spl_autoload_register(function($class){
 });
 
 session_start();
-if (!empty($_SESSION['usernaam'])) {
-} else {
-    header('Location: login.php');
-}
+// if (!empty($_SESSION['usernaam'])) {
+// } else {
+//     header('Location: login.php');
+// }
 
+$huidige = new UserInfo();
+$huidige = $huidige->getUserInfo();
 
-$user = new User();
-$schema = $user->Patient();
-if (!empty($_GET["search"])) {
-        $search = new Search($var1);
-    } 
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +25,6 @@ if (!empty($_GET["search"])) {
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
-
 <div class="row">
 <div class=navigation>
 <nav class="navbar-fixed-left">
@@ -47,30 +43,10 @@ if (!empty($_GET["search"])) {
 </nav>
 </div>
 
-<div class="content offset-1 col-md-7">
-<br>
-<form action="search.php" method="GET">
-    <input name="var1" type="text" id="var1">
-      <input type="submit" value="Search"></th>
-    </form>
-<br>
-<ul class="flex-container">
-<p class='listname'>Patiënten</p>
-    <?php foreach ($schema as $row): ?>
-        <div class="col-md-5 col-features text-left border-bottom">
-            <div class="flex-container ">
-                    <div class='lists'>
-                        <li class="flex-item">
-                            <br>
-                            <a href="./profiel.php?id=<?php echo $row['id']; ?>"><?php echo $row['voornaam'];echo " "; 
-                            echo $row['achternaam']; ?></a>
-                            </li>
-                    </div>
-                </a>
-            </div>
-        </div>
-    <?php endforeach; ?>
-</ul>
+
+<div class="offset-1 col-md-7">
+
+</div>
 </div>
 </div>
 </body>
