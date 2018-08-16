@@ -8,17 +8,9 @@ $content = trim(file_get_contents("php://input"));
 
 $decoded = json_decode($content, true);
 
-//If json_decode failed, the JSON is invalid.
 if(is_array($decoded)) {
 
-  $user = new AppUser();
-
-  $user->setUsernaam($decoded['username']);
-  $user->setWachtwoord($decoded['password']);
-
-  echo json_encode($user->login());
-
-  // echo ($user->login());
+  echo json_encode(Taak::getTakenPerModule($decoded['module_id']));
 
 } else {
   // Send error back to user.

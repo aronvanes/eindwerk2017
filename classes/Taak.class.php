@@ -67,4 +67,12 @@ class Taak
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public static function getTakenPerModule($module_id){
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT * FROM tbl_taken WHERE module_id = :module_id");
+        $statement->bindValue(":module_id", $module_id);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_OBJ);
+    }
 }

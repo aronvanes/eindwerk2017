@@ -8,6 +8,10 @@ session_start();
 // } else {
 //     header('Location: login.php');
 // }
+
+$huidige = new UserInfo();
+$huidige = $huidige->getUserInfo();
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,25 +27,37 @@ session_start();
 <body>
 <div class="row">
 <div class=navigation>
-<a href=""><div class="logo"></div></a>
 <nav class="navbar-fixed-left">
     <ul class="nav navbar-nav">
+        <li>
+            <h2 id="cuser">Naam + ...</h2>
+        </li>
     <li><a href="dashboard.php">Dashboard</a></li>
     <li><a href="patienten.php">Patiënten</a></li>
     <li><a href="modules.php">Modules</a></li>
-    <a href="logout.php" id="logout">Uitloggen</a>
+    <li><a href="profiel.php">Profiel</a></li>
+    <li><a href="berichten.php">Berichten</a></li>
+    <li><a href="extramodules.php" id="extra">Extra modules</a></li>
+    <li><a href="logout.php">Uitloggen</a><li>
     </ul>
 </nav>
 </div>
 
 
 <div class="offset-1 col-md-7">
-    <br>
-    <h2>Is uw patiënten lijst nog up to date?</h2>
-    <input type="submit" id="button" value="voeg nieuwe patienten toe">
+<div id="uptodate">
+    <p>Is uw patiëntenlijst nog up to date? <a href="patienten.php">Patiëntenlijst beheren</a></p>
+    
+</div>
+<div id="pbehandeling">
+    <h2>Patiënten in behandeling</h2>
 
 </div>
+<div id="amodules">
+    <h2>Actieve modules</h2>
 </div>
-
+</div>
+</div>
+</div>
 </body>
 </html>

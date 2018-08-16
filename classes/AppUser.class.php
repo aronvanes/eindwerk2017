@@ -9,6 +9,7 @@ class AppUser extends User {
   protected $voornaam;
   protected $wachtwoord;
   protected $rol;
+  protected $id;
 
   // Optional inputs
   protected $achternaam;
@@ -20,6 +21,10 @@ class AppUser extends User {
 
   public function __construct(){
     $this->rol = 3;
+  }
+
+  public function setId($value){
+    $this->id = $value;
   }
 
   public function setUsernaam($value){
@@ -86,14 +91,19 @@ class AppUser extends User {
   public function login(){
     $conn = Db::getInstance();
 
-    $statement = $conn->prepare("SELECT id, usernaam, wachtwoord FROM tbl_users WHERE usernaam = :usernaam");
+    $statement = $conn->prepare("SELECT * FROM tbl_users AS users RIGHT JOIN tbl_users_extra as extra ON users.id = extra.users_id WHERE usernaam = :usernaam");
     $statement->bindValue(':usernaam', $this->usernaam);
 
     if ($statement->execute()){
-      $foundUser = $statement->fetch(PDO::FETCH_OBJ);
+      $foundUser = $statement->fetch(PDO::FETCH_ASSOC);
 
+<<<<<<< HEAD
       if (password_verify($this->wachtwoord, $foundUser->wachtwoord)){
         return $foundUser->id;
+=======
+      if (password_verify($this->wachtwoord, $foundUser['wachtwoord'])){
+        return $foundUser;
+>>>>>>> 59e9515cc1bff9a6f78f6d82989356d4136d6f34
       } else {
         return 'Wachtwoord niet herkent';
       }
@@ -114,13 +124,13 @@ class AppUser extends User {
     $statement->bindValue(':rol', $this->rol);
 
     if($statement->execute()){
+      $affected_user = $conn->lastInsertId();
       if (
         !empty($this->geboorteDatum) ||
         !empty($this->woonplaats) ||
         !empty($this->tewerkgesteld) ||
         !empty($this->sector) ||
         !empty($this->jobTitel)){
-          $affected_user = $conn->lastInsertId();
 
           $extraInfoStatement = $conn->prepare('INSERT INTO tbl_users_extra (users_id, geboortedatum, woonplaats, tewerkgesteld, jobtitel, sector) VALUES (:users_id, :geboortedatum, :woonplaats, :tewerkgesteld, :jobtitel, :sector)');
           $extraInfoStatement->bindValue(':users_id', $affected_user);
@@ -136,7 +146,7 @@ class AppUser extends User {
             return 'Er was een probleem met het invoegen van extra informatie: '.print_r($conn->errorInfo());
           }
         } else {
-          return true;
+          return $affected_user;
         }
     } else {
       return false;
