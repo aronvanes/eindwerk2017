@@ -50,7 +50,6 @@ class AppUser extends User {
       } else {
         $this->geboorteDatum = date('Y-m-d', $date->getTimeStamp());
       }
-      // date('Y-m-d', $date->getTimeStamp());
     }
   }
 
@@ -94,7 +93,7 @@ class AppUser extends User {
       $foundUser = $statement->fetch(PDO::FETCH_OBJ);
 
       if (password_verify($this->wachtwoord, $foundUser->wachtwoord)){
-        return true;
+        return $foundUser->id;
       } else {
         return 'Wachtwoord niet herkent';
       }
@@ -132,7 +131,7 @@ class AppUser extends User {
           $extraInfoStatement->bindValue(':sector', $this->sector);
 
           if ($extraInfoStatement->execute()){
-            return true;
+            return $affected_user;
           } else {
             return 'Er was een probleem met het invoegen van extra informatie: '.print_r($conn->errorInfo());
           }
