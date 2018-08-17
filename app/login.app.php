@@ -1,6 +1,6 @@
 <?php
 spl_autoload_register(function($class){
-    include_once(dirname(__DIR__)."\classes/" .  $class . ".class.php");
+    include_once(dirname(__DIR__)."/classes/" .  $class . ".class.php");
 });
 
 //Receive the RAW post data.
