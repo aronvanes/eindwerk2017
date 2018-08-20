@@ -70,9 +70,18 @@ class Taak
 
     public static function getTakenPerModule($module_id){
         $conn = Db::getInstance();
-        $statement = $conn->prepare("SELECT * FROM tbl_taken WHERE module_id = :module_id");
+        $statement = $conn->prepare("SELECT * FROM tbl_taken INNER JOIN tbl_taken_users ON tbl_taken.id = tbl_taken_users.taak_id WHERE module_id = :module_id");
         $statement->bindValue(":module_id", $module_id);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public static function setTaskCompleted($task_id){
+      $conn = Db::getInstance();
+      $statement = $conn->prepare("UPDATE tbl_taken_users SET completed = 1 WHERE taak_id = :taak_id");
+      $statement->bindValue(":taak_id", $task_id);
+      if($statement->execute()){
+        return true;
+      };
     }
 }

@@ -7,9 +7,12 @@ class Module {
     private $naam;
     private $beschrijving;
     private $categorie;
-    private $view_level;/**
+    private $view_level;
+
+    /**
  * @return mixed
  */
+
 public function getId()
 {
     return $this->id;
@@ -140,6 +143,16 @@ public function getId()
       $conn = Db::getInstance();
       $statement = $conn->prepare('SELECT * from tbl_module as module INNER JOIN tbl_users_module as u_module ON module.id = u_module.user_id WHERE u_module.user_id = :id');
       $statement->bindParam(':id', $user_id);
+
+      if ($statement->execute()){
+        return $statement->fetch(PDO::FETCH_OBJ);
+      }
+    }
+
+    public function getCategory(){
+      $conn = Db::getInstance();
+      $statement = $conn->prepare('SELECT categorie_naam FROM tbl_categorien WHERE id = :id');
+      $statement->bindParam(':id', $this->categorie);
 
       if ($statement->execute()){
         return $statement->fetch(PDO::FETCH_OBJ);

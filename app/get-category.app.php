@@ -1,6 +1,6 @@
 <?php
 spl_autoload_register(function($class){
-    include_once(dirname(__DIR__)."\classes/" .  $class . ".class.php");
+    include_once(dirname(__DIR__)."/classes/" .  $class . ".class.php");
 });
 
 //Receive the RAW post data.
@@ -10,7 +10,10 @@ $decoded = json_decode($content, true);
 
 if(is_array($decoded)) {
 
-  echo json_encode(Module::getModulesPerPatient($decoded['user_id']));
+  $module = new Module();
+  $module->setCategorie($decoded['category_id']);
+
+  echo json_encode($module->getCategory());
 
 } else {
   // Send error back to user.
