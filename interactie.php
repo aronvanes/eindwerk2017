@@ -7,6 +7,7 @@ if (!empty($_SESSION['usernaam'])) {
 } else {
 header('Location: login.php');
 }
+
 $mod = new Module;
 $module = $mod->GetAllInteractieModules();
 $user = new User();
@@ -72,6 +73,7 @@ $patient = $user->Patient();
                         <div class="taak-container">
                             <?php
                             $taak = new Taak();
+                            $taak->setModuleId($row['id']);
                             $taken = $taak->SelectAllTakenPerModule();
                             ?>
                             <?php foreach ($taken as $row3): ?>
