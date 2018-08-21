@@ -52,8 +52,5 @@ if (!empty($_SESSION['usernaam'])) {
     </div>
 
 
-
-
-
 </body>
 </html>

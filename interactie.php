@@ -85,7 +85,7 @@ $patient = $user->Patient();
                                     <li>
                                         <!--elke rij voor users heeft ook een button die er voor zorgt dat de id van d desbetreffende user samenkomt met bijbehorende
                                         interactie module-->
-                                        < class="text-left border-bottom" data-id="<?php echo $row3['id'] ?>">
+                                        <class ="text-left border-bottom" data-id="<?php echo $row3['id'] ?>">
                                             <?php echo $row3['naam'];?>
                                         </>
                                         <p>
