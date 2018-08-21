@@ -78,10 +78,6 @@ $patient = $user->Patient();
                             ?>
                             <?php foreach ($taken as $row3): ?>
                                 <div class="taak">
-                                    <?php
-                                    $taak = new Taak();
-                                    $taken = $taak->SelectAllTakenPerModule();
-                                    ?>
                                     <li>
                                         <!--elke rij voor users heeft ook een button die er voor zorgt dat de id van d desbetreffende user samenkomt met bijbehorende
                                         interactie module-->
