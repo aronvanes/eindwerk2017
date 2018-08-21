@@ -46,13 +46,9 @@ $patient = $user->Patient();
                 <?php foreach ($module as $row) :?>
                     <div class="list border-bottom-yellow module">
                         <div class="toggleHolder">
-<<<<<<< HEAD
-                            <input type="button" class="toggler" value="▾Show More">
-                            <input type="button" class="toggler" style="display:none;" value="▴ Show Less">
-=======
                             <input type="button" class="toggler btn btn-warning" value="▾Show More">
                             <input type="button" class="toggler btn btn-warning" style="display:none;" value="▴ Show Less">
->>>>>>> c16ff4d5f80af1f592ed26417b332dc507d20f80
+
                         </div>
                         <li>
                             <!--hier word in de data-id ingevuld met de id van de desbetreffende rij die hier in de lus getoond wordt-->
@@ -92,7 +88,6 @@ $patient = $user->Patient();
                                         </li>
                                     </div>
                                 <?php endforeach; ?>
-                                <input class="btnNext" type="submit" value="doorgaan">
                                 <input class="btnNext btn btn-warning" type="submit" value="doorgaan">
                             </div>
 
@@ -105,7 +100,7 @@ $patient = $user->Patient();
                                             interactie module-->
                                             <p class="text-left border-bottom post2" data-id="<?php echo $row2['id'] ?>">
                                                 <?php echo $row2['voornaam'].' '.$row2['achternaam'];?>
-                                                <input class="btnSubmit" type="submit" value="Module toewijzen" />
+
                                                 <input class="btnSubmit btn btn-warning" type="submit" value="Module toewijzen" />
                                             </p>
                                         </li>

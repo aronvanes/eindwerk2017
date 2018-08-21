@@ -51,8 +51,6 @@ $patient = $user->Patient();
             <?php foreach ($module as $row) :?>
                 <div class="list border-bottom-yellow module">
                     <div class="toggleHolder">
-                        <input type="button" class="toggler" value="▾Show More">
-                        <input type="button" class="toggler" style="display:none;" value="▴ Show Less">
                         <input type="button" class="toggler btn btn-warning" value="▾Show More">
                         <input type="button" class="toggler btn btn-warning" style="display:none;" value="▴ Show Less">
                     </div>
@@ -94,7 +92,6 @@ $patient = $user->Patient();
                                     </li>
                                 </div>
                             <?php endforeach; ?>
-                            <input class="btnNext" type="submit" value="doorgaan">
                             <input class="btnNext btn btn-warning" type="submit" value="doorgaan">
                         </div>
 
@@ -107,7 +104,6 @@ $patient = $user->Patient();
                                         interactie module-->
                                         <p class="text-left border-bottom-yellow post2" data-id="<?php echo $row2['id'] ?>">
                                             <?php echo $row2['voornaam'].' '.$row2['achternaam'];?>
-                                            <input class="btnSubmit" type="submit" value="Module toewijzen" />
                                             <input class="btnSubmit btn btn-warning" type="submit" value="Module toewijzen" />
                                         </p>
                                     </li>
@@ -133,8 +129,8 @@ $patient = $user->Patient();
             // Je kon niet de juiste module id vinden omdat die niet in col-md-10 zit maar in 8
             // op deze manier krijg je de juiste id's
             var $container = $(this).closest('.client');
-            var module_id = $container.closest('.module').find(".post").data('id');
-            var user_id = $container.find(".post2").data('id');
+            var user_id = $container.closest('.module').find(".post").data('id');
+            var module_id = $container.find(".post2").data('id');
 
             console.log("module : "+module_id);
             console.log("user : "+user_id);
