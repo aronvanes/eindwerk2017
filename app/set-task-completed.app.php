@@ -11,7 +11,7 @@ $decoded = json_decode($content, true);
 //If json_decode failed, the JSON is invalid.
 if(is_array($decoded)) {
 
-  echo json_encode(Taak::setTaskCompleted($decoded['task_id']));
+  echo json_encode(Taak::setTaskCompleted($decoded['task_id'], $decoded['completed']));
 
 } else {
   // Send error back to user.

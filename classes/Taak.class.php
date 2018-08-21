@@ -76,9 +76,10 @@ class Taak
         return $statement->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public static function setTaskCompleted($task_id){
+    public static function setTaskCompleted($task_id, $completed){
       $conn = Db::getInstance();
-      $statement = $conn->prepare("UPDATE tbl_taken_users SET completed = 1 WHERE taak_id = :taak_id");
+      $statement = $conn->prepare("UPDATE tbl_taken_users SET completed = :completed WHERE taak_id = :taak_id");
+      $statement->bindValue(":completed", $completed);
       $statement->bindValue(":taak_id", $task_id);
       if($statement->execute()){
         return true;
