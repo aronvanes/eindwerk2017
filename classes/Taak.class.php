@@ -85,4 +85,13 @@ class Taak
         return true;
       };
     }
+
+    public static function getCompletedTasksPerCategory($user_id){
+      $conn = Db::getInstance();
+      $statement = $conn->prepare('SELECT COUNT(ttu.id) AS total, tc.categorie_naam FROM tbl_taken_users as ttu RIGHT JOIN tbl_taken as tt ON ttu.taak_id = tt.id RIGHT JOIN tbl_module as tm ON tt.module_id = tm.id RIGHT JOIN tbl_categorien as tc ON tm.categorie = tc.id WHERE ttu.completed = 1 AND ttu.user_id = :user_id GROUP BY tm.categorie');
+      $statement->bindValue(':user_id', $user_id);
+      if ($statement->execute()){
+        return $statement->fetchAll(PDO::FETCH_OBJ);
+      }
+    }
 }
