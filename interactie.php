@@ -26,6 +26,7 @@ $patient = $user->Patient();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
+
 <div class="container-fluid">
     <div class="row">
 <div class=navigation>
@@ -44,9 +45,18 @@ $patient = $user->Patient();
     </ul>
 </nav>
 </div>
+        <div id="overlay">
+            <form action="#" method="post" onclick="off()">
 
+            </form>
+        </div>
 <div class="offset-1 horizontalOffset col-md-8">
-
+    
+<div class="NavModules">
+    <a href="interactie.php">Interactie</a>
+    <a href="energie.php">Sport</a>
+    <a href="slaap.php">Slaap</a>
+</div>
         <ul>
             <!--hier word via een foreachlus alle rijen opgehaald uit de modules met categorie interactie -->
             <?php foreach ($module as $row) :?>
@@ -113,10 +123,21 @@ $patient = $user->Patient();
                 </div>
             <?php endforeach; ?>
         </ul>
+    <button>Nieuwe module</button>
     </div>
     </div>
 </div>
+
 <script src="showtoggle.js"></script>
+<script>
+    function on() {
+        document.getElementById("overlay").style.display = "block";
+    }
+
+    function off() {
+        document.getElementById("overlay").style.display = "none";
+    }
+</script>
 <script>
     $(function() {
         $(".btnSubmit").on("click", function(e) {
