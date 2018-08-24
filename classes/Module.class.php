@@ -141,7 +141,7 @@ public function getId()
 
     public static function getModulesPerPatient($user_id){
       $conn = Db::getInstance();
-      $statement = $conn->prepare('SELECT * from tbl_module as module INNER JOIN tbl_users_module as u_module ON module.id = u_module.user_id WHERE u_module.user_id = :id');
+      $statement = $conn->prepare('SELECT * from tbl_module as module INNER JOIN tbl_users_module as u_module ON module.id = u_module.module_id WHERE u_module.user_id = :id');
       $statement->bindParam(':id', $user_id);
 
       if ($statement->execute()){
@@ -157,6 +157,14 @@ public function getId()
       if ($statement->execute()){
         return $statement->fetch(PDO::FETCH_OBJ);
       }
+    }
+
+    public static function setModuleCompleted($module_id){
+      $conn = Db::getInstance();
+      $statement = $conn->prepare('UPDATE tbl_module SET completed = 1, eind_datum = CURRENT_TIMESTAMP() WHERE id = :module_id');
+      $statement->bindParam(':module_id', $module_id);
+
+      return $statement->execute();
     }
 
 }
