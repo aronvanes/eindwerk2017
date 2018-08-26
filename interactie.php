@@ -48,7 +48,7 @@ $patient = $user->Patient();
     </ul>
 </nav>
 </div>
-        <div id="overlay" class="" onclick="off()  ">
+        <div id="overlay" class=""   ">
             <form action="#" method="post" class="col-md-5 ">
                 <div class="formstyle">
                     <h3>Nieuwe module aanmaken</h3>
@@ -65,7 +65,7 @@ $patient = $user->Patient();
     <a href="energie.php">Sport</a>
     <a href="slaap.php">Slaap</a>
 </div>
-        <ul>
+        <ul class="ModuleList">
             <!--hier word via een foreachlus alle rijen opgehaald uit de modules met categorie interactie -->
             <?php foreach ($module as $row) :?>
                 <div class="list border-bottom-yellow module">
@@ -217,6 +217,40 @@ $patient = $user->Patient();
         });
     });
 
+    $(document).ready(function () {
+        $(".BtnAdd").on("click", function (e) {
+            console.log("clicked");
+
+            // tekst vak uitlezen
+            var naam = $("#ModuleNaam").val();
+            var beschrijving = $("#ModuleBeschrijving").val();
+            // via AJAX update naar databank sturen
+            $.ajax({
+                method: "POST",
+                url: "AJAX/AddModuleInt.php",
+                data: {naam: naam,beschrijving: beschrijving} //update: is de naam en update is de waarde (value)
+
+            })
+
+                .done(function (response) {
+
+                    // code + message
+                    if (response.code == 200) {
+                        var li = $("<li>");
+                        li.html("<h4 id='post'>"+ response.naam +"</h4>");
+                        $(".ModuleList").prepend(li);
+                        $(".ModuleList li").last().slideDown();
+
+                        li.html("<p>"+ response.beschrijving +"</p>");
+                        $(".showpanel").prepend(li);
+                        $(".showpanel li").last()
+                        console.log("werkt dit?");
+                    }
+                });
+
+            e.preventDefault();
+        });
+    });
 </script>
 </body>
 </html>
