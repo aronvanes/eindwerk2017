@@ -23,6 +23,7 @@ $patient = $user->Patient();
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styletwee.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
@@ -45,13 +46,17 @@ $patient = $user->Patient();
     </ul>
 </nav>
 </div>
-        <div id="overlay">
-            <form action="#" method="post" onclick="off()">
-
+        <div id="overlay"  onclick="off()  ">
+            <form action="#" method="post" class="col-md-5">
+                <div class="formstyle">
+                <input type="text" class="form-control" name="Naam" id="ModuleNaam" placeholder="Naam module">
+                <input type="text" class="form-control" name="Beschrijving" id="ModuleBeschrijving" placeholder="Beschrijving">
+                <input type="submit" class="form-control btn" name="button" id="button" placeholder="Aanmaken" onclick="off()">
+                </div>
             </form>
         </div>
 <div class="offset-1 horizontalOffset col-md-8">
-    
+
 <div class="NavModules">
     <a href="interactie.php">Interactie</a>
     <a href="energie.php">Sport</a>
@@ -123,7 +128,7 @@ $patient = $user->Patient();
                 </div>
             <?php endforeach; ?>
         </ul>
-    <button>Nieuwe module</button>
+    <button onclick="on()">Nieuwe module</button>
     </div>
     </div>
 </div>
