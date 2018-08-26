@@ -162,7 +162,7 @@ public function getId()
 
     public static function setModuleCompleted($module_id){
       $conn = Db::getInstance();
-      $statement = $conn->prepare('UPDATE tbl_module SET completed = 1, eind_datum = CURRENT_TIMESTAMP() WHERE id = :module_id');
+      $statement = $conn->prepare('UPDATE tbl_module SET completed = 1, eind_datum = CURRENT_TIMESTAMP() WHERE id = :module_id AND completed = 0' );
       $statement->bindParam(':module_id', $module_id);
 
       return $statement->execute();
