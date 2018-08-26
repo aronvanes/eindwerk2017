@@ -95,15 +95,11 @@ class AppUser extends User {
     $statement->bindValue(':usernaam', $this->usernaam);
 
     if ($statement->execute()){
-      $foundUser = $statement->fetch(PDO::FETCH_ASSOC);
+      $foundUser = $statement->fetch(PDO::FETCH_OBJ);
 
-<<<<<<< HEAD
       if (password_verify($this->wachtwoord, $foundUser->wachtwoord)){
-        return $foundUser->id;
-=======
-      if (password_verify($this->wachtwoord, $foundUser['wachtwoord'])){
         return $foundUser;
->>>>>>> 59e9515cc1bff9a6f78f6d82989356d4136d6f34
+
       } else {
         return 'Wachtwoord niet herkent';
       }
@@ -150,6 +146,17 @@ class AppUser extends User {
         }
     } else {
       return false;
+    }
+  }
+
+  public function getUsersByUser() {
+    $conn = Db::getInstance();
+
+    $statement = $conn->prepare('SELECT u.id, u.voornaam, u.achternaam, u.rol, u.profielfoto FROM tbl_users AS u INNER JOIN tbl_users_relationship AS ur ON u.id = ur.user_id_origin WHERE ur.user_id_destination = :user_id');
+    $statement->bindValue(':user_id', $this->id);
+
+    if ($statement->execute()){
+      return $statement->fetchAll(PDO::FETCH_OBJ);
     }
   }
 }
