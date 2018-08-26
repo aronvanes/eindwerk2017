@@ -112,8 +112,8 @@ public function getId()
     public function CreateModule(){
 
         $conn = Db::getInstance();
-        $statement = $conn->prepare("INSERT INTO tbl_module(naam, beschrijving, categorie, view_level, start_datum)
-        VALUES (:naam, :beschrijving, :categorie, :view_level, CURRENT_TIMESTAMP())");
+        $statement = $conn->prepare("INSERT INTO tbl_module (naam, beschrijving, categorie, view_level, completed, start_datum, eind_datum)
+        VALUES (:naam, :beschrijving, :categorie, :view_level, 0, CURRENT_TIMESTAMP(), 0000-00-00)");
         $statement->bindParam(':naam', $this->naam);
         $statement->bindParam(':beschrijving', $this->beschrijving);
         $statement->bindParam(':categorie', $this->categorie);

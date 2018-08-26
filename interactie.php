@@ -48,7 +48,7 @@ $patient = $user->Patient();
     </ul>
 </nav>
 </div>
-        <div id="overlay" class=""   ">
+        <div id="overlay" class="x">
             <form action="#" method="post" class="col-md-5 ">
                 <div class="formstyle">
                     <h3>Nieuwe module aanmaken</h3>
@@ -224,16 +224,26 @@ $patient = $user->Patient();
             // tekst vak uitlezen
             var naam = $("#ModuleNaam").val();
             var beschrijving = $("#ModuleBeschrijving").val();
+            var categorie = 1 // aangezien het in interactie.php zit, maakt het niet uit dat dit hardcoded is
+            var view_level = 2 // Ben eerlijk gezegd vergeten waarom we dit hadden geimplementeerd ... lol :p
+
+
             // via AJAX update naar databank sturen
+
             $.ajax({
                 method: "POST",
                 url: "AJAX/AddModuleInt.php",
-                data: {naam: naam,beschrijving: beschrijving} //update: is de naam en update is de waarde (value)
+                data: {
+                  naam: naam,
+                  beschrijving: beschrijving,
+                  categorie: categorie,
+                  view_level: view_level,
+                } //update: is de naam en update is de waarde (value)
 
             })
 
                 .done(function (response) {
-
+                    console.log(response)
                     // code + message
                     if (response.code == 200) {
                         var li = $("<li>");
