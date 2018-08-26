@@ -10,7 +10,6 @@ $mod = new Module;
 
 if (!empty($_POST)) {
 
-
     // Dit is niet juist, hier denk ik dat je een fout maakt in hoe je variabelen in de klasse declareert.
 
     // $mod->Text = $_POST['ModuleNaam'];
