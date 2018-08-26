@@ -9,8 +9,6 @@ $mod = new Module;
 
 
 if (!empty($_POST)) {
-    $mod->Text = $_POST['ModuleNaam'];
-    $mod->Text = $_POST['ModuleBeschrijving'];
 
     try {
         $mod->CreateModule();
@@ -19,7 +17,7 @@ if (!empty($_POST)) {
             "naam" => htmlspecialchars($_POST['ModuleNaam']),
             "beschrijving" => htmlspecialchars($_POST['ModuleBeschrijving']),
             "categorie" => 1,
-            "view_level" => 2,
+            "view_level" => 4,
 
         ];
     } catch (Exception $e) {
