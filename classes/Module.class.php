@@ -112,8 +112,8 @@ public function getId()
     public function CreateModule(){
 
         $conn = Db::getInstance();
-        $statement = $conn->prepare("INSERT INTO tbl_module(naam, beschrijving, categorie, view_level)
-        VALUES (:naam, :beschrijving, :categorie, :view_level)");
+        $statement = $conn->prepare("INSERT INTO tbl_module(naam, beschrijving, categorie, view_level, start_datum)
+        VALUES (:naam, :beschrijving, :categorie, :view_level, CURRENT_TIMESTAMP())");
         $statement->bindParam(':naam', $this->naam);
         $statement->bindParam(':beschrijving', $this->beschrijving);
         $statement->bindParam(':categorie', $this->categorie);
@@ -121,6 +121,7 @@ public function getId()
         $result = $statement->execute();
         return $result;
     }
+
     public function DeleteModule(){
 
         $conn = Db::getInstance();

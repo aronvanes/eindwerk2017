@@ -10,8 +10,10 @@ header('Location: login.php');
 
 $mod = new Module;
 $module = $mod->GetAllInteractieModules();
+$moduleAdd = $mod-> CreateModule();
 $user = new User();
 $patient = $user->Patient();
+
 
 ?><!DOCTYPE html>
 <html lang="en">
