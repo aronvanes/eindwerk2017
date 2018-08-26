@@ -46,12 +46,13 @@ $patient = $user->Patient();
     </ul>
 </nav>
 </div>
-        <div id="overlay"  onclick="off()  ">
-            <form action="#" method="post" class="col-md-5">
+        <div id="overlay" class="" onclick="off()  ">
+            <form action="#" method="post" class="col-md-5 ">
                 <div class="formstyle">
+                    <h3>Nieuwe module aanmaken</h3>
                 <input type="text" class="form-control" name="Naam" id="ModuleNaam" placeholder="Naam module">
                 <input type="text" class="form-control" name="Beschrijving" id="ModuleBeschrijving" placeholder="Beschrijving">
-                <input type="submit" class="form-control btn" name="button" id="button" placeholder="Aanmaken" onclick="off()">
+                <input type="submit" class="form-control btn BtnAdd" name="button" id="button" placeholder="Aanmaken" onclick="off()">
                 </div>
             </form>
         </div>
@@ -136,7 +137,7 @@ $patient = $user->Patient();
 <script src="showtoggle.js"></script>
 <script>
     function on() {
-        document.getElementById("overlay").style.display = "block";
+        document.getElementById("overlay").style.display = "flex";
     }
 
     function off() {

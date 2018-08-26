@@ -393,6 +393,8 @@
                                                                                                                                                                                                                                              background-color: rgba(0,0,0,0.5); /* Black background with opacity */
                                                                                                                                                                                                                                              z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
                                                                                                                                                                                                                                              cursor: pointer; /* Add a pointer on hover */
+                                                                                                                                                                                                                                             align-items: center;
+                                                                                                                                                                                                                                             justify-content: center;
                                                                                                                                                                                                                                          }
 
 
@@ -402,5 +404,14 @@
                                                                                                                                                                                                                                              padding: 2em;
                                                                                                                                                                                                                                              border-radius: 10px;
                                                                                                                                                                                                                                              box-shadow:5px 5px rgba(0,0,0,0.10);
+                                                                                                                                                                                                                                             display: flex;
+                                                                                                                                                                                                                                             flex-direction: column;
+                                                                                                                                                                                                                                             align-items: center;
+                                                                                                                                                                                                                                             justify-content: center;
 
+
+                                                                                                                                                                                                                                         }
+
+                                                                                                                                                                                                                                         #ModuleBeschrijving{
+                                                                                                                                                                                                                                             padding-bottom: 5em;
                                                                                                                                                                                                                                          }
