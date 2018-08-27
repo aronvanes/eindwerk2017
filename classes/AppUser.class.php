@@ -168,13 +168,13 @@ class AppUser extends User {
 
   public static function longPoll($u_key) {
     $conn = Db::getInstance();
-    $wildcard = $u_key.'_pending';
+    $wildcard = $u_key.'_pending_%';
 
-    $statement = $conn->prepare('SELECT * FROM tbl_users WHERE u_key = :u_key');
+    $statement = $conn->prepare('SELECT u_key FROM tbl_users WHERE u_key LIKE :u_key');
     $statement->bindParam(':u_key', $wildcard);
 
     if ($statement->execute()){
-      return $statement->rowCount();
+      return $statement->fetch(PDO::FETCH_OBJ);
     }
   }
 }

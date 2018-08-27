@@ -317,4 +317,15 @@ public function Schema()
 
       return ($statement->execute());
     }
+
+    public function getUserById(){
+      $conn = Db::getInstance();
+
+      $statement = $conn->prepare('SELECT voornaam, achternaam, profielfoto FROM tbl_users WHERE id = :id');
+      $statement->bindParam(':id', $this->id);
+
+      if ($statement->execute()){
+        return $statement->fetch(PDO::FETCH_OBJ);
+      }
+    }
 }

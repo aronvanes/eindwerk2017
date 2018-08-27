@@ -29,7 +29,7 @@ if(is_array($decoded)) {
   $user->setTewerkgesteld($parsed_content['@UserStorage:employed']);
   $user->setSector($parsed_content['@UserStorage:sector']);
   $user->setJobTitel($parsed_content['@UserStorage:jobTitle']);
-  $user->setUKey($decoded['u_key'])
+  $user->setUKey($decoded['u_key']);
 
   echo json_encode($user->register());
 
