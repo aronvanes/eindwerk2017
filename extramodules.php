@@ -44,7 +44,7 @@ $huidige = $huidige->getUserInfo();
 </div>
 
 
-<div class="offset-1 col-md-7">
+<div class="offset-3 col-md-7">
     <h2 id="mogelijk">Maak <br> <strong> meer </strong> <br> mogelijk</h2>
     <div id="insp">
     <p>Laat je inspireren door modules geschreven 

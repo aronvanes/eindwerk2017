@@ -36,7 +36,7 @@ session_start();
     </ul>
 </nav>
 </div>
-<div class="content offset-1 col-md-7">
+<div class="content offset-3 col-md-7">
     <?php
     if(isset($_GET['id'])){
     $huidige = new UserInfo();

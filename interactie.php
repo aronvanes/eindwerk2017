@@ -60,7 +60,10 @@ $patient = $user->Patient();
         </div>
 
 
-<div class="offset-1 horizontalOffset col-md-8">
+<div class="offset-3 horizontalOffset col-md-8">
+    <div class="col-3">
+        <img src="images/158-couple.svg" alt="">
+    </div>
 <div class="NavModules">
     <a href="interactie.php">Interactie</a>
     <a href="energie.php">Sport</a>
