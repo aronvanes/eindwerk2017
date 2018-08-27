@@ -102,10 +102,10 @@ $patient = $user->Patient();
                             <?php foreach ($taken as $row3): ?>
 
                                 <ul class="taak">
-                                    <li>
+                                    <li class="taakitems"">
                                         <!--elke rij voor users heeft ook een button die er voor zorgt dat de id van d desbetreffende user samenkomt met bijbehorende
                                         interactie module-->
-                                        <h6 class ="text-left border-bottom" data-id="<?php echo $row3['id'] ?>">
+                                        <h6 class ="text-left  data-id="<?php echo $row3['id'] ?>">
                                             <?php echo $row3['naam'];?>
                                         </h6>
                                         <p>
