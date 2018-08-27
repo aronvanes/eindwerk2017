@@ -48,18 +48,19 @@ $patient = $user->Patient();
     </ul>
 </nav>
 </div>
-        <div id="overlay" class="x">
+        <div id="overlay" >
             <form action="#" method="post" class="col-md-5 ">
                 <div class="formstyle">
                     <h3>Nieuwe module aanmaken</h3>
                 <input type="text" class="form-control" name="Naam" id="ModuleNaam" placeholder="Naam module">
                 <input type="text" class="form-control" name="Beschrijving" id="ModuleBeschrijving" placeholder="Beschrijving">
-                <input type="submit" class="form-control btn BtnAdd" name="button" id="button" placeholder="Aanmaken" onclick="off()">
+                <input type="submit" class="form-control btn BtnAdd" name="button" id="button" placeholder="Aanmaken" onclick="myFunction()">
                 </div>
             </form>
         </div>
-<div class="offset-1 horizontalOffset col-md-8">
+        
 
+<div class="offset-1 horizontalOffset col-md-8">
 <div class="NavModules">
     <a href="interactie.php">Interactie</a>
     <a href="energie.php">Sport</a>
@@ -99,16 +100,17 @@ $patient = $user->Patient();
                                     <li>
                                         <!--elke rij voor users heeft ook een button die er voor zorgt dat de id van d desbetreffende user samenkomt met bijbehorende
                                         interactie module-->
-                                        <class ="text-left border-bottom" data-id="<?php echo $row3['id'] ?>">
+                                        <h6 class ="text-left border-bottom" data-id="<?php echo $row3['id'] ?>">
                                             <?php echo $row3['naam'];?>
-                                        </>
+                                        </h6>
                                         <p>
                                             <?php echo $row3['beschrijving'];?>
                                         </p>
                                     </li>
                                 </div>
                             <?php endforeach; ?>
-                            <input class="btnNext btn btn-warning" type="submit" value="doorgaan">
+                            <input class="btnNext btn btn-secondary" type="submit" value="nieuwe taak" onclick="on2()">
+                            <input class="btnNext btn btn-secondary" type="submit" value="doorgaan">
                         </div>
 
                         <div class="client-container">
@@ -131,7 +133,7 @@ $patient = $user->Patient();
                 </div>
             <?php endforeach; ?>
         </ul>
-    <button onclick="on()">Nieuwe module</button>
+    <input type="button" class="btn btn-secondary" onclick="on()" value="Nieuwe module">
     </div>
     </div>
 </div>
@@ -144,6 +146,16 @@ $patient = $user->Patient();
 
     function off() {
         document.getElementById("overlay").style.display = "none";
+    }
+    function on2() {
+        document.getElementById("overlay2").style.display = "flex";
+    }
+
+    function off2() {
+        document.getElementById("overlay2").style.display = "none";
+    }
+    function myFunction() {
+        location.reload();
     }
 </script>
 <script>
@@ -221,11 +233,12 @@ $patient = $user->Patient();
         $(".BtnAdd").on("click", function (e) {
             console.log("clicked");
 
+
             // tekst vak uitlezen
             var naam = $("#ModuleNaam").val();
             var beschrijving = $("#ModuleBeschrijving").val();
             var categorie = 1 // aangezien het in interactie.php zit, maakt het niet uit dat dit hardcoded is
-            var view_level = 2 // Ben eerlijk gezegd vergeten waarom we dit hadden geimplementeerd ... lol :p
+            var view_level = 4 // Ben eerlijk gezegd vergeten waarom we dit hadden geimplementeerd ... lol :p
 
 
             // via AJAX update naar databank sturen
@@ -254,6 +267,47 @@ $patient = $user->Patient();
                         li.html("<p>"+ response.beschrijving +"</p>");
                         $(".showpanel").prepend(li);
                         $(".showpanel li").last()
+                        console.log("werkt dit?");
+                    }
+                });
+
+            e.preventDefault();
+        });
+    });
+
+    $(document).ready(function () {
+        $(".BtnAdd").on("click", function (e) {
+            console.log("clicked");
+            var $container = $(this).closest('.module');
+            var module_id = $container.closest('.module').find(".post").data('id');
+
+            // tekst vak uitlezen
+            var naam = $("#ModuleNaam").val();
+            var beschrijving = $("#ModuleBeschrijving").val();
+
+
+
+            // via AJAX update naar databank sturen
+
+            $.ajax({
+                method: "POST",
+                url: "AJAX/AddTaakInt.php",
+                data: {
+                    naam: naam,
+                    beschrijving: beschrijving,
+                    module_id: module_id
+                } //update: is de naam en update is de waarde (value)
+
+            })
+
+                .done(function (response) {
+                    console.log(response)
+                    // code + message
+                    if (response.code == 200) {
+                        var li = $("<li>");
+                        li.html("<h6 id='post'>"+ response.naam +"</h6>"+"<p>"+ response.beschrijving +"</p>");
+                        $(".taak").prepend(li);
+                        $(".taak li").last().slideDown();
                         console.log("werkt dit?");
                     }
                 });
