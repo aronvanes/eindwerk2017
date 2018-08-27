@@ -14,7 +14,7 @@ $parsed_content = [];
 // If json_decode failed, the JSON is invalid.
 if(is_array($decoded)) {
 
-  foreach ($decoded as $row) {
+  foreach ($decoded['user_data'] as $row) {
     $parsed_content[$row[0]] = $row[1];
   };
 
@@ -29,8 +29,9 @@ if(is_array($decoded)) {
   $user->setTewerkgesteld($parsed_content['@UserStorage:employed']);
   $user->setSector($parsed_content['@UserStorage:sector']);
   $user->setJobTitel($parsed_content['@UserStorage:jobTitle']);
+  $user->setUKey($decoded['u_key'])
 
-  echo ($user->register());
+  echo json_encode($user->register());
 
 } else {
   // Send error back to user.

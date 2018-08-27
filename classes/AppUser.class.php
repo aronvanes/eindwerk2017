@@ -10,6 +10,7 @@ class AppUser extends User {
   protected $wachtwoord;
   protected $rol;
   protected $id;
+  protected $u_key;
 
   // Optional inputs
   protected $achternaam;
@@ -45,6 +46,10 @@ class AppUser extends User {
 
   public function setAchternaam($value){
     $this->achternaam = $value;
+  }
+
+  public function setUKey($value){
+    $this->u_key = $value;
   }
 
   public function setGeboorteDatum($value){
@@ -112,12 +117,13 @@ class AppUser extends User {
   public function register(){
     $conn = Db::getInstance();
 
-    $statement = $conn->prepare('INSERT INTO  tbl_users (usernaam, voornaam, achternaam, wachtwoord, rol) VALUES (:usernaam, :voornaam, :achternaam, :wachtwoord, :rol)');
+    $statement = $conn->prepare('INSERT INTO  tbl_users (usernaam, voornaam, achternaam, wachtwoord, rol, u_key) VALUES (:usernaam, :voornaam, :achternaam, :wachtwoord, :rol, :u_key)');
     $statement->bindValue(':usernaam', $this->usernaam);
     $statement->bindValue(':voornaam', $this->voornaam);
     $statement->bindValue(':achternaam', $this->achternaam);
     $statement->bindValue(':wachtwoord', password_hash($this->wachtwoord, PASSWORD_DEFAULT));
     $statement->bindValue(':rol', $this->rol);
+    $statement->bindParam(':u_key', $this->u_key);
 
     if($statement->execute()){
       $affected_user = $conn->lastInsertId();
@@ -157,6 +163,18 @@ class AppUser extends User {
 
     if ($statement->execute()){
       return $statement->fetchAll(PDO::FETCH_OBJ);
+    }
+  }
+
+  public static function longPoll($u_key) {
+    $conn = Db::getInstance();
+    $wildcard = $u_key.'_pending';
+
+    $statement = $conn->prepare('SELECT * FROM tbl_users WHERE u_key = :u_key');
+    $statement->bindParam(':u_key', $wildcard);
+
+    if ($statement->execute()){
+      return $statement->rowCount();
     }
   }
 }
