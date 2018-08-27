@@ -38,7 +38,7 @@ if (!empty($_SESSION['usernaam'])) {
     </ul>
 </nav>
 </div>
-    <div class="col-md-2 offset-1" id="topint">
+    <div class="col-md-2 offset-3" id="topint">
         <img src="images/156-family.png" alt="" id="emoji"> <br>
         <a href="interactie.php" class="btn btn-primary" id="interactie">Interactie</a>
     </div>

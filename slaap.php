@@ -39,7 +39,7 @@ $patient = $user->Patient();
             </nav>
         </div>
 
-        <div class="offset-1 horizontalOffset">
+        <div class="offset-3 horizontalOffset">
 
             <ul>
                 <!--hier word via een foreachlus alle rijen opgehaald uit de modules met categorie interactie -->

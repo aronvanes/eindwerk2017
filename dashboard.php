@@ -49,7 +49,7 @@ if (!empty($_GET["search"])) {
 </div>
 
 
-<div class="offset-1 col-md-7">
+<div class="offset-3 col-md-7">
 <div id="uptodate">
     <p>Is uw patiëntenlijst nog up to date? <a href="patienten.php">Patiëntenlijst beheren</a></p>
     

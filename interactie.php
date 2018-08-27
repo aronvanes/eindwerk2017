@@ -60,11 +60,14 @@ $patient = $user->Patient();
         </div>
 
 
-<div class="offset-1 horizontalOffset col-md-8">
+<div class="offset-3 horizontalOffset col-md-8">
+    <div class="col-3">
+        <img src="images/158-couple.svg" alt="" class="interactieIcon">
+    </div>
 <div class="NavModules">
-    <a href="interactie.php">Interactie</a>
-    <a href="energie.php">Sport</a>
-    <a href="slaap.php">Slaap</a>
+    <a href="interactie.php" class="interactielink">Interactie</a>
+    <a href="energie.php" class="sportlink">Sport</a>
+    <a href="slaap.php" class="slaaplink">Slaap</a>
 </div>
         <ul class="ModuleList">
             <!--hier word via een foreachlus alle rijen opgehaald uit de modules met categorie interactie -->
@@ -89,7 +92,7 @@ $patient = $user->Patient();
 
 
                         <!--in de eerste foreachlus word er nog een tweede gezet die per module alle users toont-->
-                        <div class="taak-container">
+                        <div class="taak-container" id="taak-container">
                             <?php
                             $taak = new Taak();
                             $taak->setModuleId($row['id']);
@@ -99,12 +102,14 @@ $patient = $user->Patient();
                             <?php foreach ($taken as $row3): ?>
 
                                 <ul class="taak">
-                                    <li>
+                                    <li class="taakitems"">
                                         <!--elke rij voor users heeft ook een button die er voor zorgt dat de id van d desbetreffende user samenkomt met bijbehorende
                                         interactie module-->
-                                        <h6 class ="text-left border-bottom" data-id="<?php echo $row3['id'] ?>">
+                                    <comment>Taaknaam</comment>
+                                        <h6 class ="text-left  data-id="<?php echo $row3['id'] ?>">
                                             <?php echo $row3['naam'];?>
                                         </h6>
+                                    <comment>Beschrijving</comment>
                                         <p>
                                             <?php echo $row3['beschrijving'];?>
                                         </p>
@@ -120,10 +125,10 @@ $patient = $user->Patient();
                             <input class="btnNext btn btn-secondary BtnAdd2" type="button" value="nieuwe taak">
                             </form>
 
-                            <input class="btnNext btn btn-secondary" type="button" value="doorgaan">
+                            <input class="btnNext btn btn-secondary" type="button" value="doorgaan" onclick="switching()">
                         </div>
 
-                        <div class="client-container">
+                        <div class="client-container" id="client-container">
                         <?php foreach ($patient as $row2): ?>
                             <div class="client">
 
@@ -161,9 +166,11 @@ $patient = $user->Patient();
         document.getElementById("overlay2").style.display = "flex";
     }
 
-    function off2() {
-        document.getElementById("overlay2").style.display = "none";
-    }
+  function switching() {
+      document.getElementById("taak-container").style.display = "none";
+      document.getElementById("client-container").style.display = "block";
+
+  }
     function myFunction() {
         location.reload();
     }
