@@ -15,7 +15,7 @@ if(is_array($decoded)) {
   $berichtStart = 'Hey! '.$decoded['sender']['firstName'].' wilt zijn-haar vooruitgang in de module '.$decoded['module']['naam'].' met je delen. Hij-zij heeft reeds '.$decoded['completed_tasks'].' van de '.$decoded['total_tasks'].' taken behaald.';
   $berichtMiddle = '';
   if ($decoded['message']){
-    $berichtMiddle = ' Hij-zij wou ook het volgende zeggen: "'.$decoded['message'].'""';
+    $berichtMiddle = ' Hij-zij wou ook het volgende zeggen: "'.htmlspecialchars($decoded['message']).'""';
   }
   $berichtEnd = ' Antwoord op dit bericht om hem-haar te feliciteren met zijn-haar inspanningen!';
 
