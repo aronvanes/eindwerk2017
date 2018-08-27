@@ -14,7 +14,7 @@ $user = new User();
 $schema = $user->Patient();
 if (!empty($_GET["search"])) {
         $search = new Search($var1);
-    } 
+    }
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +25,7 @@ if (!empty($_GET["search"])) {
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/sb-admin.css" rel="stylesheet">
     <link href="css/styletwee.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
@@ -54,6 +55,12 @@ if (!empty($_GET["search"])) {
       <input type="submit" value="Search"></th>
     </form>
 <br>
+<div class='connect'>
+  <p>Nieuwe gebruiker toevoegen</p>
+  <p id='error_msg_p' class='error_msg'></p>
+  <input type='text' id='connect_patient_input' placeholder="6 cijfers">
+  <button type='button' disabled id='connect_patient_button'> KOPPELEN </button>
+</div>
 <ul class="flex-container">
 <p class='listname'>Patiënten</p>
     <?php foreach ($schema as $row): ?>
@@ -62,7 +69,7 @@ if (!empty($_GET["search"])) {
                     <div class='lists'>
                         <li class="flex-item">
                             <br>
-                            <a href="./profiel.php?id=<?php echo $row['id']; ?>"><?php echo $row['voornaam'];echo " "; 
+                            <a href="./profiel.php?id=<?php echo $row['id']; ?>"><?php echo $row['voornaam'];echo " ";
                             echo $row['achternaam']; ?></a>
                             </li>
                     </div>
@@ -74,4 +81,43 @@ if (!empty($_GET["search"])) {
 </div>
 </div>
 </body>
+<script>
+  $(document).ready(function(){
+    console.log($('#connect_patient_input'))
+
+    $('#connect_patient_input').on('keyup', function(){
+      if ($(this).val().length < 6) {
+        $(this).prev().text('Code moet minimaal 6 cijfers bevatten').show()
+        $(this).addClass('error');
+        $(this).siblings('button').prop('disabled', true)
+      } else if ($(this).val().length > 6) {
+        $(this).addClass('error');
+        $(this).siblings('button').prop('disabled', true)
+        $(this).prev().text('Code mag maximaal 6 cijfers bevatten').show()
+      } else {
+        $(this).removeClass('error')
+        $(this).prev().text('').hide()
+        $(this).siblings('button').prop('disabled', false)
+      }
+    });
+
+    $('#connect_patient_button').click(function(e){
+      e.preventDefault();
+      var value = $('#connect_patient_input').val()
+
+      $.ajax({
+        method: 'POST',
+        url: 'AJAX/connectPatientToTherapist.php',
+        data: {
+          therapist_id:  <?= $_SESSION['id']; ?>,
+          u_key: value,
+        }
+      })
+      .done(function(response){
+        console.log(response)
+      })
+    })
+  })
+</script>
+
 </html>

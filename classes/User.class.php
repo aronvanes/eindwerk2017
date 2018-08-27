@@ -99,7 +99,7 @@ class User {
             }
         else {
         $this->achternaam = $achternaam;
-    
+
         return $this;
     }
     }
@@ -255,7 +255,7 @@ public function getSearchText()
  * Set the value of searchText
  *
  * @return  self
- */ 
+ */
 public function setSearchText($searchText)
 {
     $this->searchText = $searchText;
@@ -264,7 +264,7 @@ public function setSearchText($searchText)
 }
 public function Search($var1){
             $conn = Db::getInstance();
-            $statement = $conn->prepare("SELECT * FROM tbl_users WHERE 'voornaam' 
+            $statement = $conn->prepare("SELECT * FROM tbl_users WHERE 'voornaam'
              LIKE :search OR 'voornaam' LIKE :search");
              $statement->bindValue(':search', '%' . $this->searchText. '%', PDO::PARAM_INT);
              $statement->execute();
@@ -291,7 +291,7 @@ public function Schema()
     $statement = $conn->prepare("SELECT 'voornaam', 'achternaam', 'module_id'
     FROM tbl_users
     INNER JOIN tbl_users_module ON tbl_users.id = tbl_users_module.user_id
-    INNER JOIN tbl_taken_users ON tbl_users.id = tbl_taken_users.user_id 
+    INNER JOIN tbl_taken_users ON tbl_users.id = tbl_taken_users.user_id
     where tbl_users.rol = 3;");
     $statement->execute();
     return $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -305,5 +305,16 @@ public function Schema()
         $result = $statement->execute();
         return $result;
     }
-}
 
+    public static function connectPatientToTherapist($id, $u_key){
+      $conn = Db::getInstance();
+
+      $appended_u_key = $u_key.'_pending_'.$id;
+
+      $statement = $conn->prepare('UPDATE tbl_users SET u_key = :appended_u_key WHERE u_key = :u_key');
+      $statement->bindParam(':appended_u_key', $appended_u_key);
+      $statement->bindParam(':u_key', $u_key);
+
+      return ($statement->execute());
+    }
+}
