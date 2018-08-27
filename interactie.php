@@ -95,8 +95,10 @@ $patient = $user->Patient();
                             $taak->setModuleId($row['id']);
                             $taken = $taak->SelectAllTakenPerModule();
                             ?>
+                            <div class="taakcontainer">
                             <?php foreach ($taken as $row3): ?>
-                                <div class="taak">
+
+                                <ul class="taak">
                                     <li>
                                         <!--elke rij voor users heeft ook een button die er voor zorgt dat de id van d desbetreffende user samenkomt met bijbehorende
                                         interactie module-->
@@ -107,9 +109,10 @@ $patient = $user->Patient();
                                             <?php echo $row3['beschrijving'];?>
                                         </p>
                                     </li>
-                                </div>
-                            <?php endforeach; ?>
+                                </ul>
 
+                            <?php endforeach; ?>
+                            </div>
                                 <h4>Nieuwe taak aanmaken</h4>
                             <form action="" method="post">
                                 <input type="text" class="form-control" name="Naam" id="TaakNaam" placeholder="Naam taak">
@@ -312,9 +315,10 @@ $patient = $user->Patient();
                     // code + message
                     if (response.code == 200) {
                         var li = $("<li>");
-                        li.html("<h6 id='post'>"+ response.naam +"</h6>"+"<p>"+ response.beschrijving +"</p>");
-                        $(".taak").prepend(li);
-                        $(".taak li").last().slideDown();
+                        var ul = $("<ul>");
+                        li.html("<h6 class ='text-left border-bottom'>"+ response.naam +"</h6>"+"<p>"+ response.beschrijving +"</p>");
+                        $(".taakcontainer").prepend(li);
+                        $(".taakcontainer li").last().slideDown();
                         console.log("werkt dit?");
                     }
                 });
