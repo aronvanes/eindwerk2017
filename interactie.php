@@ -58,7 +58,7 @@ $patient = $user->Patient();
                 </div>
             </form>
         </div>
-        
+
 
 <div class="offset-1 horizontalOffset col-md-8">
 <div class="NavModules">
@@ -109,8 +109,15 @@ $patient = $user->Patient();
                                     </li>
                                 </div>
                             <?php endforeach; ?>
-                            <input class="btnNext btn btn-secondary" type="submit" value="nieuwe taak" onclick="on2()">
-                            <input class="btnNext btn btn-secondary" type="submit" value="doorgaan">
+
+                                <h4>Nieuwe taak aanmaken</h4>
+                            <form action="" method="post">
+                                <input type="text" class="form-control" name="Naam" id="TaakNaam" placeholder="Naam taak">
+                                <input type="text" class="form-control" name="Beschrijving" id="TaakBeschrijving" placeholder="Beschrijving">
+                            <input class="btnNext btn btn-secondary BtnAdd2" type="button" value="nieuwe taak">
+                            </form>
+
+                            <input class="btnNext btn btn-secondary" type="button" value="doorgaan">
                         </div>
 
                         <div class="client-container">
@@ -276,15 +283,15 @@ $patient = $user->Patient();
     });
 
     $(document).ready(function () {
-        $(".BtnAdd").on("click", function (e) {
+        $(".BtnAdd2").on("click", function (e) {
             console.log("clicked");
-            var $container = $(this).closest('.module');
-            var module_id = $container.closest('.module').find(".post").data('id');
+
 
             // tekst vak uitlezen
-            var naam = $("#ModuleNaam").val();
-            var beschrijving = $("#ModuleBeschrijving").val();
-
+            var naam = $("#TaakNaam").val();
+            var beschrijving = $("#TaakBeschrijving").val();
+            var $container = $(this).closest('.module');
+            var module_id = $container.closest('.module').find(".post").data('id');
 
 
             // via AJAX update naar databank sturen

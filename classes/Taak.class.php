@@ -94,4 +94,15 @@ class Taak
         return $statement->fetchAll(PDO::FETCH_OBJ);
       }
     }
+    public function CreateTaak(){
+
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("INSERT INTO tbl_taken (naam, beschrijving, module_id)
+        VALUES (:naam, :beschrijving, :module_id)");
+        $statement->bindParam(':naam', $this->naam);
+        $statement->bindParam(':beschrijving', $this->beschrijving);
+        $statement->bindParam(':module_id', $this->module_id);
+        $result = $statement->execute();
+        return $result;
+    }
 }
