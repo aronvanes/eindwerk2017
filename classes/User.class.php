@@ -271,12 +271,20 @@ public function Search($var1){
              $statement->execute();
              return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
+/*
 public function Patient(){
         $conn = Db::getInstance();
         $statement = $conn->prepare("select * from tbl_users where rol = 3");
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
+*/
+public function Patient(){
+    $conn = Db::getInstance();
+    $statement = $conn->prepare("select * from tbl_users_relationship where user_id_origin = $id");
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+}
 
 public function Module()
 {

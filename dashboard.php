@@ -12,14 +12,16 @@ session_start();
 $users = new Dashboard();
 $users = $users->GetPatienten();
 */
+if(isset($_GET['id'])){
 $user = new User();
+$schema->setId($_GET['id']);
 $schema = $user->Patient();
 if (!empty($_GET["search"])) {
         $search = new Search($var1);
     } 
 $profielfoto = new User();
 $profielfoto = $profielfoto->getProfielfotoUser();
-
+}
 
 ?><!DOCTYPE html>
 <html lang="en">
