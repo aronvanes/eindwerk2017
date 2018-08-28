@@ -321,11 +321,32 @@ public function Schema()
     public function getUserById(){
       $conn = Db::getInstance();
 
-      $statement = $conn->prepare('SELECT voornaam, achternaam, profielfoto FROM tbl_users WHERE id = :id');
+      $statement = $conn->prepare('SELECT id, voornaam, achternaam, profielfoto FROM tbl_users WHERE id = :id');
       $statement->bindParam(':id', $this->id);
 
       if ($statement->execute()){
         return $statement->fetch(PDO::FETCH_OBJ);
+      }
+    }
+
+    public static function setConnectionPatientTherapist($patient_id, $therapist_id){
+      $conn = Db::getInstance();
+      $statement = $conn->prepare('INSERT INTO tbl_users_relationship (user_id_origin, user_id_destination) VALUES (:patient_id, :therapist_id)');
+      $statement->bindParam(':patient_id', $patient_id);
+      $statement->bindParam(':therapist_id', $therapist_id);
+
+      if ($statement->execute()){
+        $statement_two = $conn->prepare('INSERT INTO tbl_users_relationship (user_id_origin, user_id_destination) VALUES (:therapist_id, :patient_id)');
+        $statement_two->bindParam(':therapist_id', $therapist_id);
+        $statement_two->bindParam(':patient_id', $patient_id);
+
+        if ($statement_two->execute()){
+          return true;
+        } else {
+          return 'Statement two has failed.';
+        }
+      } else {
+        return 'Statement one has failed.';
       }
     }
 }
