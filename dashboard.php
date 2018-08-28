@@ -65,8 +65,9 @@ $foto = $foto->getProfielfotoUser();
     <?php foreach ($schema as $row): ?>
 
                         <li class="overzichtp col-4" >
-                            <?php echo $row['profielfoto']; ?>
-                            <a href="./profiel.php?id=<?php echo $row['id']; ?>"><?php echo $row['voornaam'];echo " ";
+                            <?php echo '<img src="data:../images/jpeg;base64,'.base64_encode( $foto['profielfoto'] ).'"/>';?>
+                            <a href="./profiel.php?id=<?php echo $row['id']; ?>">
+                            <?php echo $row['voornaam'];echo " ";
                             echo $row['achternaam']; ?></a>
 
                                 <p>Categorie werk: <?php echo ($row['categorie_werk']); ?></p>
