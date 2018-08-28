@@ -9,6 +9,7 @@ class User {
     private $wachtwoord;
     private $rol;
     private $searchText;
+    private $profielfoto;
 
     /**
      * @return mixed
@@ -327,5 +328,31 @@ public function Schema()
       if ($statement->execute()){
         return $statement->fetch(PDO::FETCH_OBJ);
       }
+    }
+
+    /**
+     * Get the value of profielfoto
+     */ 
+    public function getProfielfoto()
+    {
+        return $this->profielfoto;
+    }
+
+    /**
+     * Set the value of profielfoto
+     *
+     * @return  self
+     */ 
+    public function setProfielfoto($profielfoto)
+    {
+        $this->profielfoto = $profielfoto;
+
+        return $this;
+    }
+    public function getProfielfotoUser() {
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT profielfoto FROM tbl_users WHERE rol = 3");
+        $result = $statement->execute();
+        return $result;
     }
 }

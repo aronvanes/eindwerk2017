@@ -17,6 +17,10 @@ $schema = $user->Patient();
 if (!empty($_GET["search"])) {
         $search = new Search($var1);
     } 
+$foto = new User();
+$foto = $foto->getProfielfotoUser();
+
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +65,8 @@ if (!empty($_GET["search"])) {
     <?php foreach ($schema as $row): ?>
 
                         <li class="overzichtp col-4" >
-                            <a href="./profiel.php?id=<?php echo $row['id']; ?>"><?php echo $row['profielfoto']; ?><?php echo $row['voornaam'];echo " ";
+                            <?php echo $row['profielfoto']; ?>
+                            <a href="./profiel.php?id=<?php echo $row['id']; ?>"><?php echo $row['voornaam'];echo " ";
                             echo $row['achternaam']; ?></a>
                             </li>
 
