@@ -68,11 +68,18 @@ $foto = $foto->getProfielfotoUser();
                             <?php echo $row['profielfoto']; ?>
                             <a href="./profiel.php?id=<?php echo $row['id']; ?>"><?php echo $row['voornaam'];echo " ";
                             echo $row['achternaam']; ?></a>
+
+                                <p>Categorie werk: <?php echo ($row['categorie_werk']); ?></p>
+                                 <p>Categorie energie: <?php echo ($row['categorie_energie']); ?> </p>
+                                <p>Categorie sociaal: <?php echo ($row['categorie_sociaal']); ?></p>
                             </li>
 
 
     <?php endforeach; ?>
     </ul>
+
+    <div class="content offset-3 col-md-7">
+
 <div id="amodules">
     <h2>Actieve modules</h2>
 </div>
