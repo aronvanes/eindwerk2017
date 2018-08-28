@@ -350,6 +350,8 @@ public function Schema()
         return 'Statement one has failed.';
       }
 
+}
+
     /**
      * Get the value of profielfoto
      */
