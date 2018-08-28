@@ -17,8 +17,8 @@ $schema = $user->Patient();
 if (!empty($_GET["search"])) {
         $search = new Search($var1);
     } 
-$foto = new User();
-$foto = $foto->getProfielfotoUser();
+$profielfoto = new User();
+$profielfoto = $profielfoto->getProfielfotoUser();
 
 
 ?><!DOCTYPE html>
@@ -64,15 +64,12 @@ $foto = $foto->getProfielfotoUser();
     <ul class="col-12 row">
     <?php foreach ($schema as $row): ?>
 
-                        <li class="overzichtp col-4" >
-                            <?php echo '<img src="data:../images/jpeg;base64,'.base64_encode( $foto['profielfoto'] ).'"/>';?>
+                         <li class="overzichtp col-4" >
+                            <?php echo '<img src="data:../images/jpeg;base64,'.base64_encode( $profielfoto['profielfoto'] ).'"/>';?>
                             <a href="./profiel.php?id=<?php echo $row['id']; ?>">
                             <?php echo $row['voornaam'];echo " ";
                             echo $row['achternaam']; ?></a>
 
-                                <p>Categorie werk: <?php echo ($row['categorie_werk']); ?></p>
-                                 <p>Categorie energie: <?php echo ($row['categorie_energie']); ?> </p>
-                                <p>Categorie sociaal: <?php echo ($row['categorie_sociaal']); ?></p>
                             </li>
 
 

@@ -373,8 +373,7 @@ public function Schema()
     }
     public function getProfielfotoUser() {
         $conn = Db::getInstance();
-        $statement = $conn->prepare("SELECT profielfoto FROM tbl_users WHERE rol = 3");
-        $result = $statement->fetchAll(PDO::FETCH_OBJ);
-        return $result;
+        $statement = $conn->prepare("SELECT * FROM tbl_users WHERE rol = 3");
+        return ($statement->execute());
     }
 }
