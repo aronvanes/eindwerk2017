@@ -374,7 +374,8 @@ public function Schema()
     public function getProfielfotoUser() {
         $conn = Db::getInstance();
         $statement = $conn->prepare("SELECT profielfoto FROM tbl_users WHERE rol = 3");
-        $result = $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $result;
+        echo '<img src="data:../images/jpeg;base64,'.base64_encode( $result['profielfoto'] ).'"/>';
     }
 }
