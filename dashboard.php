@@ -4,25 +4,23 @@ spl_autoload_register(function($class){
 });
 
 session_start();
-// if (!empty($_SESSION['usernaam'])) {
+ if (!empty($_SESSION['usernaam'])) {
 // } else {
 //     header('Location: login.php');
 // }
-/*
+
 $users = new Dashboard();
-$users = $users->GetPatienten();
-*/
-if(isset($_GET['id'])){
-$user = new User();
-$schema->setId($_GET['id']);
-$schema = $user->Patient();
+$id = $_SESSION['id'];
+$users->setId($id);
+$schema = $users->GetPatienten();
+
 if (!empty($_GET["search"])) {
         $search = new Search($var1);
     } 
-$profielfoto = new User();
+$profielfoto = new Dashboard();
 $profielfoto = $profielfoto->getProfielfotoUser();
 }
-
+ 
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
