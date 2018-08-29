@@ -12,6 +12,8 @@ $module = $mod->GetAllEnergieModules();
 $user = new User();
 $patient = $user->Patient();
 
+$user = new User();
+$cuser = $user->getCurrentUser();
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +33,7 @@ $patient = $user->Patient();
             <nav class="navbar-fixed-left">
     <ul class="nav navbar-nav">
         <li>
-            <h2 id="cuser">Naam + ...</h2>
+            <h2 id="cuser"><?php echo $cuser["voornaam"],' ',$cuser["achternaam"]?></h2>
         </li>
     <li><a href="dashboard.php">Dashboard</a></li>
     <li><a href="patienten.php">Patiënten</a></li>
