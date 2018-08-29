@@ -271,13 +271,13 @@ public function Search($var1){
              $statement->execute();
              return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
-
 public function Patient(){
         $conn = Db::getInstance();
         $statement = $conn->prepare("select * from tbl_users where rol = 3");
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
+
 public function Module()
 {
     $conn = Db::getInstance();
@@ -349,7 +349,31 @@ public function Schema()
       } else {
         return 'Statement one has failed.';
       }
+    }
 
-}
+    /**
+     * Get the value of profielfoto
+     */
+    public function getProfielfoto()
+    {
+        return $this->profielfoto;
+    }
 
+    /**
+     * Set the value of profielfoto
+     *
+     * @return  self
+     */
+    public function setProfielfoto($profielfoto)
+    {
+        $this->profielfoto = $profielfoto;
+
+        return $this;
+    }
+    public function getProfielfotoUser() {
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT profielfoto FROM tbl_users WHERE rol = 3");
+        $result = $statement->execute();
+        return $result;
+    }
 }
