@@ -16,7 +16,8 @@ $user = new UserInfo();
 $person = $user->getPatientModule();
 $person = $user->getPatientTaak();
 $person = $user->getCategorie();
-
+$user = new User();
+$cuser = $user->getCurrentUser();
 if (!empty($_GET["search"])) {
         $search = new Search($var1);
     }
@@ -40,7 +41,7 @@ if (!empty($_GET["search"])) {
 <nav class="navbar-fixed-left">
     <ul class="nav navbar-nav">
         <li>
-            <h2 id="cuser">Naam + ...</h2>
+            <h2 id="cuser"><?php echo $cuser["voornaam"],' ',$cuser["achternaam"]?></h2>
         </li>
     <li><a href="dashboard.php">Dashboard</a></li>
     <li><a href="patienten.php">Patiënten</a></li>
