@@ -97,7 +97,7 @@ if (!empty($_GET["search"])) {
         </div>
     <?php endforeach; ?>
 </ul>
-</div>
+</div> 
 </div>
 </body>
 <script>
