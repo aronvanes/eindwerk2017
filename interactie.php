@@ -120,8 +120,8 @@ $patient = $user->Patient();
                             </div>
                                 <h4>Nieuwe taak aanmaken</h4>
                             <form action="" method="post">
-                                <input type="text" class="form-control" name="Naam" id="TaakNaam" placeholder="Naam taak">
-                                <input type="text" class="form-control" name="Beschrijving" id="TaakBeschrijving" placeholder="Beschrijving">
+                                <input type="text" class="form-control inputnaam" name="Naam" id="TaakNaam<?php echo $row['id'] ?>" placeholder="Naam taak">
+                                <input type="text" class="form-control inputbeschrijving" name="Beschrijving" id="TaakBeschrijving<?php echo $row['id'] ?>" placeholder="Beschrijving">
                             <input class="btnNext btn btn-secondary BtnAdd2" type="button" value="nieuwe taak">
                             </form>
 
@@ -298,8 +298,11 @@ $patient = $user->Patient();
 
 
             // tekst vak uitlezen
-            var naam = $("#TaakNaam").val();
-            var beschrijving = $("#TaakBeschrijving").val();
+            var $container2 = $(this).closest("#taak-container");
+            var naam = $container2..closest('.taak-container').find(".inputnaam").data('id');
+            var beschrijvinf = $container2..closest('.taak-container').find(".inputbeschrijving").data('id');
+            //var naam = $("#TaakNaam").val();
+           // var beschrijving = $("#TaakBeschrijving").val();
             var $container = $(this).closest('.module');
             var module_id = $container.closest('.module').find(".post").data('id');
 
@@ -322,7 +325,6 @@ $patient = $user->Patient();
                     // code + message
                     if (response.code == 200) {
                         var li = $("<li>");
-                        var ul = $("<ul>");
                         li.html("<h6 class ='text-left border-bottom'>"+ response.naam +"</h6>"+"<p>"+ response.beschrijving +"</p>");
                         $(".taakcontainer").prepend(li);
                         $(".taakcontainer li").last().slideDown();
