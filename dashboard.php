@@ -77,7 +77,7 @@ $profielfoto = $profielfoto->getProfielfotoUser();
     <?php endforeach; ?>
     </ul>
 
-    <div class="content offset-3 col-md-7">
+
 
 <div id="amodules">
     <h2>Actieve modules</h2>
