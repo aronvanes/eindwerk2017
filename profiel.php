@@ -4,7 +4,7 @@ spl_autoload_register(function($class){
 });
 
 session_start();
-$_SESSION['id'] = $user->setId();
+
 
 ?><!DOCTYPE html>
 <html lang="en">
