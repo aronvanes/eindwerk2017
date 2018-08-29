@@ -9,10 +9,9 @@ session_start();
 //     header('Location: login.php');
 // }
 
-$users = new Dashboard();
-$id = $_SESSION['id'];
-$users->setId($id);
-$schema = $users->GetPatienten();
+$user = new User();
+$schema = $user->Patient();
+
 
 if (!empty($_GET["search"])) {
         $search = new Search($var1);
@@ -64,7 +63,7 @@ $profielfoto = $profielfoto->getProfielfotoUser();
     <ul class="col-12 row">
     <?php foreach ($schema as $row): ?>
 
-                         <li class="overzichtp col-4" >
+                         <li id="cards">
                             <?php echo '<img src="data:../images/jpeg;base64,'.base64_encode( $profielfoto['profielfoto'] ).'"/>';?>
                             <a href="./profiel.php?id=<?php echo $row['id']; ?>">
                             <?php echo $row['voornaam'];echo " ";
