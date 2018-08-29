@@ -7,7 +7,7 @@ session_start();
 
 $user = new User();
 $cuser = $user->getCurrentUser();
-var_dump($cuser);
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
