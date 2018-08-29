@@ -2,7 +2,16 @@
 spl_autoload_register(function($class){
     include_once("classes/" .  $class . ".class.php");
 });
+
+
+
 session_start();
+$user = new User();
+$voornaam = $user->getVoornaam();
+$achternaam = $user->getAchternaam();
+
+
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +31,7 @@ session_start();
 <nav class="navbar-fixed-left">
     <ul class="nav navbar-nav">
         <li>
-            <h2 id="cuser">Naam + ...</h2>
+            <h2 id="cuser"><?php echo $voornaam; echo $achternaam; ?></h2>
         </li>
     <li><a href="dashboard.php">Dashboard</a></li>
     <li><a href="patienten.php">Patiënten</a></li>
