@@ -12,8 +12,13 @@ session_start();
 $user = new User();
 $schema = $user->Patient();
 
+     $user = new User();
+     $cuser = $user->getCurrentUser();
+
+
 $user = new User();
 $cuser = $user->getCurrentUser();
+
 
 if (!empty($_GET["search"])) {
         $search = new Search($var1);

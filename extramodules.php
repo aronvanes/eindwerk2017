@@ -11,7 +11,6 @@ session_start();
 
 $huidige = new UserInfo();
 $huidige = $huidige->getUserInfo();
-
 $user = new User();
 $cuser = $user->getCurrentUser();
 ?><!DOCTYPE html>
