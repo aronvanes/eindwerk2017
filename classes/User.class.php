@@ -329,6 +329,17 @@ public function Schema()
         return $statement->fetch(PDO::FETCH_OBJ);
       }
     }
+    public function getCurrentUser(){
+        $conn = Db::getInstance();
+
+        $statement = $conn->prepare('SELECT id, voornaam, achternaam, profielfoto FROM tbl_users WHERE id = :id');
+        $statement->bindParam(':id', $_SESSION['id']);
+
+        if ($statement->execute()){
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        }
+    }
+
 
     public static function setConnectionPatientTherapist($patient_id, $therapist_id){
       $conn = Db::getInstance();

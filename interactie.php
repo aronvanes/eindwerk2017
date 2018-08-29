@@ -119,10 +119,10 @@ $patient = $user->Patient();
                             <?php endforeach; ?>
                             </div>
                                 <h4>Nieuwe taak aanmaken</h4>
-                            <form action="" method="post">
+                            <form action="" method="post" class="taakinput">
                                 <input type="text" class="form-control inputnaam" name="Naam" id="TaakNaam<?php echo $row['id'] ?>" placeholder="Naam taak">
                                 <input type="text" class="form-control inputbeschrijving" name="Beschrijving" id="TaakBeschrijving<?php echo $row['id'] ?>" placeholder="Beschrijving">
-                            <input class="btnNext btn btn-secondary BtnAdd2" type="button" value="nieuwe taak">
+                            <input class="btnNext btn btn-secondary BtnAdd2" type="button" value="nieuwe taak aanmaken">
                             </form>
 
                             <input class="btnNext btn btn-secondary" type="button" value="doorgaan" onclick="switching()">
@@ -298,9 +298,9 @@ $patient = $user->Patient();
 
 
             // tekst vak uitlezen
-            var $container2 = $(this).closest("#taak-container");
-            var naam = $container2..closest('.taak-container').find(".inputnaam").data('id');
-            var beschrijvinf = $container2..closest('.taak-container').find(".inputbeschrijving").data('id');
+            var $container2 = $(this).closest(".taakinput");
+            var naam = $container2.closest('.taakinput').find(".inputnaam").data('id');
+            var beschrijving = $container2.closest('.taakinput').find(".inputbeschrijving").data('id');
             //var naam = $("#TaakNaam").val();
            // var beschrijving = $("#TaakBeschrijving").val();
             var $container = $(this).closest('.module');
