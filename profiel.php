@@ -54,12 +54,8 @@ session_start();
 <div class="naam">
 <h5><?php echo ($huidige['voornaam']) . " " . ($huidige['achternaam']); ?></h5>
 </div>
-<div class="categorie">
-<h5>Reeds afgewerkte modules per categorie: </h5>
-    <p>Categorie werk: <?php echo ($aantal['categorie_werk']); ?></p>
-    <p>Categorie energie: <?php echo ($aantal['categorie_energie']); ?> </p>
-    <p>Categorie sociaal: <?php echo ($aantal['categorie_sociaal']); ?></p>
-</div>
+
+<div id="timelineone">
 <div class="huidige">
 <h5>Is bezig in de categorie: </h5>
 <p><?php echo ($categorie['categorie']); ?></p>
@@ -68,10 +64,22 @@ session_start();
 <h5>Is bezig met de module: </h5>
 <p><?php echo ($extra['naam']); ?></p>
 </div>
-<div class="beschrijving">
 <h5>Beschrijving: </h5>
 <p><?php echo ($extra['beschrijving']); ?></p>
 </div>
+
+<div class="categorie">
+    
+    <div id="timeline"><div id="pictoslaap"></div>
+    <p>Categorie slaap: <?php echo ($aantal['categorie_werk']); ?></p></div>
+
+    <div id="timeline"><div id="pictosport"></div>
+    <p>Categorie sport: <?php echo ($aantal['categorie_energie']); ?> </p></div>
+
+    <div id="timeline"><div id="pictointeractie"></div>
+    <p>Categorie interactie: <?php echo ($aantal['categorie_sociaal']); ?></p></div>
+</div>
+
 </div>
 </div>
 </body>
