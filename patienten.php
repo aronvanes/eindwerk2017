@@ -12,6 +12,11 @@ if (!empty($_SESSION['usernaam'])) {
 
 $user = new User();
 $schema = $user->Patient();
+$user = new UserInfo();
+$person = $user->getPatientModule();
+$person = $user->getPatientTaak();
+$person = $user->getCategorie();
+
 if (!empty($_GET["search"])) {
         $search = new Search($var1);
     }
@@ -70,36 +75,18 @@ if (!empty($_GET["search"])) {
     <h2>Nieuwe aanvragen</h2>
 </div>
 
-<ul class="flex-container">
-<p class='listname'>Patiënten</p>
-    <?php foreach ($schema as $row): ?>
-        <div class="col-md-5 col-features text-left border-bottom">
-            <div class="flex-container ">
-                    <div class='lists'>
-                        <li class="flex-item">
-                            <br>
-                            <a href="./profiel.php?id=<?php echo $row['id']; ?>"><?php echo $row['voornaam'];echo " ";
-                            echo $row['achternaam']; ?></a>
-                            </li>
-                    </div>
-                </a>
-            </div>
-        </div>
-    <?php endforeach; ?>
-</ul>
 
 
 <div id="pbehandeling">
     <h2>Patiënten in behandeling</h2>
 </div>
 
-<ul class="flex-container">
-<p class='listname'>Patiënten</p>
+<ul class="col-12 row">
     <?php foreach ($schema as $row): ?>
-        <div class="col-md-5 col-features text-left border-bottom">
+        <div class="col-md-5 col-features">
             <div class="flex-container ">
                     <div class='lists'>
-                        <li class="flex-item">
+                        <li id="cards">
                             <br>
                             <a href="./profiel.php?id=<?php echo $row['id']; ?>"><?php echo $row['voornaam'];echo " ";
                             echo $row['achternaam']; ?></a>

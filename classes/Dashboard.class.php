@@ -8,6 +8,7 @@ public function GetPatienten()
     {
     $conn = Db::getInstance();
     $statement = $conn->prepare("select * from tbl_users_relationship where user_id_origin = $id");
+    $statement->bindParam(":id", $this->id);
     $statement->execute();
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
