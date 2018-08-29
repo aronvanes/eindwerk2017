@@ -339,6 +339,26 @@ public function Schema()
             return $statement->fetch(PDO::FETCH_ASSOC);
         }
     }
+    public function getPsychoInfo(){
+        $conn = Db::getInstance();
+
+        $statement = $conn->prepare('SELECT * FROM tbl_users WHERE id = :id');
+        $statement->bindParam(':id', $_SESSION['id']);
+
+        if ($statement->execute()){
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        }
+    }
+    public function getPsychoInfoExtra(){
+        $conn = Db::getInstance();
+
+        $statement = $conn->prepare('SELECT * FROM tbl_users_extra WHERE users_id = :id');
+        $statement->bindParam(':id', $_SESSION['id']);
+
+        if ($statement->execute()){
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        }
+    }
 
 
     public static function setConnectionPatientTherapist($patient_id, $therapist_id){

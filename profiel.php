@@ -32,9 +32,9 @@ $cuser = $user->getCurrentUser();
     <li><a href="dashboard.php">Dashboard</a></li>
     <li><a href="patienten.php">Patiënten</a></li>
     <li><a href="modules.php">Modules</a></li>
-    <li><a href="profiel.php">Profiel</a></li>
     <li><a href="berichten.php">Berichten</a></li>
     <li><a href="extramodules.php" id="extra">Extra modules</a></li>
+    <li><a href="mijnaccount.php">Profiel</a><li>
     <li><a href="logout.php">Uitloggen</a><li>
     </ul>
 </nav>

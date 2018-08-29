@@ -12,13 +12,8 @@ session_start();
 $user = new User();
 $schema = $user->Patient();
 
-     $user = new User();
-     $cuser = $user->getCurrentUser();
-
-
 $user = new User();
 $cuser = $user->getCurrentUser();
-
 
 if (!empty($_GET["search"])) {
         $search = new Search($var1);
@@ -26,6 +21,12 @@ if (!empty($_GET["search"])) {
 $profielfoto = new Dashboard();
 $profielfoto = $profielfoto->getProfielfotoUser();
 }
+
+$therapeut = new User();
+$info = $therapeut->getPsychoInfo();
+
+$psycho = new User();
+$extra = $psycho->getPsychoInfoExtra();
  
 ?><!DOCTYPE html>
 <html lang="en">
@@ -58,36 +59,32 @@ $profielfoto = $profielfoto->getProfielfotoUser();
 </nav>
 </div>
 
-
 <div class="offset-3 col-md-7">
-<div id="uptodate">
-    <p>Is uw patiëntenlijst nog up to date? <a href="patienten.php">Patiëntenlijst beheren</a></p>
-    
+    <div id="mijngegevens">
+    <h2>Mijn gegevens</h2>
+    </div>
+
+    <div id="account">
+    <h4>Naam en achternaam</h4>
+    <p><?php echo $info["voornaam"],' ',$info["achternaam"]; ?></p>
+
+    <h4>Geboortedatum</h4>
+    <p><?php echo $extra["geboortedatum"];?></p>
+
+    <h4>Woonplaats</h4>
+    <p><?php echo $extra["woonplaats"];?></p>
+
+    <h4>Jobtitel</h4>
+    <p><?php echo $extra["jobtitel"];?></p>
+
+    <h4>Sector</h4>
+    <p><?php echo $extra["sector"];?></p>
+
+    <h4>Specialisatie</h4>
+    <p><?php echo $extra["specialisatie"];?></p>
+    </div>
 </div>
-<div id="pbehandeling">
-    <h2>Patiënten in behandeling</h2>
-</div>
-    <ul class="col-12 row">
-    <?php foreach ($schema as $row): ?>
 
-                         <li id="cards">
-                            <?php echo '<img src="data:../images/jpeg;base64,'.base64_encode( $profielfoto['profielfoto'] ).'"/>';?>
-                            <a href="./profiel.php?id=<?php echo $row['id']; ?>">
-                            <?php echo $row['voornaam'];echo " ";
-                            echo $row['achternaam']; ?></a>
-
-                            </li>
-
-
-    <?php endforeach; ?>
-    </ul>
-
-
-
-<div id="amodules">
-    <h2>Actieve modules</h2>
-</div>
-</div>
 </div>
 </div>
 </body>
