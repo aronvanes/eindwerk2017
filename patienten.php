@@ -56,11 +56,43 @@ if (!empty($_GET["search"])) {
     </form>
 <br>
 <div class='connect'>
+    <br>
+    <div class="col-md-5 col-features text-left">
+    <br>
   <p>Nieuwe gebruiker toevoegen</p>
   <p id='error_msg_p' class='error_msg'></p>
   <input type='text' id='connect_patient_input' placeholder="6 cijfers">
   <button type='button' disabled id='connect_patient_button'> KOPPELEN </button>
 </div>
+</div>
+
+<div class="aanvragen">
+    <h2>Nieuwe aanvragen</h2>
+</div>
+
+<ul class="flex-container">
+<p class='listname'>Patiënten</p>
+    <?php foreach ($schema as $row): ?>
+        <div class="col-md-5 col-features text-left border-bottom">
+            <div class="flex-container ">
+                    <div class='lists'>
+                        <li class="flex-item">
+                            <br>
+                            <a href="./profiel.php?id=<?php echo $row['id']; ?>"><?php echo $row['voornaam'];echo " ";
+                            echo $row['achternaam']; ?></a>
+                            </li>
+                    </div>
+                </a>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</ul>
+
+
+<div id="pbehandeling">
+    <h2>Patiënten in behandeling</h2>
+</div>
+
 <ul class="flex-container">
 <p class='listname'>Patiënten</p>
     <?php foreach ($schema as $row): ?>
