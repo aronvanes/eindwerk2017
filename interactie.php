@@ -117,7 +117,7 @@ $page = ("interactie");
                   <input type="text" class="form-control inputbeschrijving" name="Beschrijving" id="TaakBeschrijving_<?php echo $module['id'] ?>" placeholder="Beschrijving">
                   <input class="btnNext btn btn-secondary add_task" type="button" value="nieuwe taak aanmaken">
                 </form>
-                <input class="btnNext btn btn-secondary" type="button" value="doorgaan" onclick="switching()">
+                <input class="btnNext btn btn-secondary connect_patient" type="button" value="Deze module koppelen aan patient">
               </div>
               <div class="client-container" id="client-container">
                 <?php foreach ($patients as $patient): ?>
@@ -155,11 +155,11 @@ $page = ("interactie");
       document.getElementById("overlay2").style.display = "flex";
     }
 
-    function switching() {
-      document.getElementById("taak-container").style.display = "none";
-      document.getElementById("client-container").style.display = "block";
+    $('.connect_patient').on('click', function(e){
+      e.preventDefault()
 
-    }
+      $(this).parent().siblings('.client-container').toggle()
+    })
 
     function myFunction() {
       location.reload();

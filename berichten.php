@@ -85,11 +85,10 @@ $friends = $users_obj->getUsersByUser();
 <script>
   $(document).ready(function(){
 
-    $('a.conversation_container').on('click', function(e){
-
+    function getMessageHistory(el) {
       let user_id = $('.berichten_container').data('id');
-      let partner_id = $(this).data('id')
-      let partner_name = $(this).children('.message_header').text()
+      let partner_id = el.data('id')
+      let partner_name = el.children('.message_header').text()
 
       console.log(partner_name)
 
@@ -127,7 +126,11 @@ $friends = $users_obj->getUsersByUser();
           console.log(response)
         })
       )
-    });
+    }
+
+    $('a.conversation_container').on('click', function(e){
+      getMessageHistory($(this));
+    })
 
     $('#send_message').on('click', function(e){
       sendMessage()
