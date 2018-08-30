@@ -47,7 +47,7 @@ class Bericht {
     // Wordt later in de functie terug uit gezet voor veiligheid.
     $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
 
-    $statement = $conn->prepare('SELECT * FROM tbl_berichten WHERE verzender_id IN (:person_a, :person_b) OR ontvanger_id IN (:person_a, :person_b) ORDER BY datum_tijd_verstuurd ASC');
+    $statement = $conn->prepare('SELECT * FROM tbl_berichten WHERE verzender_id IN (:person_a, :person_b) AND ontvanger_id IN (:person_a, :person_b) ORDER BY datum_tijd_verstuurd ASC');
     $statement->bindParam(':person_a', $person_a);
     $statement->bindParam(':person_b', $person_b);
 
