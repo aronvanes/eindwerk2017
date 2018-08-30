@@ -13,7 +13,7 @@ $slaap_modules = $mod->GetAllSlaapModules();
 $user = new User();
 $user->setId($_SESSION['user_id']);
 $patients = $user->getPatientsByTherapist();
-
+$page = ("slaap");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,9 +66,9 @@ $patients = $user->getPatientsByTherapist();
                 <img src="images/063-sleep-1.svg" alt="" class="interactieIcon">
             </div>
             <div class="NavModules">
-                <a href="interactie.php" class="interactielink">Interactie</a>
-                <a href="sport.php" class="sportlink">Sport</a>
-                <a href="slaap.php" class="slaaplink">Slaap</a>
+                <a href="interactie.php" class="interactielink <?php echo ($page == "interactie" ? "active1" : "")?>">Interactie</a>
+                <a href="sport.php" class="sportlink  <?php echo ($page == "sport" ? "active2" : "")?>">Sport</a>
+                <a href="slaap.php" class="slaaplink  <?php echo ($page == "slaap" ? "active3" : "")?>">Slaap</a>
             </div>
             <ul class="ModuleList">
                 <!--hier word via een foreachlus alle rijen opgehaald uit de modules met categorie interactie -->
