@@ -25,30 +25,7 @@ header('Location: login.php');
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
-
-
-<div class=navigation>
-<a href=""><div class="logo"></div></a>
-<nav class="navbar-fixed-left">
-  <ul class="nav navbar-nav">
-    <li>
-    </li>
-    <li><a href="dashboard.php">Dashboard</a></li>
-    <li><a href="patienten.php">Patiënten</a></li>
-    <li><a href="modules.php">Modules</a></li>
-    <li><a href="berichten.php">Berichten</a></li>
-    <li><a href="extramodules.php" id="extra">Extra modules</a></li>
-    <li><a href="mijnaccount.php">Profiel</a>
-    <li>
-    <li><a href="logout.php">Uitloggen</a>
-    <li>
-  </ul>
-</nav>
-</div>
-
-
-<div class="container">
-</div>
-
+ <p>Je zou deze pagina niet mogen zien.</p>
+ <a href='login.php'>Gebruik deze link om terug te gaan</p>
 </body>
 </html>

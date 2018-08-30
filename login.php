@@ -13,10 +13,14 @@ else{
         $user = new User();
         $user->setUsernaam($_POST["usernaam"]);
 
-        if ($user->login($_POST['wachtwoord'])){
+        $res = $user->login($_POST['wachtwoord']);
+
+        if ($res){
             session_start();
-            $_SESSION["user_id"] = $user->getId();
-            $_SESSION["usernaam"] = $user->getUsernaam();
+            $_SESSION["user_id"] = $res->id;
+            $_SESSION["usernaam"] = $res->usernaam;
+            $_SESSION["voornaam"] = $res->voornaam;
+            $_SESSION["achternaam"] = $res->achternaam;
             header("Location: index.php");
         }
         else{

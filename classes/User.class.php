@@ -161,11 +161,6 @@ class User {
         return $this->searchText;
     }
 
-    /**
-     * Set the value of searchText
-     *
-     * @return  self
-     */
     public function setSearchText($searchText)
     {
         $this->searchText = $searchText;
@@ -196,7 +191,7 @@ class User {
         $res = $statement->fetch(PDO::FETCH_OBJ);
 
         if (password_verify($temp_wachtwoord, $res->wachtwoord)){
-          return $res->id;
+          return $res;
         } else {
           return false;
         }
@@ -206,19 +201,23 @@ class User {
     }
 
 
-public function Search(){
-            $conn = Db::getInstance();
-            $statement = $conn->prepare("SELECT * FROM tbl_users WHERE voornaam
-             LIKE :search OR achternaam LIKE :search");
-             $statement->bindValue(':search', '%' . $this->searchText. '%', PDO::PARAM_INT);
-             $statement->execute();
-             return $statement->fetchAll(PDO::FETCH_ASSOC);
-}
-public function Patient(){
-        $conn = Db::getInstance();
-        $statement = $conn->prepare("select * from tbl_users where rol = 3");
-        $statement->execute();
+    public function Search(){
+      $conn = Db::getInstance();
+      $statement = $conn->prepare("SELECT * FROM tbl_users WHERE voornaam
+       LIKE :search OR achternaam LIKE :search");
+       $statement->bindValue(':search', '%' . $this->searchText. '%', PDO::PARAM_INT);
+       $statement->execute();
+       return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getPatientsByTherapist(){
+      $conn = Db::getInstance();
+      $statement = $conn->prepare('SELECT u.id, u.voornaam, u.achternaam, u.profielfoto FROM tbl_users AS u INNER JOIN tbl_users_relationship AS ur ON u.id = ur.user_id_origin WHERE ur.user_id_destination = :user_id AND rol = 3');
+      $statement->bindParam(':user_id', $this->id);
+
+      if ($statement->execute()) {
         return $statement->fetchAll(PDO::FETCH_ASSOC);
+      }
     }
 
 public function Module()
