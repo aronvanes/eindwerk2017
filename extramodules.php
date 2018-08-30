@@ -12,6 +12,7 @@ session_start();
 $huidige = new UserInfo();
 $huidige = $huidige->getUserInfo();
 $user = new User();
+$user->setId($_SESSION['user_id']);
 $cuser = $user->getCurrentUser();
 ?><!DOCTYPE html>
 <html lang="en">
@@ -31,7 +32,7 @@ $cuser = $user->getCurrentUser();
 <nav class="navbar-fixed-left">
 <ul class="nav navbar-nav">
         <li>
-            <h2 id="cuser"><?php echo $cuser["voornaam"],' ',$cuser["achternaam"]?></h2>
+            <h2 id="cuser"><?php echo $_SESSION["voornaam"],' ',$_SESSION["achternaam"]; ?></h2>
         </li>
     <li><a href="dashboard.php">Dashboard</a></li>
     <li><a href="patienten.php">Patiënten</a></li>
