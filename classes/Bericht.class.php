@@ -77,6 +77,5 @@ class Bericht {
     if ($statement->execute()){
       return $statement->rowCount();
     }
-
   }
 }

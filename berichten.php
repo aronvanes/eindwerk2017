@@ -33,7 +33,7 @@ $friends = $users_obj->getUsersByUser();
 <body>
   <div class="message_modal">
     <div class="modal_inner">
-      <div class="modal_header" ></div>
+      <div class="modal_header"></div>
       <div class="modal_content"></div>
       <div class="modal_footer">
         <form method="post" action="#">
@@ -65,11 +65,16 @@ $friends = $users_obj->getUsersByUser();
       <h2>Berichten</h2>
       <div class="inner_container">
         <?php foreach ($friends as $friend): ?>
+        <?php $newMessage = Bericht::checkForNewMessages($friend->id, $_SESSION['user_id'])?>
           <div class="friend_container">
             <a href="#" id="friend_<?php echo $friend->id?>" data-id="<?php echo $friend->id?>" class="conversation_container">
               <img src="<?php echo $friend->profielfoto; ?>">
               <p class="message_header"><?php echo $friend->voornaam.' '.$friend->achternaam; ?></p>
-              <p class="message_preview">Geen nieuwe berichten<p>
+              <?php if ($newMessage > 0):?>
+                <p class="message_preview new_message">Je hebt nieuwe berichten<p>
+              <?php else: ?>
+                <p class="message_preview">Geen nieuwe berichten<p>
+              <?php endif;?>
              </a>
           </div>
         <?php endforeach; ?>
@@ -100,13 +105,28 @@ $friends = $users_obj->getUsersByUser();
         $('.modal_header').append('<p class="partner_name">'+partner_name+'</p>')
         $('.modal_header').attr('data-id', partner_id)
 
-        response.map(message => {
-          let position = message.verzender_id == user_id ? 'right' : 'left'
-          let div = '<div class="message_container" data-position="'+position+'"><p class="message" data-sender-id="'+message.verzender_id+'">'+message.bericht+'</p></div>'
-          $('.modal_content').append(div)
+        if (response.length > 0){
+          response.map(message => {
+            let position = message.verzender_id == user_id ? 'right' : 'left'
+            let div = '<div class="message_container" data-position="'+position+'"><p class="message" data-sender-id="'+message.verzender_id+'">'+message.bericht+'</p></div>'
+            $('.modal_content').append(div)
+          })
+          $('.modal_content').scrollTop($('.modal_content').get(0).scrollHeight)
+        } else {
+          $('.modal_content').html('<p style="color:#AAA; font-style: italic">Je hebt nog geen chat geschiedenis.</p>')
+        }
+      }).then(
+        $.ajax({
+          method: 'POST',
+          url: 'AJAX/setLastMessageAsRead.php',
+          data: {
+            user_id: user_id,
+            partner_id: partner_id
+          }
+        }).done(function(response){
+          console.log(response)
         })
-        $('.modal_content').scrollTop($('.modal_content').get(0).scrollHeight)
-      })
+      )
     });
 
     $('#send_message').on('click', function(e){
@@ -118,6 +138,8 @@ $friends = $users_obj->getUsersByUser();
         e.preventDefault();
 
         sendMessage()
+      } else if (e.keyCode == 27){
+        closeModal()
       }
     });
 
@@ -155,11 +177,14 @@ $friends = $users_obj->getUsersByUser();
         $('.modal_content').scrollTop($('.modal_content').get(0).scrollHeight)
 
       })
+    }
 
-      console.log(receiver_id)
+    closeModal = () => {
+      $('.modal_header').html('');
+      $('.modal_content').html('');
 
+      $('.message_modal').hide();
     }
   })
 </script>
-
 </html>
