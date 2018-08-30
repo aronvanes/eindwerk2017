@@ -103,7 +103,7 @@ $page = ("slaap");
                                                 <!--elke rij voor users heeft ook een button die er voor zorgt dat de id van d desbetreffende user samenkomt met bijbehorende
                                                                   interactie module-->
                                                 <comment>Taaknaam</comment>
-                                                <h6 class ="text-left"  data-id=" <?php echo $taak['id'] ?>"><?php echo $taak['naam'];?></h6>
+                                                <h6 class ="text-left post3"  data-id=" <?php echo $taak['id'] ?>"><?php echo $taak['naam'];?></h6>
                                                 <comment>Beschrijving</comment>
                                                 <p><?php echo $taak['beschrijving'];?></p>
                                             </li>
@@ -203,7 +203,45 @@ $page = ("slaap");
             e.preventDefault();
         });
     });
+    /* $(function() {
+           $(".btnSubmit").on("click", function(e) {
+               e.preventDefault();
+               console.log("clicked");
+               //volgends de persoon waar mee ik gpraat heb op stackoverflow moest ik werken met claases en deze selecteren met DOM traversal
 
+               // Je kon niet de juiste module id vinden omdat die niet in col-md-10 zit maar in 8
+               // op deze manier krijg je de juiste id's
+               var $container = $(this).closest('.client');
+               var taak_id = $container.closest('.module').find(".post3").data('id');
+               var user_id = $container.find(".post2").data('id');
+
+               console.log("taak : " + taak_id);
+               console.log("user : " + user_id);
+
+               $.ajax({
+                   method: "POST",
+                   url: "AJAX/ClientTaak.php",
+                   data: {
+                       user_id: user_id,
+                       taak_id: taak_id
+                   } //update: is de naam en update is de waarde (value)
+
+               })
+
+                   .done(function(response) {
+
+                       // code + message
+                       if (response.code == 200) {
+                           console.log("werkt dit?")
+                           alert("Module toegewezen");
+                       }
+                   });
+
+               e.preventDefault();
+           });
+       });
+
+   */
 
     $(function() {
         $(".toggler").on("click", function(e) {
