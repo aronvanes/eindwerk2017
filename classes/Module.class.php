@@ -93,7 +93,7 @@ public function getId()
         return $statement->fetchAll(PDO::FETCH_ASSOC);
   }
 
-    public function GetAllEnergieModules(){
+    public function GetAllSportModules(){
 
         $conn = Db::getInstance();
         $statement = $conn->prepare("SELECT * FROM tbl_module WHERE categorie = 2");

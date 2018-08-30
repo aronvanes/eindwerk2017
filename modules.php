@@ -42,7 +42,7 @@ if (empty($_SESSION['usernaam'])) { header('Location: login.php'); }
     </div>
     <div class="col-md-2" id="topen">
         <img src="images/160-run.png" alt="" id="emoji"> <br>
-        <a href="energie.php" class="btn btn-primary" id="energie">Energie</a>
+        <a href="sport.php" class="btn btn-primary" id="energie">Energie</a>
     </div>
     <div class="col-md-2" id="topsla">
         <img src="images/063-sleep-1.png" alt="" id="emoji"> <br>

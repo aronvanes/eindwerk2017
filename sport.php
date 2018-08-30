@@ -7,7 +7,7 @@ if (empty($_SESSION['usernaam'])) { header('Location: login.php'); }
 
 
 $mod = new Module;
-$slaap_modules = $mod->GetAllSlaapModules();
+$sport_modules = $mod->GetAllSportModules();
 // $moduleAdd = $mod->CreateModule();
 
 $user = new User();
@@ -72,7 +72,7 @@ $patients = $user->getPatientsByTherapist();
             </div>
             <ul class="ModuleList">
                 <!--hier word via een foreachlus alle rijen opgehaald uit de modules met categorie interactie -->
-                <?php foreach ($slaap_modules as $module) :?>
+                <?php foreach ($sport_modules as $module) :?>
                     <div class="list border-bottom-yellow module">
                         <div class="toggleHolder">
                             <input type="button" class="toggler btn btn-warning" value="▾Show More">
@@ -254,7 +254,7 @@ $patients = $user->getPatientsByTherapist();
 
             $.ajax({
                 method: "POST",
-                url: "AJAX/AddModuleSlaap.php",
+                url: "AJAX/AddModuleSport.php",
                 data: {
                     naam: naam,
                     beschrijving: beschrijving,
@@ -304,7 +304,7 @@ $patients = $user->getPatientsByTherapist();
 
             $.ajax({
                 method: "POST",
-                url: "AJAX/AddTaakSlaap.php",
+                url: "AJAX/AddTaakSport.php",
                 data: {
                     naam: naam,
                     beschrijving: beschrijving,

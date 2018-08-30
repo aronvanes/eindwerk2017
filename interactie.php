@@ -67,7 +67,7 @@ $patients = $user->getPatientsByTherapist();
         </div>
         <div class="NavModules">
           <a href="interactie.php" class="interactielink">Interactie</a>
-          <a href="energie.php" class="sportlink">Sport</a>
+          <a href="sport.php" class="sportlink">Sport</a>
           <a href="slaap.php" class="slaaplink">Slaap</a>
         </div>
         <ul class="ModuleList">
