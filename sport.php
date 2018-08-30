@@ -63,7 +63,7 @@ $patients = $user->getPatientsByTherapist();
         </div>
         <div class="offset-3 horizontalOffset col-md-8">
             <div class="col-3">
-                <img src="images/158-couple.svg" alt="" class="interactieIcon">
+                <img src="images/160-run.svg" alt="" class="interactieIcon">
             </div>
             <div class="NavModules">
                 <a href="interactie.php" class="interactielink">Interactie</a>
