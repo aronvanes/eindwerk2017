@@ -28,8 +28,6 @@ class User {
     }
     //private $userid;
 
-
-
     /**
      * Get the value of usernaam
      */
@@ -43,6 +41,7 @@ class User {
      *
      * @return  self
      */
+
     public function setUsernaam($usernaam)
     {
         if (empty($usernaam)){
@@ -157,27 +156,23 @@ class User {
         return $this;
     }
 
-
-    /**
-     * Get the value of userid
-     */
-   /* public function getUserid()
+    public function getSearchText()
     {
-        return $this->userid;
+        return $this->searchText;
     }
 
     /**
-     * Set the value of userid
+     * Set the value of searchText
      *
      * @return  self
      */
-    /*public function setUserid($userid)
+    public function setSearchText($searchText)
     {
-        $this->userid = $userid;
+        $this->searchText = $searchText;
 
         return $this;
     }
-*/
+
     public function register(){
         $conn = Db::getInstance();
         $statement = $conn->prepare("INSERT INTO tbl_users (usernaam, voornaam, achternaam, wachtwoord, rol)
@@ -189,84 +184,32 @@ class User {
         $statement->bindParam(':wachtwoord', $this->wachtwoord);
         $result = $statement->execute();
         return $result;
-}
-public function login()
-{
-    if (!empty($_POST)) {
-
-        try {
-
-            //Retrieve the field values from our login form.
-            $usernaam = $_POST['usernaam'];
-            $passwordAttempt = $_POST['wachtwoord'];
-
-            //Retrieve the user account information for the given username.
-            $conn = Db::getInstance();
-            $statement = $conn->prepare("SELECT id, usernaam, wachtwoord FROM tbl_users WHERE usernaam = :usernaam");
-
-            //Bind value.
-            $statement->bindValue(':usernaam', $usernaam);
-
-            //Execute.
-            $statement->execute();
-
-            //Fetch row.
-            $user = $statement->fetch(PDO::FETCH_ASSOC);
-
-
-            //If $row is FALSE.
-            if ($user === false) {
-                //Could not find a user with that username!
-
-                $error = "Incorrect username ";
-            } else {
-                //User account found. Check to see if the given password matches the
-                //password hash that we stored in our users table.
-
-                //Compare the passwords.
-                $validPassword = password_verify($passwordAttempt, $user['wachtwoord']);
-
-                //If $validPassword is TRUE, the login has been successful.
-                if ($validPassword) {
-                    //Provide the user with a login session.
-                    $_SESSION['id'] = $user['id'];
-                    $_SESSION['logged_in'] = time();
-                    $_SESSION['usernaam'] = $_POST["usernaam"];
-
-
-                    header("Location: dashboard.php");
-
-                } else {
-                    //$validPassword was FALSE. Passwords do not match.
-                    $error = "Incorrect email and/or password";
-
-                }
-            }
-        } catch (Exception $e) {
-            $error = $e->getMessage();
-        }
     }
-}
-public function getSearchText()
-{
-    return $this->searchText;
-}
 
-/**
- * Set the value of searchText
- *
- * @return  self
- */
-public function setSearchText($searchText)
-{
-    $this->searchText = $searchText;
+    public function login($temp_wachtwoord) {
+      $conn = Db::getInstance();
 
-    return $this;
-}
-public function Search($var1){
+      $statement = $conn->prepare('SELECT * FROM tbl_users WHERE usernaam = :usernaam');
+      $statement->bindParam(':usernaam', $this->usernaam);
+
+      if ($statement->execute()){
+        $res = $statement->fetch(PDO::FETCH_OBJ);
+
+        if (password_verify($temp_wachtwoord, $res->wachtwoord)){
+          return $res->id;
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    }
+
+
+public function Search(){
             $conn = Db::getInstance();
-            $statement = $conn->prepare("SELECT * FROM tbl_users WHERE 'voornaam'
-             LIKE :search OR 'voornaam' LIKE :search");
+            $statement = $conn->prepare("SELECT * FROM tbl_users WHERE voornaam
+             LIKE :search OR achternaam LIKE :search");
              $statement->bindValue(':search', '%' . $this->searchText. '%', PDO::PARAM_INT);
              $statement->execute();
              return $statement->fetchAll(PDO::FETCH_ASSOC);

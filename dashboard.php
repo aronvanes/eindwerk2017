@@ -4,29 +4,19 @@ spl_autoload_register(function($class){
 });
 
 session_start();
- if (!empty($_SESSION['usernaam'])) {
-// } else {
-//     header('Location: login.php');
-// }
+ if (empty($_SESSION['usernaam'])) { header('Location: login.php'); }
 
 $user = new User();
 $schema = $user->Patient();
-
-     $user = new User();
-     $cuser = $user->getCurrentUser();
-
-
-$user = new User();
 $cuser = $user->getCurrentUser();
 
-
 if (!empty($_GET["search"])) {
-        $search = new Search($var1);
-    } 
-$profielfoto = new Dashboard();
-$profielfoto = $profielfoto->getProfielfotoUser();
+  $search = new Search($var1);
 }
- 
+
+$dashboard = new Dashboard();
+$profielfoto = $dashboard->getProfielfotoUser();
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,7 +52,7 @@ $profielfoto = $profielfoto->getProfielfotoUser();
 <div class="offset-3 col-md-7">
 <div id="uptodate">
     <p>Is uw patiëntenlijst nog up to date? <a href="patienten.php">Patiëntenlijst beheren</a></p>
-    
+
 </div>
 <div id="pbehandeling">
     <h2>Patiënten in behandeling</h2>

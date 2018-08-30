@@ -1,3 +1,17 @@
+<?php
+spl_autoload_register(function($class){
+    include_once("classes/" .  $class . ".class.php");
+});
+
+session_start();
+if (!empty($_SESSION['usernaam'])) {
+  header('Location: dashboard.php');
+} else {
+header('Location: login.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,11 +30,19 @@
 <div class=navigation>
 <a href=""><div class="logo"></div></a>
 <nav class="navbar-fixed-left">
-    <ul class="nav navbar-nav">
+  <ul class="nav navbar-nav">
+    <li>
+    </li>
     <li><a href="dashboard.php">Dashboard</a></li>
     <li><a href="patienten.php">Patiënten</a></li>
     <li><a href="modules.php">Modules</a></li>
-    </ul>
+    <li><a href="berichten.php">Berichten</a></li>
+    <li><a href="extramodules.php" id="extra">Extra modules</a></li>
+    <li><a href="mijnaccount.php">Profiel</a>
+    <li>
+    <li><a href="logout.php">Uitloggen</a>
+    <li>
+  </ul>
 </nav>
 </div>
 
