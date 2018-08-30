@@ -93,7 +93,7 @@ class AppUser extends User {
     }
   }
 
-  public function login(){
+  public function login($temp_wachtwoord = null){
     $conn = Db::getInstance();
 
     $statement = $conn->prepare("SELECT * FROM tbl_users AS users RIGHT JOIN tbl_users_extra as extra ON users.id = extra.users_id WHERE usernaam = :usernaam");

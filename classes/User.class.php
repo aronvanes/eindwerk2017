@@ -281,8 +281,8 @@ class User {
     public function getPsychoInfo(){
         $conn = Db::getInstance();
 
-        $statement = $conn->prepare('SELECT * FROM tbl_users WHERE id = :id');
-        $statement->bindParam(':id', $_SESSION['id']);
+        $statement = $conn->prepare('SELECT voornaam, achternaam FROM tbl_users WHERE id = :id');
+        $statement->bindParam(':id', $this->id);
 
         if ($statement->execute()){
             return $statement->fetch(PDO::FETCH_ASSOC);
@@ -291,8 +291,8 @@ class User {
     public function getPsychoInfoExtra(){
         $conn = Db::getInstance();
 
-        $statement = $conn->prepare('SELECT * FROM tbl_users_extra WHERE users_id = :id');
-        $statement->bindParam(':id', $_SESSION['id']);
+        $statement = $conn->prepare('SELECT geboortedatum, woonplaats, jobtitel, sector, specialisatie FROM tbl_users_extra WHERE users_id = :id');
+        $statement->bindParam(':id', $this->id);
 
         if ($statement->execute()){
             return $statement->fetch(PDO::FETCH_ASSOC);

@@ -588,3 +588,11 @@
      background-color: #F2F2F2;
      color: darkred;
    }
+
+   .berichten_container{
+     margin-top: 8%;
+   }
+
+   .berichten-container .inner_container {
+     background-color: #F2F2F2;
+   }

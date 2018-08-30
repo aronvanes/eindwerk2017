@@ -4,30 +4,13 @@ spl_autoload_register(function($class){
 });
 
 session_start();
- if (!empty($_SESSION['usernaam'])) {
-// } else {
-//     header('Location: login.php');
-// }
+if (empty($_SESSION['usernaam'])) { header('Location: login.php'); }
 
 $user = new User();
-$schema = $user->Patient();
+$user->setId($_SESSION['user_id']);
+$info = $user->getPsychoInfo();
+$extra = $user->getPsychoInfoExtra();
 
-$user = new User();
-$cuser = $user->getCurrentUser();
-
-if (!empty($_GET["search"])) {
-        $search = new Search($var1);
-    } 
-$profielfoto = new Dashboard();
-$profielfoto = $profielfoto->getProfielfotoUser();
-}
-
-$therapeut = new User();
-$info = $therapeut->getPsychoInfo();
-
-$psycho = new User();
-$extra = $psycho->getPsychoInfoExtra();
- 
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +29,7 @@ $extra = $psycho->getPsychoInfoExtra();
 <nav class="navbar-fixed-left">
 <ul class="nav navbar-nav">
         <li>
-            <h2 id="cuser"><?php echo $cuser["voornaam"],' ',$cuser["achternaam"]?></h2>
+          <h2 id="cuser"><?php echo $_SESSION["voornaam"],' ',$_SESSION["achternaam"]?></h2>
         </li>
     <li><a href="dashboard.php">Dashboard</a></li>
     <li><a href="patienten.php">Patiënten</a></li>
