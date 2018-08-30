@@ -88,7 +88,7 @@ class UserModule
     }
 
 
-    public function SaveTakenToUser($taak_id)
+    public function SaveTakenToUser()
     {
         $conn = Db::getInstance();
 
