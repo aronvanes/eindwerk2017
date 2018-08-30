@@ -6,20 +6,19 @@ spl_autoload_register(function($class){
     include_once("../classes/" .  $class . ".class.php");
 });
 
-$module = new Module();
+$taak = new Taak();
 $user = new User();
-$userModule = new UserModule();
+$usertaak = new UserTaak();
 
 if (!empty($_POST)) {
     //hier worden de 2 ids opgeslagen in met de functie Save in tbl_users_module
-    $module->Text = $_POST['module_id'];
+    $taak->Text = $_POST['taak_id'];
     $user->Text = $_POST['user_id'];
     try {
-        $userModule->Save();
-        $userModule->SaveTakenToUser();
+        $usertaak->Save();
         $feedback = [
             "code" => 200,
-            "module_id" => $module,
+            "taak_id" => $taak,
             "user_id" => $user,
         ];
     } catch (Exception $e) {

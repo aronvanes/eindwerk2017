@@ -11,6 +11,7 @@ class UserModule
     private $id;
     private $user_id;
     private $module_id;
+    private $taak_id;
 
     /**
      * @return mixed
@@ -60,6 +61,22 @@ class UserModule
         $this->module_id = $module_id;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getTaakId()
+    {
+        return $this->taak_id;
+    }
+
+    /**
+     * @param mixed $taak_id
+     */
+    public function setTaakId($taak_id)
+    {
+        $this->taak_id = $taak_id;
+    }
+
     public function Save()
     {
         $conn = Db::getInstance();
@@ -69,4 +86,18 @@ class UserModule
         $statement->bindValue(":idmodule", $_POST["module_id"]);
         return $statement->execute();
     }
+
+
+    public function SaveTakenToUser($taak_id)
+    {
+        $conn = Db::getInstance();
+
+        $statement = $conn->prepare("INSERT INTO tbl_taken_users (taak_id, user_id) VALUES (id, :iduser :module_id) select (id) from tbl_taken where (module_id = :idmodule ) ");
+        $statement->bindValue(":iduser", $_POST['user_id']);
+        $statement->bindValue(":idmodule", $_POST["module_id"]);
+        return $statement->execute();
+    }
+
+
+
 }
