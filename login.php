@@ -53,8 +53,9 @@ else{
       <input type="text" name="usernaam" id="usernaam" placeholder="usernaam">
       <input type="password" name="wachtwoord" id="wachtwoord" placeholder="Wachtwoord">
       <input type="submit" name="button" id="button" placeholder="Inloggen">
+         <a href="register.php">Registreren</a>
      </form>
-     <a href="register.php">Registreren</a>
+
     </div>
   </body>
 </html>
