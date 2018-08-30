@@ -518,10 +518,20 @@
      padding-bottom: 5em;
    }
 
-   .ModuleList {
+   .ModuleListInt {
      border: solid #F2F1F1 3px;
      border-top: solid #27AE60 3px;
      z-index: 3;
+   }
+   .ModuleListSl {
+       border: solid #F2F1F1 3px;
+       border-top: solid #EB5757 3px;
+       z-index: 3;
+   }
+   .ModuleListSp {
+       border: solid #F2F1F1 3px;
+       border-top: solid #2D9CDB 3px;
+       z-index: 3;
    }
 
    .taakitems {

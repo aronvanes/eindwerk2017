@@ -70,7 +70,7 @@ $page = ("sport");
                 <a href="sport.php" class="sportlink <?php echo ($page == "sport" ? "active2" : "")?>">Sport</a>
                 <a href="slaap.php" class="slaaplink <?php echo ($page == "slaap" ? "active3" : "")?>">Slaap</a>
             </div>
-            <ul class="ModuleList">
+            <ul class="ModuleListSp">
                 <!--hier word via een foreachlus alle rijen opgehaald uit de modules met categorie interactie -->
                 <?php foreach ($sport_modules as $module) :?>
                     <div class="list border-bottom-yellow module">
