@@ -10,15 +10,6 @@ $user = new User();
 $user->setId($_SESSION['user_id']);
 $patients = $user->getPatientsByTherapist();
 
-var_dump($patients);
-
-if (!empty($_GET["search"])) {
-  $search = new Search();
-}
-
-$dashboard = new Dashboard();
-$profielfoto = $dashboard->getProfielfotoUser();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,7 +55,7 @@ $profielfoto = $dashboard->getProfielfotoUser();
       <ul class="col-12 row">
         <?php foreach ($patients as $patient): ?>
         <li id="cards">
-          <?php echo '<img src="data:../images/jpeg;base64,'.base64_encode( $profielfoto['profielfoto'] ).'"/>';?>
+          <img src="<?php echo $patient['profielfoto']?>"/>
           <a href="./profiel.php?id=<?php echo $row['id']; ?>"> <?php echo $patient['voornaam'].' '.$patient['achternaam']; ?></a>
         </li>
         <?php endforeach; ?>

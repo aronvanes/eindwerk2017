@@ -4,24 +4,18 @@ spl_autoload_register(function($class){
 });
 
 session_start();
-if (!empty($_SESSION['usernaam'])) {
-} else {
-    header('Location: login.php');
-}
+ if (empty($_SESSION['usernaam'])) { header('Location: login.php'); }
 
 
 $user = new User();
-$schema = $user->Patient();
+$user->setId($_SESSION['user_id']);
+$patients = $user->getPatientsByTherapist();
+
 $user = new UserInfo();
 $person = $user->getPatientModule();
 $person = $user->getPatientTaak();
 $person = $user->getCategorie();
 
-$user = new User();
-$cuser = $user->getCurrentUser();
-if (!empty($_GET["search"])) {
-        $search = new Search($var1);
-    }
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,7 +36,7 @@ if (!empty($_GET["search"])) {
 <nav class="navbar-fixed-left">
 <ul class="nav navbar-nav">
         <li>
-            <h2 id="cuser"><?php echo $cuser["voornaam"],' ',$cuser["achternaam"]?></h2>
+          <h2 id="cuser"><?php echo $_SESSION["voornaam"],' ',$_SESSION["achternaam"]?></h2>
         </li>
     <li><a href="dashboard.php">Dashboard</a></li>
     <li><a href="patienten.php">Patiënten</a></li>
@@ -72,26 +66,21 @@ if (!empty($_GET["search"])) {
   <button type='button' disabled id='connect_patient_button'> KOPPELEN </button>
 </div>
 </div>
-
 <div class="aanvragen">
     <h2>Nieuwe aanvragen</h2>
 </div>
-
-
-
 <div id="pbehandeling">
     <h2>Patiënten in behandeling</h2>
 </div>
-
 <ul class="col-12 row">
-    <?php foreach ($schema as $row): ?>
+    <?php foreach ($patients as $patient): ?>
         <div class="col-md-5 col-features">
             <div class="flex-container ">
                     <div class='lists'>
                         <li id="cards">
                             <br>
-                            <a href="./profiel.php?id=<?php echo $row['id']; ?>"><?php echo $row['voornaam'];echo " ";
-                            echo $row['achternaam']; ?></a>
+                            <a href="./profiel.php?id=<?php echo $patient['id']; ?>"><?php echo $patient['voornaam'];echo " ";
+                            echo $patient['achternaam']; ?></a>
                             </li>
                     </div>
                 </a>
@@ -99,7 +88,7 @@ if (!empty($_GET["search"])) {
         </div>
     <?php endforeach; ?>
 </ul>
-</div> 
+</div>
 </div>
 </body>
 <script>
@@ -130,7 +119,7 @@ if (!empty($_GET["search"])) {
         method: 'POST',
         url: 'AJAX/connectPatientToTherapist.php',
         data: {
-          therapist_id:  <?= $_SESSION['id']; ?>,
+          therapist_id:  <?= $_SESSION['user_id']; ?>,
           u_key: value,
         }
       })

@@ -220,28 +220,25 @@ class User {
       }
     }
 
-public function Module()
-{
-    $conn = Db::getInstance();
+    public function Module() {
+      $conn = Db::getInstance();
+      $statement = $conn->prepare("SELECT * FROM tbl_users_module");
+      $statement->execute();
+      return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 
-    $statement = $conn->prepare("SELECT * FROM tbl_users_module");
-    $statement->execute();
-    return $statement->fetchAll(PDO::FETCH_ASSOC);
-}
-public function Schema()
-{
-    $conn = Db::getInstance();
-    $statement = $conn->prepare("SELECT 'voornaam', 'achternaam', 'module_id'
-    FROM tbl_users
-    INNER JOIN tbl_users_module ON tbl_users.id = tbl_users_module.user_id
-    INNER JOIN tbl_taken_users ON tbl_users.id = tbl_taken_users.user_id
-    where tbl_users.rol = 3;");
-    $statement->execute();
-    return $statement->fetchAll(PDO::FETCH_ASSOC);
-}
+    public function Schema() {
+      $conn = Db::getInstance();
+      $statement = $conn->prepare("SELECT 'voornaam', 'achternaam', 'module_id'
+      FROM tbl_users
+      INNER JOIN tbl_users_module ON tbl_users.id = tbl_users_module.user_id
+      INNER JOIN tbl_taken_users ON tbl_users.id = tbl_taken_users.user_id
+      where tbl_users.rol = 3;");
+      $statement->execute();
+      return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     public function SetModuleToPatient2(){
-
         $conn = Db::getInstance();
         $statement = $conn->prepare("INSERT INTO tbl_users_module(user_id) values (id = :id)");
         $statement->bindParam(':id', $_POST['postID2']);

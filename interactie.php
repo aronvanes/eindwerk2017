@@ -3,18 +3,16 @@ spl_autoload_register(function($class){
     include_once("classes/" .  $class . ".class.php");
 });
 session_start();
-if (!empty($_SESSION['usernaam'])) {
-} else {
-header('Location: login.php');
-}
+if (empty($_SESSION['usernaam'])) { header('Location: login.php'); }
+
 
 $mod = new Module;
-$module = $mod->GetAllInteractieModules();
-$moduleAdd = $mod-> CreateModule();
+$interactie_modules = $mod->GetAllInteractieModules();
+// $moduleAdd = $mod->CreateModule();
+
 $user = new User();
-$patient = $user->Patient();
-$user = new User();
-$cuser = $user->getCurrentUser();
+$user->setId($_SESSION['user_id']);
+$patients = $user->getPatientsByTherapist();
 
 ?>
 <!DOCTYPE html>
@@ -33,14 +31,13 @@ $cuser = $user->getCurrentUser();
 </head>
 
 <body>
-
   <div class="container-fluid">
     <div class="row">
       <div class=navigation>
         <nav class="navbar-fixed-left">
           <ul class="nav navbar-nav">
             <li>
-              <h2 id="cuser"><?php echo $cuser["voornaam"],' ',$cuser["achternaam"]?></h2>
+              <h2 id="cuser"><?php echo $_SESSION["voornaam"],' ',$_SESSION["achternaam"]?></h2>
             </li>
             <li><a href="dashboard.php">Dashboard</a></li>
             <li><a href="patienten.php">Patiënten</a></li>
@@ -61,17 +58,13 @@ $cuser = $user->getCurrentUser();
             <input type="text" class="form-control" name="Naam" id="ModuleNaam" placeholder="Naam module">
             <input type="text" class="form-control" name="Beschrijving" id="ModuleBeschrijving" placeholder="Beschrijving">
             <input type="submit" class="form-control btn BtnAdd" name="button" id="button" placeholder="Aanmaken" onclick="myFunction()">
-
-                </div>
+          </div>
         </form>
       </div>
-
-
       <div class="offset-3 horizontalOffset col-md-8">
         <div class="col-3">
           <img src="images/158-couple.svg" alt="" class="interactieIcon">
-
-    </div>
+        </div>
         <div class="NavModules">
           <a href="interactie.php" class="interactielink">Interactie</a>
           <a href="energie.php" class="sportlink">Sport</a>
@@ -79,7 +72,7 @@ $cuser = $user->getCurrentUser();
         </div>
         <ul class="ModuleList">
           <!--hier word via een foreachlus alle rijen opgehaald uit de modules met categorie interactie -->
-          <?php foreach ($module as $row) :?>
+          <?php foreach ($interactie_modules as $module) :?>
           <div class="list border-bottom-yellow module">
             <div class="toggleHolder">
               <input type="button" class="toggler btn btn-warning" value="▾Show More">
@@ -87,40 +80,32 @@ $cuser = $user->getCurrentUser();
             </div>
             <li>
               <!--hier word in de data-id ingevuld met de id van de desbetreffende rij die hier in de lus getoond wordt-->
-              <h4  class="post" data-id="<?php echo $row['id'] ?>">
-                            <?php echo $row['naam'] ?>
-                        </h4>
+              <h4  class="post" data-id="<?php echo $module['id'] ?>"><?php echo $module['naam'] ?></h4>
             </li>
             <div class="showpanel" style="display: none;">
               <li>
                 <p>
-                  <?php echo $row['beschrijving'] ?>
+                  <?php echo $module['beschrijving'] ?>
                 </p>
               </li>
-
-
               <!--in de eerste foreachlus word er nog een tweede gezet die per module alle users toont-->
               <div class="taak-container" id="taak-container">
                 <?php
                             $taak = new Taak();
-                            $taak->setModuleId($row['id']);
+                            $taak->setModuleId($module['id']);
                             $taken = $taak->SelectAllTakenPerModule();
                             ?>
                 <div class="taakcontainer">
-                  <?php foreach ($taken as $row3): ?>
+                  <?php foreach ($taken as $taak): ?>
 
                   <ul class="taak">
                     <li class="taakitems">
                       <!--elke rij voor users heeft ook een button die er voor zorgt dat de id van d desbetreffende user samenkomt met bijbehorende
                                         interactie module-->
                       <comment>Taaknaam</comment>
-                      <h6 class ="text-left"  data-id=" <?php echo $row3['id'] ?>">
-                                            <?php echo $row3['naam'];?>
-                                        </h6>
+                      <h6 class ="text-left"  data-id=" <?php echo $taak['id'] ?>"><?php echo $taak['naam'];?></h6>
                       <comment>Beschrijving</comment>
-                      <p>
-                        <?php echo $row3['beschrijving'];?>
-                      </p>
+                      <p><?php echo $taak['beschrijving'];?></p>
                     </li>
                   </ul>
 
@@ -128,39 +113,30 @@ $cuser = $user->getCurrentUser();
                 </div>
                 <h4>Nieuwe taak aanmaken</h4>
                 <form action="" method="post" class="taakinput">
-                  <input type="text" class="form-control inputnaam" name="Naam" id="TaakNaam<?php echo $row['id'] ?>" placeholder="Naam taak">
-                  <input type="text" class="form-control inputbeschrijving" name="Beschrijving" id="TaakBeschrijving<?php echo $row['id'] ?>" placeholder="Beschrijving">
-                  <input class="btnNext btn btn-secondary BtnAdd2" type="button" value="nieuwe taak aanmaken">
-
-                            </form>
-
+                  <input type="text" class="form-control inputnaam" name="Naam" id="TaakNaam_<?php echo $module['id'] ?>" placeholder="Naam taak">
+                  <input type="text" class="form-control inputbeschrijving" name="Beschrijving" id="TaakBeschrijving_<?php echo $module['id'] ?>" placeholder="Beschrijving">
+                  <input class="btnNext btn btn-secondary add_task" type="button" value="nieuwe taak aanmaken">
+                </form>
                 <input class="btnNext btn btn-secondary" type="button" value="doorgaan" onclick="switching()">
-
-                        </div>
-
+              </div>
               <div class="client-container" id="client-container">
-                <?php foreach ($patient as $row2): ?>
+                <?php foreach ($patients as $patient): ?>
                 <div class="client">
-
                   <li>
                     <!--elke rij voor users heeft ook een button die er voor zorgt dat de id van d desbetreffende user samenkomt met bijbehorende
                                         interactie module-->
-                    <p class="text-left border-bottom-yellow post2" data-id="<?php echo $row2['id'] ?>">
-                      <?php echo $row2['voornaam'].' '.$row2['achternaam'];?>
-                      <input class="btnSubmit btn btn-warning" type="submit" value="Module toewijzen" />
-
-                                        </p>
+                    <p class="text-left border-bottom-yellow post2" data-id="<?php echo $patient['id'] ?>">
+                      <?php echo $patient['voornaam'].' '.$patient['achternaam'];?>
+                      <input class="btnSubmit btn btn-warning" type="submit" value="Module toewijzen" /></p>
                   </li>
                 </div>
                 <?php endforeach; ?>
               </div>
             </div>
-
           </div>
           <?php endforeach; ?>
         </ul>
-        <input type="button" class="btn btn-secondary" onclick="on()" value="Nieuwe module">
-
+        <input type="button" class="btn btn-secondary"  value="Nieuwe module">
     </div>
     </div>
   </div>
@@ -249,15 +225,12 @@ $cuser = $user->getCurrentUser();
             data: {
               module_id: module_id
             } //update: is de naam en update is de waarde (value)
-
           })
 
           .done(function(response) {
-
             // code + message
             if (response.code == 200) {
               console.log("werkt dit?");
-
             }
           });
 
@@ -312,21 +285,22 @@ $cuser = $user->getCurrentUser();
     });
 
     $(document).ready(function() {
-      $(".BtnAdd2").on("click", function(e) {
+      $(".add_task").on("click", function(e) {
         console.log("clicked");
 
-
         // tekst vak uitlezen
-        var $container2 = $(this).closest(".taakinput");
-        var naam = $container2.closest('.taakinput').find(".inputnaam").data('id');
-        var beschrijving = $container2.closest('.taakinput').find(".inputbeschrijving").data('id');
-        //var naam = $("#TaakNaam").val();
-        // var beschrijving = $("#TaakBeschrijving").val();
-        var $container = $(this).closest('.module');
-        var module_id = $container.closest('.module').find(".post").data('id');
+        var $container = $(this).closest(".taakinput");
+        var naam = $container.closest('.taakinput').find(".inputnaam").val();
+        var beschrijving = $container.closest('.taakinput').find(".inputbeschrijving").val();
 
+        var $container2 = $(this).closest('.module');
+        var module_id = $container2.find(".post").data('id');
 
         // via AJAX update naar databank sturen
+
+        console.log(naam)
+        console.log(beschrijving)
+        console.log(module_id)
 
         $.ajax({
             method: "POST",
@@ -345,8 +319,8 @@ $cuser = $user->getCurrentUser();
             if (response.code == 200) {
               var li = $("<li>");
               li.html("<h6 class ='text-left border-bottom'>" + response.naam + "</h6>" + "<p>" + response.beschrijving + "</p>");
-              $(".taakcontainer").prepend(li);
-              $(".taakcontainer li").last().slideDown();
+              $('#TaakNaam_'+module_id).parent().siblings('.taakcontainer').append("<ul style='display:none' class='taak'><li class='taakitems'><comment>Taaknaam</comment><h6 class ='text-left'  data-id='"+response.id+"'>"+response.naam+"</h6><comment>Beschrijving</comment><p>"+response.beschrijving+"</p></li></ul>");
+              $('#TaakNaam_'+module_id).parent().siblings('.taakcontainer').children().last().slideDown();
               console.log("werkt dit?");
             }
           });
