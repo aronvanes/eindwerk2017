@@ -14,6 +14,7 @@ $user = new User();
 $user->setId($_SESSION['user_id']);
 $patients = $user->getPatientsByTherapist();
 $page = ("interactie");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -121,13 +122,26 @@ $page = ("interactie");
               </div>
               <div class="client-container" id="client-container">
                 <?php foreach ($patients as $patient): ?>
+                <?php
+                  $isAlreadyConnected = User::checkIfModuleIsAlreadyConnected( $patient['id'], $module['id']);
+
+                  if(count($isAlreadyConnected) > 0){
+                    $isAlreadyConnected = true;
+                  } else {
+                    $isAlreadyConnected = false;
+                  }
+                ?>
                 <div class="client">
                   <li>
                     <!--elke rij voor users heeft ook een button die er voor zorgt dat de id van d desbetreffende user samenkomt met bijbehorende
                                         interactie module-->
                     <p class="text-left border-bottom-yellow post2" data-id="<?php echo $patient['id'] ?>">
                       <?php echo $patient['voornaam'].' '.$patient['achternaam'];?>
-                      <input class="btnSubmit btn btn-warning btn_connect_patient" data-module="<?php echo $module['id']?>" type="submit" value="Module toewijzen" /></p>
+                      <?php if ($isAlreadyConnected): ?>
+                        <input class="btnSubmit btn btn-warning btn_connect_patient disabled" disabled ata-module="<?php echo $module['id']?>" type="submit" value="toegewezen" /></p>
+                      <?php else :?>
+                        <input class="btnSubmit btn btn-warning btn_connect_patient" data-module="<?php echo $module['id']?>" type="submit" value="Module toewijzen" /></p>
+                      <?php endif; ?>
                   </li>
                 </div>
                 <?php endforeach; ?>
@@ -179,7 +193,7 @@ $page = ("interactie");
           module_id: module_id
         }
       }).done(function(response){
-        that.addClass('disabled').val('Toegewezen')
+        that.addClass('disabled').val('Toegewezen').attr('disabled', true)
       })
     })
 

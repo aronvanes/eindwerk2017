@@ -368,4 +368,16 @@ class User {
         echo 'niet gelukt';
       }
     }
+
+    public static function checkIfModuleIsAlreadyConnected($patient_id, $module_id){
+      $conn = Db::getInstance();
+
+      $statement = $conn->prepare('SELECT * FROM tbl_users_module AS um INNER JOIN tbl_module AS m ON um.module_id = m.id where um.module_id = :module_id AND um.user_id = :patient_id AND m.completed = 0');
+      $statement->bindParam(':module_id', $module_id);
+      $statement->bindParam(':patient_id', $patient_id);
+
+      if ($statement->execute()){
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+      }
+    }
 }
