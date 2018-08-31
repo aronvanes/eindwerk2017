@@ -37,7 +37,7 @@ $page = ("interactie");
         <nav class="navbar-fixed-left">
           <ul class="nav navbar-nav">
             <li>
-              <h2 id="cuser"><?php echo $_SESSION["voornaam"],' ',$_SESSION["achternaam"]?></h2>
+              <h2 id="cuser" data-id=<?php echo $_SESSION['user_id']?>><?php echo $_SESSION["voornaam"],' ',$_SESSION["achternaam"]?></h2>
             </li>
             <li><a href="dashboard.php">Dashboard</a></li>
             <li><a href="patienten.php">Patiënten</a></li>
@@ -127,7 +127,7 @@ $page = ("interactie");
                                         interactie module-->
                     <p class="text-left border-bottom-yellow post2" data-id="<?php echo $patient['id'] ?>">
                       <?php echo $patient['voornaam'].' '.$patient['achternaam'];?>
-                      <input class="btnSubmit btn btn-warning" type="submit" value="Module toewijzen" /></p>
+                      <input class="btnSubmit btn btn-warning btn_connect_patient" data-module="<?php echo $module['id']?>" type="submit" value="Module toewijzen" /></p>
                   </li>
                 </div>
                 <?php endforeach; ?>
@@ -159,6 +159,27 @@ $page = ("interactie");
       e.preventDefault()
 
       $(this).parent().siblings('.client-container').toggle()
+    })
+
+    $('.btn_connect_patient').on('click', function(e){
+      e.preventDefault();
+
+      let patient_id = $(this).parent().data('id');
+      let module_id = $(this).data('module');
+
+      console.log(patient_id);
+      console.log(module_id);
+
+      $.ajax({
+        method: 'POST',
+        url: 'AJAX/connectPatientToModule.php',
+        data: {
+          patient_id: patient_id,
+          module_id: module_id
+        }
+      }).done(function(response){
+        console.log(response)
+      })
     })
 
     function myFunction() {

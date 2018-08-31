@@ -346,4 +346,26 @@ class User {
         $result = $statement->execute();
         return $result;
     }
+
+    public static function connectPatientToModule($patient_id, $module_id){
+      $conn = Db::getInstance();
+
+      $statement = $conn->prepare('SELECT * FROM tbl_taken WHERE module_id = :module_id');
+      $statement->bindParam(':module_id', $module_id);
+
+      if($statement->execute()){
+        $res = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($res as $query) {
+
+          $connect = $conn->prepare('INSERT INTO tbl_taken_users (user_id, taak_id, completed) VALUES (:user_id, :taak_id, 0)');
+          $connect->bindParam(':user_id', $patient_id);
+          $connect->bindParam(':taak_id', $query['id']);
+
+          $connect->execute();
+        }
+      } else {
+        echo 'niet gelukt';
+      }
+    }
 }
