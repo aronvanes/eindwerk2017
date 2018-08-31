@@ -731,3 +731,8 @@ box-shadow: 0px 10px 50px -18px rgba(0,0,0,0.75);
    .new_message{
      font-weight: 700;
    }
+
+   .disabled{
+     background-color: #F2F2F2 !important;
+     border: none !important;
+   }

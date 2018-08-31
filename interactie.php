@@ -161,12 +161,12 @@ $page = ("interactie");
       $(this).parent().siblings('.client-container').toggle()
     })
 
-<<<<<<< HEAD
     $('.btn_connect_patient').on('click', function(e){
       e.preventDefault();
 
-      let patient_id = $(this).parent().data('id');
-      let module_id = $(this).data('module');
+      const that = $(this)
+      let patient_id = that.parent().data('id');
+      let module_id = that.data('module');
 
       console.log(patient_id);
       console.log(module_id);
@@ -179,14 +179,11 @@ $page = ("interactie");
           module_id: module_id
         }
       }).done(function(response){
-        console.log(response)
+        that.addClass('disabled').val('Toegewezen')
       })
     })
 
     function myFunction() {
-=======
-    function reload() {
->>>>>>> ea04e23b29742f5ea2be275566b424b5e78d1329
       location.reload();
     }
   </script>
