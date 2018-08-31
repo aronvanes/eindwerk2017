@@ -57,7 +57,7 @@ $page = ("interactie");
             <h3>Nieuwe module aanmaken</h3>
             <input type="text" class="form-control" name="Naam" id="ModuleNaam" placeholder="Naam module">
             <input type="text" class="form-control" name="Beschrijving" id="ModuleBeschrijving" placeholder="Beschrijving">
-            <input type="submit" class="form-control btn BtnAdd" name="button" id="button" placeholder="Aanmaken" onclick="myFunction()">
+            <input type="submit" class="form-control btn BtnAdd" name="button" id="button" placeholder="Aanmaken" onclick="reload()">
           </div>
         </form>
       </div>
@@ -136,7 +136,7 @@ $page = ("interactie");
           </div>
           <?php endforeach; ?>
         </ul>
-        <input type="button" class="btn btn-secondary"  value="Nieuwe module">
+        <input type="button" class="btn btn-secondary"  value="Nieuwe module" onclick="on()">
     </div>
     </div>
   </div>
@@ -161,6 +161,7 @@ $page = ("interactie");
       $(this).parent().siblings('.client-container').toggle()
     })
 
+<<<<<<< HEAD
     $('.btn_connect_patient').on('click', function(e){
       e.preventDefault();
 
@@ -183,6 +184,9 @@ $page = ("interactie");
     })
 
     function myFunction() {
+=======
+    function reload() {
+>>>>>>> ea04e23b29742f5ea2be275566b424b5e78d1329
       location.reload();
     }
   </script>

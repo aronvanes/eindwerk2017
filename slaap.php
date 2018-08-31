@@ -57,7 +57,7 @@ $page = ("slaap");
                     <h3>Nieuwe module aanmaken</h3>
                     <input type="text" class="form-control" name="Naam" id="ModuleNaam" placeholder="Naam module">
                     <input type="text" class="form-control" name="Beschrijving" id="ModuleBeschrijving" placeholder="Beschrijving">
-                    <input type="submit" class="form-control btn BtnAdd" name="button" id="button" placeholder="Aanmaken" onclick="myFunction()">
+                    <input type="submit" class="form-control btn BtnAdd" name="button" id="button" placeholder="Aanmaken" onclick="reload()">
                 </div>
             </form>
         </div>
@@ -136,7 +136,7 @@ $page = ("slaap");
                     </div>
                 <?php endforeach; ?>
             </ul>
-            <input type="button" class="btn btn-secondary"  value="Nieuwe module">
+            <input type="button" class="btn btn-secondary"  value="Nieuwe module" onclick="on()">
         </div>
     </div>
 </div>
@@ -161,7 +161,7 @@ $page = ("slaap");
 
     }
 
-    function myFunction() {
+    function reload() {
         location.reload();
     }
 </script>
